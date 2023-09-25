@@ -1,0 +1,45 @@
+server:
+  port: 8083
+  servlet:
+    contextPath: "/app"
+
+ambiente: local
+
+paths:
+  auth: 'auth'
+
+credenciales:
+  host: 'localhost'
+  user: 'postgres'
+  password: 'sol123'
+  database: 'tesis-bd'
+  port: 5432
+  ssl:
+    rejectUnauthorized: true
+
+
+
+# credenciales:
+#   host: 'ec2-54-86-106-48.compute-1.amazonaws.com'
+#   user: 'yeaqqqxacdvcja'
+#   password: 'aadb590438bc25dc9974600f53827f203d174ce44c1af84251f114406517f5d0'
+#   database: 'dar3vfiejpldu3'
+#   port: 5432
+#   ssl:
+#     rejectUnauthorized: false
+
+
+
+
+
+
+# Nostas
+
+# sol123
+# 5435
+
+# server      localhost
+# database    postgres
+# port        5433
+# username    postgres
+# password    sol123
