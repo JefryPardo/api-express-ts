@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { _getAllRols } from '../controller/login.controller';
 import { succes, error } from '../network/response';
-import { RolModel } from '../models/auth/rol.model';
+import { RolModel } from '../models/model/rol.model';
 
 const routerAuth = Router();
 

@@ -1,4 +1,4 @@
-import { getAllRols } from "../../src/service/auth.query";
+import { getAllRols } from "../query/rol.query";
 
 const _getAllRols = async () => getAllRols();
 

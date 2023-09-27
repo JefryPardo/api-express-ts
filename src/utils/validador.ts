@@ -1,6 +1,4 @@
 
-import { logger } from "../logs/logger";
-import { usuarioModel } from "../models/usuario.model";
 import { validarAlfanumericoModel } from "../models/utils/validar.alfanumerico.model";
 import { validarNumeroModel } from "../models/utils/validar.numero.model";
 
@@ -68,46 +66,4 @@ const validarAlfaNumerico = ( cadena: string ): validarAlfanumericoModel  => {
     return respuesta;
 }
 
-const buildUsuario = ( data: any ):usuarioModel => {
-
-    try {
-        
-        let usuario = new usuarioModel();
-
-        usuario.id                          = data.id;   
-        usuario.nombre                      = data.nombre;
-        usuario.apellido                    = data.apellido;
-        usuario.tipo_documento              = data.tipo_documento;
-        usuario.documento_identificacion    = data.documento_identificacion;
-        usuario.estado                      = data.estado;
-        usuario.sexo                        = data.sexo;
-
-        logger.info(`Se genero el modelo de usuario: ${usuario.documento_identificacion} correctamente`);
-        return usuario;
-    } catch (error) {
-
-        logger.error(`Error en buildUsuario: ${error}`);
-        throw `Error inesperado, por favor comucnicar con el administrador. #V01`;
-    }
-}
-
-const validarCamposUsuario = ( usuario: any ) => {
-
-    for (let index in usuario) {
-
-        if(
-            index != "nombre"                   && 
-            index != "apellido"                 && 
-            index != "tipo_documento"           && 
-            index != "documento_identificacion" && 
-            index != "estado"                   &&
-            index != "sexo"
-        ) {
-
-            logger.error(`Error en validarCamposUsuario: el siguiente campo no esta permitido ${index}`);
-            throw `El siguiente campo no esta permitido: ${index}`;
-        }
-    }
-}
-
-export { validarSplitDeNumeros, validarNumero, validarCamposUsuario, buildUsuario, validarAlfaNumerico };
+export { validarSplitDeNumeros, validarNumero, validarAlfaNumerico };

@@ -34,8 +34,8 @@ const conexion = async () => {
     });
     
     await client.connect()
-                .then(_res => succes())
-                .catch(_error =>  error(_error));
+    .then((_res:any) => succes())
+    .catch((_error:any) =>  error(_error));
     
     return client;
 };
@@ -47,7 +47,7 @@ const succes = () => {
 
 const error = ( res: void) => {
 
-    logger.error(`Error en conexion: ${res}`);
+    logger.error(`Error en la conexion: ${res}`);
     throw `Error inesperado, por favor reportarlo con el administrador. #C01`
 }
 

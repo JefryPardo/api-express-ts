@@ -20,7 +20,7 @@ CREATE TABLE Usuario (
     intentosFallidos VARCHAR(2),
     clave VARCHAR(255),
     login VARCHAR(255),
-    activo BOOLEAN
+    estado VARCHAR(15)
 );
 
 CREATE TABLE Usuario_Rol (

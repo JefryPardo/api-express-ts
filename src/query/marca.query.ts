@@ -1,0 +1,118 @@
+import { logger } from "../logs/logger";
+import { MarcaModel } from "../models/model/marca.model";
+import { conexion } from "./conexion";
+
+
+const getAllMarca = async ():Promise<MarcaModel[]> => {
+
+    const consulta = await conexion();
+    try {
+        
+        const respuesta = await consulta.query(
+            `
+                SELECT 
+                    id, marca
+                from marca
+            `
+        );
+
+        const marcaList :MarcaModel[] = respuesta.rows; 
+        logger.info(`getAllMarca: se encontraron ${marcaList.length} marca`);
+
+        return marcaList;
+
+    } catch (error) {
+
+        logger.error(`Error en getAllMarca:  ${error}`);
+        throw `Error inesperado, por favor reportar al administrador. #M01`
+    } finally {
+
+        consulta.end();
+    }
+}
+
+const insertMarca = async ( marca:string ) => {
+
+    const consulta = await conexion();
+
+    try {
+        
+        const respuesta = await consulta.query(
+            `INSERT INTO 
+                marca(marca) 
+                VALUES ($1,$2)`, 
+            [marca]
+        );
+        
+        console.log(respuesta);
+        
+    } catch (error) {
+        
+        logger.error(`Error en insertMarca:  ${error}`);
+        throw `Error inesperado, por favor reportar al administrador. #M02`;
+    } finally {
+
+        consulta.end();
+    }
+}
+
+const getMarcaById = async ( id: string  ) => {
+
+    const consulta = await conexion();
+    try {
+        
+        const respuesta = await consulta.query(
+            `SELECT 
+                id, 
+                marca
+            FROM 
+                marca 
+            WHERE 
+                id = ${id}`
+        );
+        
+        console.log(respuesta.rows);
+
+        return respuesta.rows;
+
+    } catch (error) {
+        
+        logger.error(`Error en getMarcaById:  ${error}`);
+        throw "Error inesperado, por favor reportar al administrador. #M03";
+    }finally {
+        
+        consulta.end();
+    }
+}
+
+const updateMarca = async ( id:string, marca: string ) => {
+
+    const consulta = await conexion();
+    try {
+        
+        const respuesta = await consulta.query(
+            `UPDATE marca
+            SET marca = ${marca}
+            WHERE id = ${id}`
+        );
+        
+        console.log(respuesta.rows);
+
+        return respuesta.rows;
+
+    } catch (error) {
+        
+        logger.error(`Error en updateMarca:  ${error}`);
+        throw "Error inesperado, por favor reportar al administrador. #M05";
+    }finally {
+        
+        consulta.end();
+    }
+}
+
+export { 
+    getAllMarca,
+    insertMarca,
+    getMarcaById, 
+    updateMarca 
+};
