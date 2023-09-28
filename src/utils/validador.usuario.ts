@@ -49,3 +49,5 @@ const validarCamposUsuario = ( usuario: any ) => {
         }
     }
 }
+
+export { buildUsuario, validarCamposUsuario };

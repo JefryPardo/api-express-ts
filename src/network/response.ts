@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 
 const succes = ( req: Request, res: Response, payload: any ) => {
     
+    console.log(payload);
+
     let _payload: any   = payload || '';
     let statusCode: number = 200;
     

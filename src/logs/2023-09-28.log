@@ -1,0 +1,66 @@
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se genero el modelo de rol: undefined correctamente
+info: Se hace la conexión con exito.
+error: Error en insertRol:  error: no existe la columna «estado» en la relación «rol»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se genero el modelo de rol: undefined correctamente
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se genero el modelo de rol: undefined correctamente
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se genero el modelo de rol: asesor correctamente
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se genero el modelo de rol: asesor correctamente
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se genero el modelo de rol: asesor correctamente
+info: Se hace la conexión con exito.
+error: Error en validarCamposRol: el siguiente campo no esta permitido rols
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error: Error en validarCamposRol: el siguiente campo no esta permitido rols
+info: Se genero el modelo de rol: asesor correctamente
+info: Se hace la conexión con exito.
+error: Error en _insertRol:  QueryExcepcion: Algo salio mal.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local

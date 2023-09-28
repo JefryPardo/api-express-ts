@@ -1,5 +1,5 @@
-import { getAllRols } from "../query/rol.query";
+// import { getAllRols } from "../query/rol.query";
 
-const _getAllRols = async () => getAllRols();
+// const _getAllRols = async () => getAllRols();
 
-export { _getAllRols };
+// export { _getAllRols };

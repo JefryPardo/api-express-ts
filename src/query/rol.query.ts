@@ -1,8 +1,10 @@
 import { conexion } from "./conexion"
 import { logger } from "../logs/logger";
 import { RolModel } from "../models/model/rol.model";
+import { NewQueryExcepcion } from "../excepcion/excepcion";
+import { QueryExcepcion } from "../excepcion/class/query.excepcion";
 
-const getAllRols = async ():Promise<RolModel[]> => {
+const _getAllRols = async ():Promise<RolModel[]> => {
 
     const consulta = await conexion();
     try {
@@ -30,7 +32,7 @@ const getAllRols = async ():Promise<RolModel[]> => {
     }
 }
 
-const insertRol = async ( {rol, estado}:RolModel ) => {
+const _insertRol = async ( {rol, estado}:RolModel ) => {
 
     const consulta = await conexion();
 
@@ -43,19 +45,33 @@ const insertRol = async ( {rol, estado}:RolModel ) => {
             [rol,estado]
         );
         
-        console.log(respuesta);
+        // if(respuesta.rowCount === 1) {
+        //     return {
+        //         "code": "#IR01",
+        //         "response": "Se guardo correctamente el rol.",
+        //     };
+        // }
+
+        throw  NewQueryExcepcion('CONSULTAROLEXCEPCION');
         
     } catch (error) {
         
-        logger.error(`Error en insertRol:  ${error}`);
-        throw `Error inesperado, por favor reportar al administrador. #R02`;
+        logger.error(`Error en _insertRol:  ${error}`);
+        
+        if (error instanceof QueryExcepcion) {
+        
+            throw error;
+        }
+
+        throw NewQueryExcepcion('ROLEXCEPCION');
+
     } finally {
 
         consulta.end();
     }
 }
 
-const getRolById = async ( id: string  ) => {
+const _getRolById = async ( id: string  ) => {
 
     const consulta = await conexion();
     try {
@@ -85,7 +101,7 @@ const getRolById = async ( id: string  ) => {
     }
 }
 
-const updateEstadoRol = async ( id:string, estado: string ) => {
+const _updateEstadoRol = async ( id:string, estado: string ) => {
 
     const consulta = await conexion();
     try {
@@ -110,7 +126,7 @@ const updateEstadoRol = async ( id:string, estado: string ) => {
     }
 }
 
-const updateRol = async ( id:string, rol: string ) => {
+const _updateRol = async ( id:string, rol: string ) => {
 
     const consulta = await conexion();
     try {
@@ -136,9 +152,9 @@ const updateRol = async ( id:string, rol: string ) => {
 }
 
 export { 
-    getAllRols, 
-    insertRol,
-    getRolById, 
-    updateEstadoRol, 
-    updateRol
+    _getAllRols, 
+    _insertRol,
+    _getRolById, 
+    _updateEstadoRol, 
+    _updateRol
 };

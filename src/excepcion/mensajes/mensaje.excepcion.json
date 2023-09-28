@@ -1,0 +1,14 @@
+{
+    "ROLEXCEPCION": {
+        "code": "ER00",
+        "message": "Algo salio mal.",
+        "recommendation": "Por favor comunicarse con el administrador."
+    },
+
+    "CONSULTAROLEXCEPCION": {
+        "code": "ER01",
+        "message": "Algo salio mal.",
+        "recommendation": "Por favor comunicarse con el administrador."
+    }
+    
+}

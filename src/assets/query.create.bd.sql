@@ -25,24 +25,26 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Usuario_Rol (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    idUsuario VARCHAR(255),
-    idRol VARCHAR(255)
+    id_usuario VARCHAR(255),
+    id_rol VARCHAR(255)
 );
 
 CREATE TABLE Rol (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    rol VARCHAR(255)
+    rol VARCHAR(255),
+    estado VARCHAR(255)
 );
 
 CREATE TABLE Rol_Permiso (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    idRol VARCHAR(255),
-    idPermiso VARCHAR(255)
+    id_rol VARCHAR(255),
+    id_permiso VARCHAR(255)
 );
 
 CREATE TABLE Permiso (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    permiso VARCHAR(255)
+    permiso VARCHAR(255),
+    estado VARCHAR(255)
 );
 
 CREATE TABLE Categoria (
@@ -50,17 +52,17 @@ CREATE TABLE Categoria (
     nombre VARCHAR(255)
 );
 
-CREATE TABLE Configuracion_Ganancia (
+CREATE TABLE Ganancia (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    idUsuario VARCHAR(255),
-    idCategoria VARCHAR(255),
-    porcentajeGanancia DECIMAL(2, 2)
+    id_usuario VARCHAR(255),
+    id_categoria VARCHAR(255),
+    porcentaje_ganancia DECIMAL(2, 2)
 );
 
 CREATE TABLE Cotizacion_Producto (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    idUsuario VARCHAR(255),
-    idCategoria VARCHAR(255)
+    id_usuario VARCHAR(255),
+    id_categoria VARCHAR(255)
 );
 
 CREATE TABLE Producto (
@@ -72,15 +74,16 @@ CREATE TABLE Producto (
     precio DECIMAL(10, 2),
     fichaTecnica VARCHAR(255),
     unidades VARCHAR(255),
-    idCategoria VARCHAR(255),
-    idTipo VARCHAR(255),
-    idMarca VARCHAR(255)
+    estado VARCHAR(255),
+    id_categoria VARCHAR(255),
+    id_tipo VARCHAR(255),
+    id_marca VARCHAR(255)
 );
 
 CREATE TABLE Cotizacion (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    idProducto VARCHAR(255),
-    idCotizacion VARCHAR(255)
+    id_producto VARCHAR(255),
+    id_cotizacion VARCHAR(255)
 );
 
 CREATE TABLE Marca (

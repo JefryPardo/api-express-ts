@@ -5,9 +5,6 @@ server:
 
 ambiente: local
 
-paths:
-  auth: 'auth'
-
 credenciales:
   host: 'localhost'
   user: 'postgres'
