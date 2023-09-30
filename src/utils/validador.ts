@@ -5,7 +5,7 @@ import { validarNumeroModel } from "../models/utils/validar.numero.model";
 /**
  * 
  * @param cadena 
- * @returns false sí todos los elementos del array son numero.
+ * @returns (false) sí todos los elementos del array son numero.
  */
 const validarSplitDeNumeros = ( cadena: string ) => {
 
@@ -25,7 +25,7 @@ const validarSplitDeNumeros = ( cadena: string ) => {
 /**
  * 
  * @param numero 
- * @returns true sí el string de entrada es un numero
+ * @returns (true) sí el string de entrada es un numero
  */
 const validarNumero = ( numero: any ): validarNumeroModel  => {
     
@@ -43,7 +43,7 @@ const validarNumero = ( numero: any ): validarNumeroModel  => {
 /**
  * 
  * @param cadena 
- * @returns true sí es alfanumerico
+ * @returns (true) sí es alfanumerico
  */
 const validarAlfaNumerico = ( cadena: string ): validarAlfanumericoModel  => {
     
@@ -66,4 +66,15 @@ const validarAlfaNumerico = ( cadena: string ): validarAlfanumericoModel  => {
     return respuesta;
 }
 
-export { validarSplitDeNumeros, validarNumero, validarAlfaNumerico };
+
+/**
+ * 
+ * @param cadena 
+ * @returns (true) sí el campo ingresado tiene un formato valido
+ */
+const esFormatoValido = (campo:string) :boolean  => {
+    const uuidRegex = /^[0-9a-fA-F]{32}$/;
+    return !uuidRegex.test(campo);
+}
+
+export { validarSplitDeNumeros, validarNumero, validarAlfaNumerico, esFormatoValido };

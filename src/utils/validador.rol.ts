@@ -1,4 +1,6 @@
+import { NewExcepcion } from "../excepcion/excepcion";
 import { logger } from "../logs/logger";
+import { ResponseModel } from "../models/model/response.model";
 import { RolModel } from "../models/model/rol.model";
 
 const buildRol = ( data: any ):RolModel => {
@@ -16,7 +18,7 @@ const buildRol = ( data: any ):RolModel => {
     } catch (error) {
 
         logger.error(`Error en buildRol: ${error}`);
-        throw `Error inesperado, por favor comunicar con el administrador. #VR01`;
+        throw NewExcepcion('ROLEXCEPCION');
     }
 }
 
@@ -25,12 +27,12 @@ const validarCamposRol = ( rol: any ) => {
     for (let index in rol) {
 
         if(
+            index != "id"      && 
             index != "rol"      && 
             index != "estado"
         ) {
 
-            logger.error(`Error en validarCamposRol: el siguiente campo no esta permitido ${index}`);
-            throw `El siguiente campo no esta permitido: ${index}`;
+            return new ResponseModel('#IRF02',`Campo: ${index} no valido.`);
         }
     }
 }

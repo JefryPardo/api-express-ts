@@ -2,7 +2,7 @@ import { conexion } from "./conexion"
 import { logger } from "../logs/logger";
 import { PermisoModel } from "../models/model/permiso.model";
 
-const insertPermiso = async ( {permiso, estado}:PermisoModel ) => {
+const _insertPermiso = async ( {permiso, estado}:PermisoModel ) => {
 
     const consulta = await conexion();
 
@@ -25,7 +25,7 @@ const insertPermiso = async ( {permiso, estado}:PermisoModel ) => {
     }
 }
 
-const getPermisoById = async ( id: string ) => {
+const _getPermisoById = async ( id: string ) => {
 
     const consulta = await conexion();
     try {
@@ -53,7 +53,7 @@ const getPermisoById = async ( id: string ) => {
     }
 }
 
-const updateEstadoPermiso = async ( id:string, estado: string ) => {
+const _updateEstadoPermiso = async ( id:string, estado: string ) => {
 
     const consulta = await conexion();
     try {
@@ -76,7 +76,7 @@ const updateEstadoPermiso = async ( id:string, estado: string ) => {
     }
 }
 
-const updatePermiso = async ( id:string, permiso: string ) => {
+const _updatePermiso = async ( id:string, permiso: string ) => {
 
     const consulta = await conexion();
     try {
@@ -100,8 +100,8 @@ const updatePermiso = async ( id:string, permiso: string ) => {
 }
 
 export { 
-    insertPermiso, 
-    getPermisoById, 
-    updateEstadoPermiso, 
-    updatePermiso 
+    _insertPermiso, 
+    _getPermisoById, 
+    _updateEstadoPermiso, 
+    _updatePermiso 
 };

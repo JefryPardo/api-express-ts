@@ -1,14 +1,15 @@
-export class QueryExcepcion extends Error {
+export class Excepcion extends Error {
 
   code: string;
+  message: string;
   recommendation: string;
-  name: string;
+  hora: Date
 
-  constructor(code: string, message:string, recommendation:string) {
+  constructor(code: string, message:string, recommendation:string, hora:Date) {
     super(message);
-    this.code = code;
+    this.code           = code;
     this.recommendation = recommendation;
-    this.name = this.constructor.name;
-    Object.setPrototypeOf(this, QueryExcepcion.prototype);
+    this.hora           = hora;
+    Object.setPrototypeOf(this, Excepcion.prototype);
   }
 }

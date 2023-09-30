@@ -5,10 +5,28 @@
         "recommendation": "Por favor comunicarse con el administrador."
     },
 
-    "CONSULTAROLEXCEPCION": {
+    "INSERTROLEXCEPCION": {
         "code": "ER01",
         "message": "Algo salio mal.",
         "recommendation": "Por favor comunicarse con el administrador."
-    }
+    },
     
+    "CONEXIONEXCEPCION": {
+        "code": "EC01",
+        "message": "Algo salio mal.",
+        "recommendation": "Por favor comunicarse con el administrador."
+    },
+    
+    "IDNOVALIDOEXCEPCION": {
+        "code": "G01",
+        "message": "Id ingresado no cumple con el formato requerido.",
+        "recommendation": "Por favor ingresar un ID valido."
+    },
+
+    "BUILDPERMISOEXCEPCION": {
+        "code": "P01",
+        "message": "Error al armar el modelo PermisoModel.",
+        "recommendation": "Por favor ingresar campos validos."
+    }   
+
 }

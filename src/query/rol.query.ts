@@ -1,10 +1,11 @@
 import { conexion } from "./conexion"
 import { logger } from "../logs/logger";
 import { RolModel } from "../models/model/rol.model";
-import { NewQueryExcepcion } from "../excepcion/excepcion";
-import { QueryExcepcion } from "../excepcion/class/query.excepcion";
+import { NewExcepcion } from "../excepcion/excepcion";
+import { Excepcion } from "../excepcion/class/query.excepcion";
+import { ResponseModel } from "../models/model/response.model";
 
-const _getAllRols = async ():Promise<RolModel[]> => {
+const _getAllRols = async ():Promise<ResponseModel> => {
 
     const consulta = await conexion();
     try {
@@ -12,20 +13,27 @@ const _getAllRols = async ():Promise<RolModel[]> => {
         const respuesta = await consulta.query(
             `
                 SELECT 
-                    id, rol
+                    id, 
+                    rol, 
+                    estado
                 from rol
             `
         );
 
+        if(respuesta.rowCount < 1) {
+        
+            return new ResponseModel('#GR01',[]);
+        }
+
         const rolList :RolModel[] = respuesta.rows; 
         logger.info(`getAllRols: se encontraron ${rolList.length} roles`);
 
-        return rolList;
+        return new ResponseModel('#GAR01',rolList);
 
     } catch (error) {
 
         logger.error(`Error en getAllRols:  ${error}`);
-        throw `Error inesperado, por favor reportar al administrador. #R01`
+        throw NewExcepcion('ROLEXCEPCION');
     } finally {
 
         consulta.end();
@@ -45,25 +53,24 @@ const _insertRol = async ( {rol, estado}:RolModel ) => {
             [rol,estado]
         );
         
-        // if(respuesta.rowCount === 1) {
-        //     return {
-        //         "code": "#IR01",
-        //         "response": "Se guardo correctamente el rol.",
-        //     };
-        // }
+        if(respuesta.rowCount === 1) {
+        
+            logger.info(`insert rol, ${rol} success`);
+            return new ResponseModel('#IR01','Se guardo correctamente el rol.');
+        }
 
-        throw  NewQueryExcepcion('CONSULTAROLEXCEPCION');
+        throw  NewExcepcion('INSERTROLEXCEPCION');
         
     } catch (error) {
         
         logger.error(`Error en _insertRol:  ${error}`);
         
-        if (error instanceof QueryExcepcion) {
+        if (error instanceof Excepcion) {
         
             throw error;
         }
 
-        throw NewQueryExcepcion('ROLEXCEPCION');
+        throw NewExcepcion('ROLEXCEPCION');
 
     } finally {
 
@@ -84,24 +91,29 @@ const _getRolById = async ( id: string  ) => {
             FROM 
                 rol 
             WHERE 
-                id = ${id}`
+                id = '${id}'`
         );
         
-        console.log(respuesta.rows);
+        if(respuesta.rowCount !== 1) {
+        
+            return new ResponseModel('#GRBI01','Consulta sin resultados');
+        }
 
-        return respuesta.rows;
+        const rol :RolModel = respuesta.rows[0]; 
+
+        return new ResponseModel('#GRBI02',rol);
 
     } catch (error) {
         
         logger.error(`Error en getRolById:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #R03";
+        throw NewExcepcion('ROLEXCEPCION');
     }finally {
         
         consulta.end();
     }
 }
 
-const _updateEstadoRol = async ( id:string, estado: string ) => {
+const _updateEstadoRolById = async ( id:string, estado: string ) => {
 
     const consulta = await conexion();
     try {
@@ -112,21 +124,20 @@ const _updateEstadoRol = async ( id:string, estado: string ) => {
             WHERE id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
-        return respuesta.rows;
+        if(respuesta.rowCount > 0) return new ResponseModel('#UER01','Actulización exitosa.');
+        return new ResponseModel('#UER02','No se encontró ningún registro para actualizar.');
 
     } catch (error) {
         
         logger.error(`Error en updateEstadoRol:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #R04";
+        throw NewExcepcion('ROLEXCEPCION');
     }finally {
         
         consulta.end();
     }
 }
 
-const _updateRol = async ( id:string, rol: string ) => {
+const _updateRolById = async ( id:string, rol: string ) => {
 
     const consulta = await conexion();
     try {
@@ -137,14 +148,13 @@ const _updateRol = async ( id:string, rol: string ) => {
             WHERE id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
-        return respuesta.rows;
+        if(respuesta.rowCount > 0) return new ResponseModel('#UR01','Actulización exitosa.');
+        return new ResponseModel('#UR02','No se encontró ningún registro para actualizar.');
 
     } catch (error) {
         
         logger.error(`Error en updateRol:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #R05";
+        throw NewExcepcion('ROLEXCEPCION');
     }finally {
         
         consulta.end();
@@ -155,6 +165,6 @@ export {
     _getAllRols, 
     _insertRol,
     _getRolById, 
-    _updateEstadoRol, 
-    _updateRol
+    _updateEstadoRolById, 
+    _updateRolById
 };

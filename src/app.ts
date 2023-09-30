@@ -11,7 +11,6 @@ const _origin:      string = config.get('cors.origin');
 const _ambiente:    string = config.get('ambiente');
 const _puerto:      number = config.get('server.port');
 const _contextPath: string = config.get('server.servlet.contextPath');
-// const _authPath: string = config.get('paths.auth');
 
 const app = express();
 app.use(cors({
@@ -21,7 +20,6 @@ app.use(cors({
 }));
 
 app.use(express.json());
-// app.use(`${_contextPath}/auth`, routerAuth);
 app.use(`${_contextPath}/rol`,  routerRol);
 
 logger.info(`cors permitidos: ${_origin}`);
