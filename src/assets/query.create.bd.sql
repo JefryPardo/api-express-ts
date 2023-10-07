@@ -95,11 +95,3 @@ CREATE TABLE Tipo (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     tipo VARCHAR(255)
 );
-
-
--- insert
-INSERT INTO Rol (rol)
-VALUES ('Administrador');
-
-INSERT INTO Rol (rol)
-VALUES ('Asesor');

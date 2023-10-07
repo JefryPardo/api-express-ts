@@ -11,7 +11,7 @@ const insertRol = async ( req: Request ) => {
 
     if(!req.body) {
 
-        return new ResponseModel('#IRF01','Data ingresada no validad.');
+        return new ResponseModel('#','Data ingresada no validad.');
     }
 
     validarCamposRol(req.body);
@@ -28,19 +28,18 @@ const getRolById = async ( req: Request ) => {
     const idRol:string = req.params.id;
 
     if(esFormatoValido(idRol)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+
     return _getRolById(idRol);
 };
 
 const updateEstadoRolById = async ( req: Request ) => {
 
-    if(!req.body) {
-
-        logger.error(`Error en updateEstadoRolById: campos de entrada no validos: ${req.body}`)
-        throw 'Se requiere un campo valido.'
-    }
+    if(!req.body) return new ResponseModel('#','Data ingresada no validad.');
 
     validarCamposRol(req.body);
-    if(!req.body.estado || req.body.id) return new ResponseModel('#UR03','Campos ingresados NO son validos');
+
+    if(!req.body.estado || req.body.id) return new ResponseModel('#','Campos ingresados NO son validos');
+
     return _updateEstadoRolById(req.body.id,req.body.estado);
 };
 

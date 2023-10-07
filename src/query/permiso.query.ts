@@ -76,32 +76,8 @@ const _updateEstadoPermiso = async ( id:string, estado: string ) => {
     }
 }
 
-const _updatePermiso = async ( id:string, permiso: string ) => {
-
-    const consulta = await conexion();
-    try {
-        
-        const respuesta = await consulta.query(
-            `UPDATE permiso
-            SET permiso = ${permiso}
-            WHERE id = ${id}`
-        );
-        
-        return respuesta.rows;
-
-    } catch (error) {
-        
-        logger.error(`Error en updatePermiso:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #P05";
-    }finally {
-        
-        consulta.end();
-    }
-}
-
 export { 
     _insertPermiso, 
     _getPermisoById, 
-    _updateEstadoPermiso, 
-    _updatePermiso 
+    _updateEstadoPermiso
 };

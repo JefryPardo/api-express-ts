@@ -1,66 +1,56 @@
-// import { Request } from "express";
-// import { getAllUser, insertUser, getUserById, getUserByDocumento } from "../query/copia.query";
-// import { validarCamposUsuario, buildUsuario, validarNumero, validarAlfaNumerico } from "../../src/utils/validador";
-// import { logger } from "../logs/logger";
-// import { usuarioModel } from "../models/model/usuario.model";
-// import { validarAlfanumericoModel } from "../models/utils/validar.alfanumerico.model";
-// import { validarNumeroModel } from "../models/utils/validar.numero.model";
+import { Request } from "express";
+import { ResponseModel } from "../models/model/response.model";
+import { UsuarioModel } from "../models/model/usuario.model";
+import { _getUsuarioById, _insertUsuario, _updateEstadoUsuario, _updateUsuario } from "../query/usuario.query";
+import { buildUsuario, validarCamposUsuario } from "../utils/validador.usuario";
+import { esFormatoValido } from "../utils/validador";
+import { NewExcepcion } from "../excepcion/excepcion";
 
+const insertUsuario = async ( req: Request ) => {
 
-// const getAllUsuarios = async () => getAllUser();
+    if(!req.body) {
 
-// const getInsertUsuario = async ( req: Request ) => {
+        return new ResponseModel('#','Data ingresada no validad.');
+    }
 
-//     console.log('entra: ',req.body);
+    validarCamposUsuario(req.body);
 
-//     if(!req.body) {
+    const rol: UsuarioModel = buildUsuario(req.body);
 
-//         logger.error(`Error en getInsertUsuario: campos de entrada no validos: ${req.body}`)
-//         throw 'Se requiere un usuario valido.'
-//     }
+    return _insertUsuario(rol);
+};
 
-//     validarCamposUsuario(req.body);
+const getUsuarioById = async ( req: Request ) => {
 
-//     const usuario: usuarioModel = buildUsuario(req.body);
+    const idUsuario:string = req.params.id;
 
-//     insertUser(usuario);
-// };
+    if(esFormatoValido(idUsuario)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
 
-// const getUsuarioById = async ( req: Request ) => {
+    return _getUsuarioById(idUsuario);
+};
 
-//     if(!req.params) {
+const updateUsuarioById = async ( req: Request ) => {
 
-//         return 'Se requiere id como parametro.'
-//     }
+    if(!req.body) return new ResponseModel('#','Data ingresada no validad.');
 
-//     const validarCampoUsuario: validarNumeroModel = validarNumero(req.params.id);
+    validarCamposUsuario(req.body);
 
-//     if(!validarCampoUsuario.valido || validarCampoUsuario.numero == null ) {
+    if(req.body.estado != 'activo' && req.body.estado  != 'inactivo') return new ResponseModel('#','Estado ingresado no valido.');
 
-//         return 'Campo no valido, se requiere un id valido en los parametros';
-//     }
+    return _updateUsuario(req.body.id,req.body);
+};
 
-//     return getUserById(validarCampoUsuario.numero);
-// };
+const updateEstadoUsuarioById = async ( req: Request ) => {
 
-// const getUsuarioByDocumento = async ( req: Request ) => {
+    if(!req.body) return new ResponseModel('#','Data ingresada no validad.');
 
-//     if(!req.params) {
+    validarCamposUsuario(req.body);
 
-//         return 'Se requiere documento como parametro.'
-//     }
+    if(!req.body.estado || req.body.id) return new ResponseModel('#','Campos ingresados NO son validos');
 
+    if(req.body.estado != 'activo' && req.body.estado  != 'inactivo') return new ResponseModel('#','Estado ingresado no valido.');
 
-//     console.log(req.params.documento);
+    return _updateEstadoUsuario(req.body.id,req.body.estado);
+};
 
-//     const respuesta: validarAlfanumericoModel = validarAlfaNumerico(req.params.documento);
-
-//     if( !respuesta.valido || respuesta.alfanumerico == null ) {
-
-//         return 'Campo no valido, se requiere un documento valido en los parametros';
-//     }
-
-//     return getUserByDocumento( respuesta.alfanumerico );
-// };
-
-// export { getAllUsuarios, getInsertUsuario, getUsuarioById, getUsuarioByDocumento };
+export { insertUsuario, getUsuarioById, updateUsuarioById, updateEstadoUsuarioById };

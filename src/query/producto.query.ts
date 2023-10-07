@@ -2,7 +2,7 @@ import { conexion } from "./conexion"
 import { logger } from "../logs/logger";
 import { ProductoModel } from "../models/model/producto.model";
 
-const insertProducto = async (producto: ProductoModel) => {
+const _insertProducto = async (producto: ProductoModel) => {
     
     const consulta = await conexion();
     
@@ -18,11 +18,12 @@ const insertProducto = async (producto: ProductoModel) => {
                 precio,
                 ficha_tecnica,
                 unidades,
+                estado,
                 id_categoria,
                 id_tipo,
                 id_marca
             ) VALUES (
-                $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11
+                $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12
             )
         `;
         
@@ -54,7 +55,7 @@ const insertProducto = async (producto: ProductoModel) => {
     }
 };
 
-const getProductoById = async (id: string) => {
+const _getProductoById = async (id: string) => {
     
     const consulta = await conexion();
     
@@ -75,7 +76,7 @@ const getProductoById = async (id: string) => {
     }
 };
   
-const updateProducto = async (id: string, producto: ProductoModel) => {
+const _updateProducto = async (id: string, producto: ProductoModel) => {
     
     const consulta = await conexion();
     
@@ -92,11 +93,12 @@ const updateProducto = async (id: string, producto: ProductoModel) => {
                 precio = $6, 
                 ficha_tecnica = $7,
                 unidades = $8, 
-                id_categoria = $9, 
-                id_tipo = $10, 
-                id_marca = $11
+                estados = $9, 
+                id_categoria = $10, 
+                id_tipo = $11, 
+                id_marca = $12
             WHERE 
-                id = $12
+                id = $13
         `;
         
         const values = [
@@ -108,6 +110,7 @@ const updateProducto = async (id: string, producto: ProductoModel) => {
             producto.precio,
             producto.ficha_tecnica,
             producto.unidades,
+            producto.estado,
             producto.id_categoria,
             producto.id_tipo,
             producto.id_marca,
@@ -128,7 +131,7 @@ const updateProducto = async (id: string, producto: ProductoModel) => {
     }
 };
 
-const updateEstadoProducto = async (id: string, estado: 'activo' | 'inactivo') => {
+const _updateEstadoProducto = async (id: string, estado: 'activo' | 'inactivo') => {
     
     const consulta = await conexion();
     
@@ -162,8 +165,8 @@ const updateEstadoProducto = async (id: string, estado: 'activo' | 'inactivo') =
 };
 
 export {
-    insertProducto,
-    getProductoById,
-    updateProducto,
-    updateEstadoProducto
+    _insertProducto,
+    _getProductoById,
+    _updateProducto,
+    _updateEstadoProducto
 };

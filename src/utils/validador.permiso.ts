@@ -18,7 +18,7 @@ const buildPermiso = ( data: any ):PermisoModel => {
     } catch (error) {
 
         logger.error(`Error en buildPermiso: ${error}`);
-        throw NewExcepcion('BUILDPERMISOEXCEPCION');
+        throw NewExcepcion('BUILDEXCEPCION');
     }
 }
 
@@ -32,7 +32,7 @@ const validarCamposPermiso = ( permiso: any ) => {
             index != "estado"
         ) {
 
-            return new ResponseModel('#IPF02',`Campo: ${index} no valido.`);
+            return new ResponseModel('#',`Campo: ${index} no valido.`);
         }
     }
 }

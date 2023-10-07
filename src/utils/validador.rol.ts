@@ -14,11 +14,13 @@ const buildRol = ( data: any ):RolModel => {
         rol.estado           = data.estado;
 
         logger.info(`Se genero el modelo de rol: ${rol.rol} correctamente`);
+        
         return rol;
+        
     } catch (error) {
 
         logger.error(`Error en buildRol: ${error}`);
-        throw NewExcepcion('ROLEXCEPCION');
+        throw NewExcepcion('BUILDEXCEPCION');
     }
 }
 
@@ -32,7 +34,7 @@ const validarCamposRol = ( rol: any ) => {
             index != "estado"
         ) {
 
-            return new ResponseModel('#IRF02',`Campo: ${index} no valido.`);
+            return new ResponseModel('#',`Campo: ${index} no valido.`);
         }
     }
 }

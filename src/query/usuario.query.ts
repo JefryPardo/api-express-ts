@@ -2,7 +2,7 @@ import { UsuarioModel } from "../models/model/usuario.model";
 import { conexion } from "./conexion"
 import { logger } from "../logs/logger";
 
-const insertUsuario = async (usuario: UsuarioModel) => {
+const _insertUsuario = async (usuario: UsuarioModel) => {
     
     const consulta = await conexion();
     
@@ -54,7 +54,7 @@ const insertUsuario = async (usuario: UsuarioModel) => {
     }
 };
 
-const getUsuarioById = async (id: string) => {
+const _getUsuarioById = async (id: string) => {
     
     const consulta = await conexion();
     
@@ -75,7 +75,7 @@ const getUsuarioById = async (id: string) => {
     }
 };
   
-const updateUsuario = async (id: string, usuario: UsuarioModel) => {
+const _updateUsuario = async (id: string, usuario: UsuarioModel) => {
     
     const consulta = await conexion();
     
@@ -128,7 +128,7 @@ const updateUsuario = async (id: string, usuario: UsuarioModel) => {
     }
 };
 
-const updateEstadoUsuario = async (id: string, estado: 'activo' | 'inactivo') => {
+const _updateEstadoUsuario = async (id: string, estado: 'activo' | 'inactivo') => {
     
     const consulta = await conexion();
     
@@ -162,8 +162,8 @@ const updateEstadoUsuario = async (id: string, estado: 'activo' | 'inactivo') =>
 };
   
 export { 
-    insertUsuario, 
-    getUsuarioById, 
-    updateUsuario,
-    updateEstadoUsuario
+    _insertUsuario, 
+    _getUsuarioById, 
+    _updateUsuario,
+    _updateEstadoUsuario
 };

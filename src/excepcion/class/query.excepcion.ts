@@ -1,14 +1,14 @@
 export class Excepcion extends Error {
 
   code: string;
-  message: string;
-  recommendation: string;
+  log: string;
+  mensaje: string;
   hora: Date
 
-  constructor(code: string, message:string, recommendation:string, hora:Date) {
-    super(message);
+  constructor(code: string, log:string, mensaje:string, hora:Date) {
+    super(`time: ${new Date()}: ${log}`);
     this.code           = code;
-    this.recommendation = recommendation;
+    this.mensaje        = mensaje;
     this.hora           = hora;
     Object.setPrototypeOf(this, Excepcion.prototype);
   }
