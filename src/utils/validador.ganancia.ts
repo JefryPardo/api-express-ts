@@ -10,7 +10,7 @@ const buildGanancia = ( data: any ): GananciaModel => {
         let ganancia = new GananciaModel();
 
         ganancia.id             = data.id;   
-        ganancia.id_categoria   = data.id_categoria;
+        ganancia.id_producto    = data.id_categoria;
         ganancia.id_usuario     = data.id_usuario;
 
         return ganancia;
@@ -28,7 +28,7 @@ const validarCamposGanancia = ( marcaBody: any ) => {
 
         if(
             index != "id"           && 
-            index != "id_categoria" &&
+            index != "id_producto" &&
             index != "id_usuario"
         ) {
 

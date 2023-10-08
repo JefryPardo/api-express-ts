@@ -3,7 +3,7 @@ import { MarcaModel } from "../models/model/marca.model";
 import { conexion } from "./conexion";
 
 
-const getAllMarca = async ():Promise<MarcaModel[]> => {
+const _getAllMarca = async ():Promise<MarcaModel[]> => {
 
     const consulta = await conexion();
     try {
@@ -31,7 +31,7 @@ const getAllMarca = async ():Promise<MarcaModel[]> => {
     }
 }
 
-const insertMarca = async ( marca:string ) => {
+const _insertMarca = async ( marca:string ) => {
 
     const consulta = await conexion();
 
@@ -56,7 +56,7 @@ const insertMarca = async ( marca:string ) => {
     }
 }
 
-const getMarcaById = async ( id: string  ) => {
+const _getMarcaById = async ( id: string  ) => {
 
     const consulta = await conexion();
     try {
@@ -85,7 +85,7 @@ const getMarcaById = async ( id: string  ) => {
     }
 }
 
-const updateMarca = async ( id:string, marca: string ) => {
+const _updateMarca = async ( id:string, marca: string ) => {
 
     const consulta = await conexion();
     try {
@@ -111,8 +111,8 @@ const updateMarca = async ( id:string, marca: string ) => {
 }
 
 export { 
-    getAllMarca,
-    insertMarca,
-    getMarcaById, 
-    updateMarca 
+    _getAllMarca,
+    _insertMarca,
+    _getMarcaById, 
+    _updateMarca 
 };

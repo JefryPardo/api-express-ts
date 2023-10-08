@@ -14,12 +14,10 @@ CREATE TABLE Usuario (
     apellido VARCHAR(255),
     direccion VARCHAR(255),
     celular VARCHAR(15),
-    token VARCHAR(255),
-    secret VARCHAR(255),
-    fechaCreacion TIMESTAMP,
-    intentosFallidos VARCHAR(2),
+    fecha_creacion TIMESTAMP,
+    intentos_fallidos VARCHAR(2),
     clave VARCHAR(255),
-    login VARCHAR(255),
+    usuario VARCHAR(255),
     estado VARCHAR(15)
 );
 
@@ -55,7 +53,7 @@ CREATE TABLE Categoria (
 CREATE TABLE Ganancia (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     id_usuario VARCHAR(255),
-    id_categoria VARCHAR(255),
+    id_producto VARCHAR(255),
     porcentaje_ganancia DECIMAL(2, 2)
 );
 
@@ -70,9 +68,9 @@ CREATE TABLE Producto (
     nombre VARCHAR(255),
     descripcion VARCHAR(255),
     referencia VARCHAR(255),
-    referenciaLocal VARCHAR(255),
+    referencia_local VARCHAR(255),
     precio DECIMAL(10, 2),
-    fichaTecnica VARCHAR(255),
+    ficha_tecnica VARCHAR(255),
     unidades VARCHAR(255),
     estado VARCHAR(255),
     id_categoria VARCHAR(255),

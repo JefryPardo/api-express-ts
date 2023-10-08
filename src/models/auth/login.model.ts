@@ -1,5 +1,5 @@
-export class login {
+export class AuthModel {
     
-    login: string;
+    usuario: string;
     clave: string;
 }

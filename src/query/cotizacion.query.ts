@@ -1,7 +1,7 @@
 import { CotizacionModel } from "../models/model/cotizacion.model";
 import { conexion } from "./conexion";
 
-const insertCotizacion = async (cotizacion: CotizacionModel) => {
+const _insertCotizacion = async (cotizacion: CotizacionModel) => {
     
     const consulta = await conexion();
     
@@ -43,20 +43,20 @@ const insertCotizacion = async (cotizacion: CotizacionModel) => {
     }
 };
 
-const getCotizacionById = async (id: string) => {
+const _getCotizacionByIdUsuario = async (id_usuario: string) => {
     
     const consulta = await conexion();
     
     try {
         
-        const query = 'SELECT * FROM cotizacion WHERE id = $1';
-        const result = await consulta.query(query, [id]);
+        const query = 'SELECT * FROM cotizacion WHERE id_usuario = $1';
+        const result = await consulta.query(query, [id_usuario]);
         
         return result.rows[0];
 
     } catch (error) {
 
-        console.error('Error en getCotizacionById:', error);
+        console.error('Error en getCotizacionByIdUsuario:', error);
         throw 'Error inesperado al obtener cotizacion por ID.';
     } finally {
         
@@ -64,7 +64,7 @@ const getCotizacionById = async (id: string) => {
     }
 };
   
-const updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
+const _updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
     
     const consulta = await conexion();
     
@@ -107,42 +107,8 @@ const updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
     }
 };
 
-const updateEstadoCotizacion = async (id: string, estado: 'activo' | 'inactivo') => {
-    
-    const consulta = await conexion();
-    
-    try {
-        const query = `
-            UPDATE 
-                cotizacion
-            SET 
-                estado = $1
-            WHERE 
-                id = $2
-        `;
-        
-        const values = [
-            estado,
-            id,
-        ];
-        
-        const result = await consulta.query(query, values);
-        
-        return result.rows;
-
-    } catch (error) {
-
-        console.error('Error en updateEstadoCotizacion:', error);
-        throw 'Error inesperado al actualizar el estado del cotizacion.';
-    } finally {
-        
-        consulta.end();
-    }
-};
-
 export {
-    insertCotizacion,
-    getCotizacionById,
-    updateCotizacion,
-    updateEstadoCotizacion
+    _insertCotizacion,
+    _getCotizacionByIdUsuario,
+    _updateCotizacion
 };

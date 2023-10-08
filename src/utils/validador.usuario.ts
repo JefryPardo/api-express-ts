@@ -15,13 +15,11 @@ const buildUsuario = ( data: any ):UsuarioModel => {
         usuario.celular             = data.celular;
         usuario.tipo_documento      = data.tipo_documento;
         usuario.documento           = data.documento;
-        usuario.token               = data.token;
-        usuario.secret              = data.secret;
         usuario.fecha_creacion      = data.fecha_creacion;
         usuario.intentos_fallidos   = data.intentos_fallidos;
         usuario.clave               = data.clave;
-        usuario.login               = data.login;
-        usuario.activo              = data.activo;
+        usuario.usuario             = data.usuario;
+        usuario.estado              = data.estado;
 
         logger.info(`Se genero el modelo de usuario: ${usuario.id} correctamente`);
         
@@ -46,12 +44,10 @@ const validarCamposUsuario = ( usuario: any ) => {
             index != "celular"              &&
             index != "tipo_documento"       &&
             index != "documento"            &&
-            index != "token"                &&
-            index != "secret"               &&
             index != "fecha_creacion"       &&
             index != "intentos_fallidos"    &&
             index != "clave"                &&
-            index != "login"                &&
+            index != "usuario"                &&
             index != "activo"
         ) {
 

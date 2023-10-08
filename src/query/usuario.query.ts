@@ -1,6 +1,6 @@
+import { logger } from "../logs/logger";
 import { UsuarioModel } from "../models/model/usuario.model";
 import { conexion } from "./conexion"
-import { logger } from "../logs/logger";
 
 const _insertUsuario = async (usuario: UsuarioModel) => {
     
@@ -14,15 +14,13 @@ const _insertUsuario = async (usuario: UsuarioModel) => {
                 apellido, 
                 direccion, 
                 celular, 
-                token, 
-                secret, 
                 fecha_creacion,
                 intentos_fallidos, 
                 clave, 
-                login, 
-                activo
+                usuario, 
+                estado
             ) VALUES (
-                $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11
+                $1, $2, $3, $4, $5, $6, $7, $8, $9
             )
         `;
         
@@ -31,22 +29,20 @@ const _insertUsuario = async (usuario: UsuarioModel) => {
             usuario.apellido,
             usuario.direccion,
             usuario.celular,
-            usuario.token,
-            usuario.secret,
             usuario.fecha_creacion,
             usuario.intentos_fallidos,
             usuario.clave,
-            usuario.login,
-            usuario.activo,
+            usuario.usuario,
+            usuario.estado,
         ];
 
         const result = await consulta.query(query, values);
 
-        return result.rows;
+        return (result.rowCount === 1);
 
     } catch (error) {
         
-        console.error('Error en insertUsuario:', error);
+        logger.error('Error en insertUsuario:', error);
         throw 'Error inesperado al insertar usuario.';
     }finally {
         
@@ -67,7 +63,57 @@ const _getUsuarioById = async (id: string) => {
 
     } catch (error) {
 
-        console.error('Error en getUsuarioById:', error);
+        logger.error('Error en getUsuarioById:', error);
+        throw 'Error inesperado al obtener usuario por ID.';
+    } finally {
+        
+        consulta.end();
+    }
+};
+
+const _getDisponibilidadUsuarioByUsuario = async (usuario: string) => {
+    
+    const consulta = await conexion();
+    
+    try {
+        
+        const query = `SELECT * FROM usuario WHERE usuario = '${usuario}'`;
+        
+        const result = await consulta.query(query);
+        
+        return result.rows[0]? true:false;
+
+    } catch (error) {
+
+        logger.error('Error en getUsuarioById:', error);
+        throw 'Error inesperado al obtener usuario por ID.';
+    } finally {
+        
+        consulta.end();
+    }
+};
+
+const _getUsuarioByUsuario = async (usuario: string) => {
+    
+    const consulta = await conexion();
+    
+    try {
+
+        
+        const query = `SELECT * FROM usuario WHERE usuario = '${usuario}'`;
+        const result = await consulta.query(query);
+        
+        if(result.rows[0]){
+            
+            const response:UsuarioModel = result.rows[0]; 
+            return response;
+        }
+        
+        return false;
+
+    } catch (error) {
+
+        logger.error('Error en getUsuarioById:', error);
         throw 'Error inesperado al obtener usuario por ID.';
     } finally {
         
@@ -88,15 +134,13 @@ const _updateUsuario = async (id: string, usuario: UsuarioModel) => {
                 apellido = $2, 
                 direccion = $3, 
                 celular = $4,
-                token = $5, 
-                secret = $6, 
-                fecha_creacion = $7,
-                intentos_fallidos = $8, 
-                clave = $9, 
-                login = $10, 
-                activo = $11
+                fecha_creacion = $5,
+                intentos_fallidos = $6, 
+                clave = $7, 
+                usuario = $8, 
+                estado = $9
             WHERE 
-                id = $12
+                id = $10
         `;
         
         const values = [
@@ -104,13 +148,11 @@ const _updateUsuario = async (id: string, usuario: UsuarioModel) => {
             usuario.apellido,
             usuario.direccion,
             usuario.celular,
-            usuario.token,
-            usuario.secret,
             usuario.fecha_creacion,
             usuario.intentos_fallidos,
             usuario.clave,
-            usuario.login,
-            usuario.activo,
+            usuario.usuario,
+            usuario.estado,
             id,
         ];
         
@@ -120,7 +162,7 @@ const _updateUsuario = async (id: string, usuario: UsuarioModel) => {
 
     } catch (error) {
 
-        console.error('Error en updateUsuario:', error);
+        logger.error('Error en updateUsuario:', error);
         throw 'Error inesperado al actualizar usuario.';
     } finally {
         
@@ -153,7 +195,7 @@ const _updateEstadoUsuario = async (id: string, estado: 'activo' | 'inactivo') =
 
     } catch (error) {
 
-        console.error('Error en updateEstadoUsuario:', error);
+        logger.error('Error en updateEstadoUsuario:', error);
         throw 'Error inesperado al actualizar el estado del usuario.';
     } finally {
         
@@ -165,5 +207,7 @@ export {
     _insertUsuario, 
     _getUsuarioById, 
     _updateUsuario,
-    _updateEstadoUsuario
+    _updateEstadoUsuario,
+    _getDisponibilidadUsuarioByUsuario,
+    _getUsuarioByUsuario
 };

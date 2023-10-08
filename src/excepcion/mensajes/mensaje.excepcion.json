@@ -27,6 +27,71 @@
         "code": "EXB01",
         "log": "Error al armar el modelo",
         "mensaje": ""
-    }   
+    },
 
+    "CONSULTAEXCEPCION": {
+        "code": "CON01",
+        "log": "Error al consultar la BD.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "USUARIOEXCEPCION": {
+        "code": "CON01",
+        "log": "Error validando usuario: ",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "VALIDADOREXCEPCION": {
+        "code": "VAL01",
+        "log": "Error en validador: ",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "CAMPOUSUARIOEXCEPCION": {
+        "code": "EXC01",
+        "log": "Error el campo nombre no es valido: ",
+        "mensaje": "Campo nombre no es valido."
+    },
+
+    "CAMPOAPELLIDOEXCEPCION": {
+        "code": "EXC02",
+        "log": "Error el campo apellido no es valido: ",
+        "mensaje": "Campo apellido no es valido."
+    }, 
+    
+    "CAMPOCELULAREXCEPCION": {
+        "code": "EXC03",
+        "log": "Error el campo celular no es valido: ",
+        "mensaje": "Campo celular no es valido."
+    },
+
+    "CAMPOTIPODOCUMENTOEXCEPCION": {
+        "code": "EXC04",
+        "log": "Error el campo tipo documento no es valido: ",
+        "mensaje": "Campo tipo documento no es valido."
+    },
+
+    "CAMPODOCUMENTOEXCEPCION": {
+        "code": "EXC05",
+        "log": "Error el campo documento no es valido: ",
+        "mensaje": "Campo documento no es valido."
+    },
+    
+    "ENCRIPTADOEXCEPCION": {
+        "code": "ENC01",
+        "log": "Error al encriptar la clave del usuario.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "INSERTEXCEPCION": {
+        "code": "INS01",
+        "log": "Error al general el insert, respuesta no esperada.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "LOGINEXCEPCION": {
+        "code": "LOG01",
+        "log": "Error al general el insert, respuesta no esperada.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    }
 }

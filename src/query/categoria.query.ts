@@ -3,7 +3,7 @@ import { conexion } from "./conexion";
 import { logger } from "../logs/logger";
 
 
-const getAllCategoria = async ():Promise<CategoriaModel[]> => {
+const _getAllCategoria = async ():Promise<CategoriaModel[]> => {
 
     const consulta = await conexion();
     try {
@@ -31,7 +31,7 @@ const getAllCategoria = async ():Promise<CategoriaModel[]> => {
     }
 }
 
-const insertCategoria = async ( categoria:string ) => {
+const _insertCategoria = async ( categoria:string ) => {
 
     const consulta = await conexion();
 
@@ -56,7 +56,7 @@ const insertCategoria = async ( categoria:string ) => {
     }
 }
 
-const getCategoriaById = async ( id: string  ) => {
+const _getCategoriaById = async ( id: string  ) => {
 
     const consulta = await conexion();
     try {
@@ -85,7 +85,7 @@ const getCategoriaById = async ( id: string  ) => {
     }
 }
 
-const updateCategoria = async ( id:string, categoria: string ) => {
+const _updateCategoria = async ( {id, categoria}: CategoriaModel ) => {
 
     const consulta = await conexion();
     try {
@@ -111,8 +111,8 @@ const updateCategoria = async ( id:string, categoria: string ) => {
 }
 
 export { 
-    getAllCategoria,
-    insertCategoria,
-    getCategoriaById, 
-    updateCategoria 
+    _getAllCategoria,
+    _insertCategoria,
+    _getCategoriaById, 
+    _updateCategoria 
 };

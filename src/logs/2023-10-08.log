@@ -1,0 +1,218 @@
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+error: Error en insertUsuario: no existe la columna «usuario» en la relación «usuario» {"code":"42703","file":"parse_target.c","length":135,"line":"1057","name":"error","position":"250","routine":"checkInsertTargets","severity":"ERROR","stack":"error: no existe la columna «usuario» en la relación «usuario»\n    at Parser.parseErrorMessage (C:\\Users\\jeffr\\Documents\\Universidad\\Proyecto de grado\\api-express-ts\\node_modules\\pg-protocol\\src\\parser.ts:369:69)\n    at Parser.handlePacket (C:\\Users\\jeffr\\Documents\\Universidad\\Proyecto de grado\\api-express-ts\\node_modules\\pg-protocol\\src\\parser.ts:188:21)\n    at Parser.parse (C:\\Users\\jeffr\\Documents\\Universidad\\Proyecto de grado\\api-express-ts\\node_modules\\pg-protocol\\src\\parser.ts:103:30)\n    at Socket.<anonymous> (C:\\Users\\jeffr\\Documents\\Universidad\\Proyecto de grado\\api-express-ts\\node_modules\\pg-protocol\\src\\index.ts:7:48)\n    at Socket.emit (node:events:513:28)\n    at Socket.emit (node:domain:489:12)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)"}
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: query: 
+info: usuario: 
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+error: Error al validar disponibilidad del usuario:
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
