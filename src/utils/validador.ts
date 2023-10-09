@@ -135,6 +135,27 @@ const encriptadoDeClave = async (password: string): Promise<string> => {
     });
 };
 
+const validarPassword = async (password: string, clave:string): Promise<boolean> => {
+  
+    return new Promise<boolean>((resolve, reject) => {
+
+        bcrypt.compare(password, clave, (err, result) => {
+            
+            console.log(password);
+            console.log(clave);
+
+            if (err) {
+              
+                logger.error('Error en validarPassword: ', err);
+                throw NewExcepcion('LOGINPASSWORDEXCEPCION');
+            }
+            
+            resolve(result);
+        });
+
+    });
+};
+
 const fechaActual = () :string  => {
 
     return moment().format('YYYY-MM-DD HH:mm'); 
@@ -154,5 +175,6 @@ export {
     validarStringNumerico,
     validarStringLetrasNumeros,
     encriptadoDeClave,
-    fechaActual
+    fechaActual,
+    validarPassword
 };

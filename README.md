@@ -26,6 +26,8 @@ npm install @types/validator --save-dev
 
 #uso de token jwt
 npm i jsonwebtoken
+npm install --save-dev @types/jsonwebtoken
+
 
 #se usa para el encriptado de claves
 npm install bcrypt

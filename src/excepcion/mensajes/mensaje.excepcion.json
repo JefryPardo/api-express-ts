@@ -91,7 +91,31 @@
 
     "LOGINEXCEPCION": {
         "code": "LOG01",
-        "log": "Error al general el insert, respuesta no esperada.",
+        "log": "Error al generar el login.",
         "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "LOGINPASSWORDEXCEPCION": {
+        "code": "LOG02",
+        "log": "Error al intentar validar password.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "SECRETEXCEPCION": {
+        "code": "ERR02",
+        "log": "Error al evaluar la llave SECRET.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "TOKENEXPIRADOEXCEPCION": {
+        "code": "TOK01",
+        "log": "Token ingresado expirado.",
+        "mensaje": "Token expirado."
+    },
+
+    "TOKENEXCEPCION": {
+        "code": "TOK02",
+        "log": "Token ingresado no valido.",
+        "mensaje": "Token no valido."
     }
 }

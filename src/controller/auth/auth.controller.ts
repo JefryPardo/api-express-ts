@@ -1,11 +1,10 @@
 import { Request } from "express";
 import { AuthModel } from "../../models/auth/login.model";
 import { ResponseModel } from "../../models/model/response.model";
-import { validarEmailFormato } from "../../utils/validador";
+import { validarEmailFormato, validarPassword } from "../../utils/validador";
 import { buildAuth, validarCamposAuth } from "../../utils/validador.auth";
 import { getUsuarioByUsuario } from "../usuario.controller";
-
-const secretKey = process.env.SECRET;
+import { getToken } from "../jwt.controlle";
 
 const auth = async ( req: Request ) => {
 
@@ -19,12 +18,15 @@ const auth = async ( req: Request ) => {
 
     const auth: AuthModel   = buildAuth(req.body);
     const usuario           = await getUsuarioByUsuario(auth.usuario);
-
-    if(!usuario) return new ResponseModel('#', 'Usuario o Credenciales no validas.');
-
     
+    if(!usuario) return new ResponseModel('#', 'Usuario o Credenciales no validas.');
+    const resp = await validarPassword(auth.clave,usuario.clave);
 
-    return new ResponseModel('#', usuario);
+    if(!resp) return new ResponseModel('#', 'Usuario o Credenciales no validas.');
+    
+    const token = await getToken(usuario.id);
+
+    return new ResponseModel('#', token);
 };
 
 export { auth };

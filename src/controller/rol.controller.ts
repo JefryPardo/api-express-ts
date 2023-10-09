@@ -1,18 +1,17 @@
 import { Request } from "express";
-import { logger } from "../logs/logger";
 import { RolModel } from "../models/model/rol.model";
 import { _getAllRols, _getRolById, _insertRol, _updateEstadoRolById } from "../query/rol.query";
 import { buildRol, validarCamposRol } from "../utils/validador.rol";
 import { esFormatoValido } from "../utils/validador";
 import { NewExcepcion } from "../excepcion/excepcion";
 import { ResponseModel } from "../models/model/response.model";
+import { validarToken } from "./jwt.controlle";
 
 const insertRol = async ( req: Request ) => {
 
-    if(!req.body) {
+    await validarToken(req);
 
-        return new ResponseModel('#','Data ingresada no validad.');
-    }
+    if(!req.body) return new ResponseModel('#','Data ingresada no validad.');
 
     validarCamposRol(req.body);
 
