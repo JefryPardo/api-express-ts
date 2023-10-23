@@ -5,7 +5,7 @@ import { RolModel } from "../../models/model/rol.model";
 import { UsuarioRolModel } from "../../models/model/usuario-rol.model";
 import { conexion } from "../conexion";
 
-const _insertUsuarioRol = async ( {id_usuario, id_rol}:UsuarioRolModel ) => {
+const _insertUsuarioRol = async ( id_usuario:string, id_rol:string ):Promise<boolean> => {
 
     const consulta = await conexion();
 

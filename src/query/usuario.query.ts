@@ -76,16 +76,21 @@ const _getDisponibilidadUsuarioByUsuario = async (usuario: string) => {
     const consulta = await conexion();
     
     try {
+
+        console.log(usuario);
         
         const query = `SELECT * FROM usuario WHERE usuario = '${usuario}'`;
         
         const result = await consulta.query(query);
+
+        console.log(result);
         
         return result.rows[0]? true:false;
 
     } catch (error) {
 
-        logger.error('Error en getUsuarioById:', error);
+        logger.error('usuario:', usuario);
+        logger.error('Error en _getDisponibilidadUsuarioByUsuario:', error);
         throw 'Error inesperado al obtener usuario por ID.';
     } finally {
         
@@ -93,7 +98,7 @@ const _getDisponibilidadUsuarioByUsuario = async (usuario: string) => {
     }
 };
 
-const _getUsuarioByUsuario = async (usuario: string) => {
+const _getUsuarioByUsuario = async (usuario: string):Promise<UsuarioModel> => {
     
     const consulta = await conexion();
     
@@ -103,13 +108,15 @@ const _getUsuarioByUsuario = async (usuario: string) => {
         const query = `SELECT * FROM usuario WHERE usuario = '${usuario}'`;
         const result = await consulta.query(query);
         
+        let response:UsuarioModel = new UsuarioModel(); 
+
         if(result.rows[0]){
             
-            const response:UsuarioModel = result.rows[0]; 
+            response = result.rows[0]; 
             return response;
         }
-        
-        return false;
+
+        return response;        
 
     } catch (error) {
 

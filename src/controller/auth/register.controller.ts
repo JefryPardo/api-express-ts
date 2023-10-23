@@ -5,7 +5,8 @@ import { ResponseModel } from "../../models/model/response.model";
 import { UsuarioModel } from "../../models/model/usuario.model";
 import { encriptadoDeClave, fechaActual, validarEmailFormato, validarEstandaresPassword } from "../../utils/validador";
 import { validarBodyRegister, validarCamposRegister } from "../../utils/validador.register";
-import { insertResgistro, validarDisponibilidadUsuario } from "../usuario.controller";
+import { insertUsuario, validarDisponibilidadUsuario } from "../usuario.controller";
+import { _insertUsuarioRol } from "../../query/relaciones/usuario_rol.query";
 
 const register = async ( req: Request ) => {
 
@@ -17,7 +18,7 @@ const register = async ( req: Request ) => {
     validarBodyRegister(req.body);
     if(!validarEmailFormato(req.body)) return new ResponseModel('#','Formato del correo no valido.');
     
-    const disponibilidad = await validarDisponibilidadUsuario(req.body);
+    const disponibilidad = await validarDisponibilidadUsuario(req.body.usuario.trim());
     if (disponibilidad) return new ResponseModel('#', 'Usuario no disponible.');
 
 
@@ -41,9 +42,13 @@ const register = async ( req: Request ) => {
     usuario.usuario             = registro.usuario;
     usuario.estado              = 'activo';
 
-    const response = await insertResgistro(usuario);
+    const response = await insertUsuario(usuario);
 
     if(!response) throw NewExcepcion('INSERTEXCEPCION');
+
+    const estado:boolean = await _insertUsuarioRol(usuario.id,'b19517e2-b383-4656-8099-67d49ca3a8c7');
+
+    if(!estado) throw NewExcepcion('INSERTEXCEPCION');
 
     return new ResponseModel('#', 'Se registro correctamente.');
 };

@@ -78,11 +78,11 @@ const _insertRol = async ( {rol, estado}:RolModel ) => {
     }
 }
 
-const _getRolByIds = async ( ids: string[]  ) => {
+const _getRolById = async ( id: string  ) => {
 
     const consulta = await conexion();
     try {
-        
+
         const respuesta = await consulta.query(
             `SELECT 
                 id, 
@@ -91,11 +91,10 @@ const _getRolByIds = async ( ids: string[]  ) => {
             FROM 
                 rol 
             WHERE 
-                id IN ($1)`,
-            [ids]
+                id = '${id}'`,
         );
 
-        const rols :RolModel[] = respuesta.rows; 
+        const rols:RolModel = respuesta.rows[0];
 
         return rols;
 
@@ -160,7 +159,7 @@ const _updateRolById = async ( id:string, rol: string ) => {
 export { 
     _getAllRols, 
     _insertRol,
-    _getRolByIds, 
+    _getRolById, 
     _updateEstadoRolById, 
     _updateRolById
 };

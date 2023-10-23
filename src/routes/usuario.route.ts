@@ -1,34 +1,20 @@
-// import { Router, Request, Response } from 'express';
-// import { getAllUsuarios, getInsertUsuario, getUsuarioById, getUsuarioByDocumento } from '../controller/usuario.controller';
-// import { usuarioModel } from '../models/model/usuario.model';
-// import { succes, error } from '../network/response';
+import { Router, Request, Response } from 'express';
+import { succes, error } from '../network/response';
+import { getUsuarioById, getUsuarioByUsuarioRequest, insertUsuario } from '../controller/usuario.controller';
 
-// const router = Router();
+const usuarioRouter = Router();
 
-// router.get("/all", ( req: Request, res: Response ) => {
 
-//     getAllUsuarios()
-//     .then( ( _res :usuarioModel[] ) => succes( req, res, _res ))
-//     .catch( (_error) => error( req, res, _error) );
-// });
+usuarioRouter.get("/find/:id", (req: Request, res: Response) => {
 
-// router.post("/insert", (req: Request, res: Response) => {
+    getUsuarioById( req )
+    .then( _res => succes( req, res, _res ));
+});
 
-//     getInsertUsuario( req )
-//     .then( _res => succes( req, res, _res ))
-//     .catch( _error => error(req, res, _error) );
-// });
+usuarioRouter.get("/find/usuario/:usuario", (req: Request, res: Response) => {
 
-// router.get("/find/:id", (req: Request, res: Response) => {
+    getUsuarioByUsuarioRequest( req )
+    .then( _res => succes( req, res, _res ));
+});
 
-//     getUsuarioById( req )
-//     .then( _res => succes( req, res, _res ));
-// });
-
-// router.get("/find/documento/:documento", (req: Request, res: Response) => {
-
-//     getUsuarioByDocumento( req )
-//     .then( _res => succes( req, res, _res ));
-// });
-
-// export { router };
+export { usuarioRouter };

@@ -2,26 +2,20 @@ import { Request } from "express";
 import { ResponseModel } from "../models/model/response.model";
 import { UsuarioModel } from "../models/model/usuario.model";
 import { _getDisponibilidadUsuarioByUsuario, _getUsuarioById, _getUsuarioByUsuario, _insertUsuario, _updateEstadoUsuario, _updateUsuario } from "../query/usuario.query";
-import { buildUsuario, validarCamposUsuario } from "../utils/validador.usuario";
+import { validarCamposUsuario } from "../utils/validador.usuario";
 import { esFormatoValido } from "../utils/validador";
 import { NewExcepcion } from "../excepcion/excepcion";
 import { logger } from "../logs/logger";
+import { validarToken } from "./jwt.controlle";
 
-const insertUsuario = async ( req: Request ) => {
-
-    validarCamposUsuario(req.body);
-
-    const usuario: UsuarioModel = buildUsuario(req.body);
-
-    return _insertUsuario(usuario);
-};
-
-const insertResgistro = async ( usuario: UsuarioModel ) => {
+const insertUsuario = async ( usuario: UsuarioModel ) => {
 
     return _insertUsuario(usuario);
 };
 
 const getUsuarioById = async ( req: Request ) => {
+
+    await validarToken(req);
 
     const idUsuario:string = req.params.id;
 
@@ -35,11 +29,20 @@ const getUsuarioByUsuario = async ( usuario:string ) => {
     return _getUsuarioByUsuario(usuario);
 };
 
-const validarDisponibilidadUsuario = async ( body: any ) => {
+const getUsuarioByUsuarioRequest = async ( req: Request ) => {
+
+    await validarToken(req);
+
+    const usuario:string = req.params.usuario;
+
+    return _getUsuarioByUsuario(usuario);
+};
+
+const validarDisponibilidadUsuario = async ( usuario: string ) => {
 
     try {
 
-        return await _getDisponibilidadUsuarioByUsuario(body.usuario.trim());        
+        return await _getDisponibilidadUsuarioByUsuario(usuario);        
     
     } catch (error) {
 
@@ -74,10 +77,10 @@ const updateEstadoUsuarioById = async ( req: Request ) => {
 
 export { 
     insertUsuario, 
-    insertResgistro,
     getUsuarioById, 
     updateUsuarioById, 
     updateEstadoUsuarioById, 
     validarDisponibilidadUsuario,
-    getUsuarioByUsuario
+    getUsuarioByUsuario,
+    getUsuarioByUsuarioRequest
 };
