@@ -1,0 +1,128 @@
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+error: Error en getUsuarioRolByIdUsuario:  error: basura sigue después de un literal numérico en o cerca de «29d»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+error: Error en getUsuarioRolByIdUsuario:  error: basura sigue después de un literal numérico en o cerca de «29d»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolById:  error: error de sintaxis en o cerca de «:»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolById:  error: la sintaxis de entrada no es válida para tipo uuid: «'3b013b83-1d82-4f58-b77b-c06d94c2cf6c'»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolById:  error: la sintaxis de entrada no es válida para tipo uuid: «'undefined'»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolById:  error: la sintaxis de entrada no es válida para tipo uuid: «'undefined'»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolById:  error: la sintaxis de entrada no es válida para tipo uuid: «'undefined'»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolById:  error: la sintaxis de entrada no es válida para tipo uuid: «'4ac81e5b-4d80-43d0-a1f1-5b3777a9d5b7'»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolById:  error: error de sintaxis en o cerca de «:»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolById:  error: la sintaxis de entrada no es válida para tipo uuid: «{"4ac81e5b-4d80-43d0-a1f1-5b3777a9d5b7"}»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolByIds:  error: error de sintaxis en o cerca de «:»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolByIds:  error: error de sintaxis en o cerca de «ANY»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolByIds:  error: error de sintaxis en o cerca de «:»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Se hace la conexión con exito.
+info: Se hace la conexión con exito.
+info: id_rol_list: se encontraron 1 id_rol_list
+info: Se hace la conexión con exito.
+error: Error en getRolByIds:  error: la sintaxis de entrada no es válida para tipo uuid: «{"4ac81e5b-4d80-43d0-a1f1-5b3777a9d5b7"}»

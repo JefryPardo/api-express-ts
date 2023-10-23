@@ -42,7 +42,7 @@ const validarToken = async (req: Request): Promise<void> => {
         
     } catch (error) {
 
-        // logger.error('Error al validar token: ',error);
+        logger.error('Error al validar token: ',error);
         throw NewExcepcion('TOKENEXCEPCION');
     }
 };

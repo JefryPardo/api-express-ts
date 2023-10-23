@@ -78,7 +78,7 @@ const _insertRol = async ( {rol, estado}:RolModel ) => {
     }
 }
 
-const _getRolById = async ( id: string  ) => {
+const _getRolByIds = async ( ids: string[]  ) => {
 
     const consulta = await conexion();
     try {
@@ -91,21 +91,17 @@ const _getRolById = async ( id: string  ) => {
             FROM 
                 rol 
             WHERE 
-                id = '${id}'`
+                id IN ($1)`,
+            [ids]
         );
-        
-        if(respuesta.rowCount !== 1) {
-        
-            return new ResponseModel('#GRBI01','Consulta sin resultados');
-        }
 
-        const rol :RolModel = respuesta.rows[0]; 
+        const rols :RolModel[] = respuesta.rows; 
 
-        return new ResponseModel('#GRBI02',rol);
+        return rols;
 
     } catch (error) {
         
-        logger.error(`Error en getRolById:  ${error}`);
+        logger.error(`Error en getRolByIds:  ${error}`);
         throw NewExcepcion('ROLEXCEPCION');
     }finally {
         
@@ -148,7 +144,7 @@ const _updateRolById = async ( id:string, rol: string ) => {
             WHERE id = ${id}`
         );
         
-        if(respuesta.rowCount > 0) return new ResponseModel('#UR01','Actulización exitosa.');
+        if(respuesta.rowCount > 0) return new ResponseModel('#','Actulización exitosa.');
         return new ResponseModel('#UR02','No se encontró ningún registro para actualizar.');
 
     } catch (error) {
@@ -164,7 +160,7 @@ const _updateRolById = async ( id:string, rol: string ) => {
 export { 
     _getAllRols, 
     _insertRol,
-    _getRolById, 
+    _getRolByIds, 
     _updateEstadoRolById, 
     _updateRolById
 };

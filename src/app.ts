@@ -12,7 +12,6 @@ const _ambiente:    string = config.get('ambiente');
 const _puerto:      number = config.get('server.port');
 const _contextPath: string = config.get('server.servlet.contextPath');
 
-
 const app = express();
 app.use(cors({
     origin: _origin,

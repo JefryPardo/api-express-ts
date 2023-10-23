@@ -34,6 +34,12 @@
         "log": "Error al consultar la BD.",
         "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
     },
+    
+    "CONSULTAEXCEPCIONLOGIN": {
+        "code": "LOG01",
+        "log": "Error al consultar la BD login.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
 
     "USUARIOEXCEPCION": {
         "code": "CON01",
@@ -117,5 +123,23 @@
         "code": "TOK02",
         "log": "Token ingresado no valido.",
         "mensaje": "Token no valido."
+    },
+
+    "INSERTLOGINEXCEPCION": {
+        "code": "LOG12",
+        "log": "Error al generar insert login.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    
+    "INSERTUSUARIOROLEXCEPCION": {
+        "code": "LOG12",
+        "log": "Error al generar insert usuario_rol.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "USUARIOROLCONSULTAEXCEPCION": {
+        "code": "UR01",
+        "log": "Error al consultar la BD usuario_rol.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
     }
 }

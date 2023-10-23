@@ -1,9 +1,7 @@
 import { Request } from "express";
 import { RolModel } from "../models/model/rol.model";
-import { _getAllRols, _getRolById, _insertRol, _updateEstadoRolById } from "../query/rol.query";
+import { _getAllRols, _getRolByIds, _insertRol, _updateEstadoRolById } from "../query/rol.query";
 import { buildRol, validarCamposRol } from "../utils/validador.rol";
-import { esFormatoValido } from "../utils/validador";
-import { NewExcepcion } from "../excepcion/excepcion";
 import { ResponseModel } from "../models/model/response.model";
 import { validarToken } from "./jwt.controlle";
 
@@ -22,14 +20,14 @@ const insertRol = async ( req: Request ) => {
 
 const getAllRol = async () => {return _getAllRols()};
 
-const getRolById = async ( req: Request ) => {
+// const getRolById = async ( req: Request ) => {
 
-    const idRol:string = req.params.id;
+//     const idRol:string = req.params.id;
 
-    if(esFormatoValido(idRol)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+//     if(esFormatoValido(idRol)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
 
-    return _getRolById(idRol);
-};
+//     return _getRolByIds(idRol);
+// };
 
 const updateEstadoRolById = async ( req: Request ) => {
 
@@ -42,4 +40,4 @@ const updateEstadoRolById = async ( req: Request ) => {
     return _updateEstadoRolById(req.body.id,req.body.estado);
 };
 
-export { insertRol, getAllRol, getRolById, updateEstadoRolById };
+export { insertRol, getAllRol, updateEstadoRolById };

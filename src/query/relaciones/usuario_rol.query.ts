@@ -1,8 +1,11 @@
+import { NewExcepcion } from "../../excepcion/excepcion";
 import { logger } from "../../logs/logger";
+import { ResponseModel } from "../../models/model/response.model";
+import { RolModel } from "../../models/model/rol.model";
 import { UsuarioRolModel } from "../../models/model/usuario-rol.model";
 import { conexion } from "../conexion";
 
-const insertUsuarioRol = async ( {id_usuario, id_rol}:UsuarioRolModel ) => {
+const _insertUsuarioRol = async ( {id_usuario, id_rol}:UsuarioRolModel ) => {
 
     const consulta = await conexion();
 
@@ -14,20 +17,22 @@ const insertUsuarioRol = async ( {id_usuario, id_rol}:UsuarioRolModel ) => {
                 VALUES ($1,$2)`, 
             [id_usuario,id_rol]
         );
+
+        if (respuesta.rowCount === 1) return true;
         
-        console.log(respuesta);
+        throw NewExcepcion('INSERTUSUARIOROLEXCEPCION');
         
     } catch (error) {
         
         logger.error(`Error en insertUsuarioRol:  ${error}`);
-        throw `Error inesperado, por favor reportar al administrador. #UR02`;
+        throw NewExcepcion('USUARIOROLCONSULTAEXCEPCION');
     } finally {
 
         consulta.end();
     }
 }
 
-const getUsuarioRolById = async ( id: string  ) => {
+const _getUsuarioRolById = async ( id: string  ) => {
 
     const consulta = await conexion();
     try {
@@ -43,21 +48,27 @@ const getUsuarioRolById = async ( id: string  ) => {
                 id = ${id}`
         );
         
-        console.log(respuesta.rows);
+        if(respuesta.rowCount < 1) {
+        
+            return new ResponseModel('#',[]);
+        }
 
-        return respuesta.rows;
+        const rolList :RolModel[] = respuesta.rows; 
+        logger.info(`getUsuarioRolById: se encontraron ${rolList.length} RolById`);
+
+        return rolList;
 
     } catch (error) {
         
         logger.error(`Error en getUsuarioRolById:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #UR04";
+        throw NewExcepcion('USUARIOROLCONSULTAEXCEPCION');
     }finally {
         
         consulta.end();
     }
 }
 
-const getUsuarioRolByIdUsuario = async ( id_usuario: string  ) => {
+const _getUsuarioRolByIdUsuario = async ( id_usuario: string  ):Promise<UsuarioRolModel[]> => {
 
     const consulta = await conexion();
     try {
@@ -70,24 +81,25 @@ const getUsuarioRolByIdUsuario = async ( id_usuario: string  ) => {
             FROM 
                 usuario_rol 
             WHERE 
-                id_usuario = ${id_usuario}`
+                id_usuario = '${id_usuario}'`
         );
-        
-        console.log(respuesta.rows);
 
-        return respuesta.rows;
+        const id_rol_list:UsuarioRolModel[] = respuesta.rows; 
+        logger.info(`id_rol_list: se encontraron ${id_rol_list.length} id_rol_list`);
+
+        return id_rol_list;
 
     } catch (error) {
         
         logger.error(`Error en getUsuarioRolByIdUsuario:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #UR05";
+        throw NewExcepcion('USUARIOROLCONSULTAEXCEPCION');
     }finally {
         
         consulta.end();
     }
 }
 
-const deleteUsuarioRolById = async ( id: string  ) => {
+const _deleteUsuarioRolById = async ( id: string  ) => {
 
     const consulta = await conexion();
     try {
@@ -95,15 +107,15 @@ const deleteUsuarioRolById = async ( id: string  ) => {
         const respuesta = await consulta.query(
             `DELETE FROM usuario_rol WHERE id = ${id}`
         );
+
+        if (respuesta.rowCount > 0) return true;
+
+        return 'No se encontró ningún registro para eliminar';
         
-        console.log(respuesta.rows);
-
-        return respuesta.rows;
-
     } catch (error) {
         
         logger.error(`Error en deleteUsuarioRolById:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #UR05";
+        throw NewExcepcion('USUARIOROLCONSULTAEXCEPCION');
     }finally {
         
         consulta.end();
@@ -111,8 +123,8 @@ const deleteUsuarioRolById = async ( id: string  ) => {
 }
 
 export { 
-    insertUsuarioRol, 
-    getUsuarioRolById,
-    deleteUsuarioRolById,
-    getUsuarioRolByIdUsuario
+    _insertUsuarioRol, 
+    _getUsuarioRolById,
+    _deleteUsuarioRolById,
+    _getUsuarioRolByIdUsuario
 };

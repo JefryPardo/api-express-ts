@@ -5,6 +5,11 @@ import { validarEmailFormato, validarPassword } from "../../utils/validador";
 import { buildAuth, validarCamposAuth } from "../../utils/validador.auth";
 import { getUsuarioByUsuario } from "../usuario.controller";
 import { getToken } from "../jwt.controlle";
+import { _getUsuarioRolByIdUsuario } from "../../query/relaciones/usuario_rol.query";
+import { RolModel } from "../../models/model/rol.model";
+import { _getRolByIds } from "../../query/rol.query";
+import { LoginResponseModel } from "../../models/auth/response/login-response.model";
+import { UsuarioRolModel } from "../../models/model/usuario-rol.model";
 
 const auth = async ( req: Request ) => {
 
@@ -18,15 +23,45 @@ const auth = async ( req: Request ) => {
 
     const auth: AuthModel   = buildAuth(req.body);
     const usuario           = await getUsuarioByUsuario(auth.usuario);
+    if(!usuario) return getResponse();
     
-    if(!usuario) return new ResponseModel('#', 'Usuario o Credenciales no validas.');
     const resp = await validarPassword(auth.clave,usuario.clave);
+    
+    if(!resp) return getResponse();
+    
+    const usuario_rol:UsuarioRolModel[] = await _getUsuarioRolByIdUsuario(usuario.id);
+    if(usuario_rol.length < 1) return getResponse();
+    
+    console.log(usuario_rol);
 
-    if(!resp) return new ResponseModel('#', 'Usuario o Credenciales no validas.');
+    const id_rol: string[] = usuario_rol.map(_rol => _rol.id_rol);
+
+    console.log(id_rol);
+
+    if(id_rol.length < 1) return getResponse();
+
+    const rols:RolModel[] = await _getRolByIds(id_rol);
+    if(rols.length < 1) return getResponse();
+    
+    const rolesActivos: string[] = rols.filter(rol => rol.estado === 'activo').map(rol => rol.rol);
+    if(rolesActivos.length < 1) return getResponse();
     
     const token = await getToken(usuario.id);
+    
+    const loginResponse:LoginResponseModel =  {
+        'token': token,
+        'permisos': rolesActivos
+    };
 
-    return new ResponseModel('#', token);
+    return new ResponseModel(
+        '#', 
+        loginResponse
+    );
 };
+
+const getResponse = () => {
+
+    return new ResponseModel('#', 'Usuario o Credenciales no validas.');
+}
 
 export { auth };

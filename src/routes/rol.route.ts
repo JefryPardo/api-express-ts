@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { getAllRol, getRolById, insertRol } from "../controller/rol.controller";
+import { getAllRol, insertRol } from "../controller/rol.controller";
 import { succes, error } from "../network/response";
 
 const routerRol = Router();
@@ -18,11 +18,11 @@ routerRol.get("/all", (req: Request, res: Response) => {
     .catch( _error  => error(   req, res, _error));
 });
 
-routerRol.get("/find/:id", (req: Request, res: Response) => {
+// routerRol.get("/find/:id", (req: Request, res: Response) => {
 
-    getRolById( req )
-    .then( _res => succes( req, res, _res ))
-    .catch( _error  => error(   req, res, _error));
-});
+//     getRolById( req )
+//     .then( _res => succes( req, res, _res ))
+//     .catch( _error  => error(   req, res, _error));
+// });
 
 export { routerRol };
