@@ -141,5 +141,11 @@
         "code": "UR01",
         "log": "Error al consultar la BD usuario_rol.",
         "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "GENERICO": {
+        "code": "g",
+        "log": "Error ",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
     }
 }

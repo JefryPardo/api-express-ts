@@ -126,3 +126,9 @@ info: Se hace la conexión con exito.
 info: id_rol_list: se encontraron 1 id_rol_list
 info: Se hace la conexión con exito.
 error: Error en getRolByIds:  error: la sintaxis de entrada no es válida para tipo uuid: «{"4ac81e5b-4d80-43d0-a1f1-5b3777a9d5b7"}»
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: cors permitidos: http://localhost:8080
+info: Servidor listo, puerto: 8083 - Ambiente: local

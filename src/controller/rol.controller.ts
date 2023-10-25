@@ -1,6 +1,6 @@
 import { Request } from "express";
 import { RolModel } from "../models/model/rol.model";
-import { _getAllRols, _getRolByIds, _insertRol, _updateEstadoRolById } from "../query/rol.query";
+import { _getAllRols, _insertRol, _updateEstadoRolById } from "../query/rol.query";
 import { buildRol, validarCamposRol } from "../utils/validador.rol";
 import { ResponseModel } from "../models/model/response.model";
 import { validarToken } from "./jwt.controlle";

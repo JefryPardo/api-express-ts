@@ -164,9 +164,50 @@ const _updateEstadoProducto = async (id: string, estado: 'activo' | 'inactivo') 
     }
 };
 
+const _getAllProductos = async ():Promise<ProductoModel[]> => {
+
+    const consulta = await conexion();
+    try {
+        
+        const respuesta = await consulta.query(
+            `
+                SELECT 
+                    id,
+                    nombre,
+                    descripcion,
+                    url_imagen,
+                    referencia,
+                    referencia_local,
+                    precio,
+                    ficha_tecnica,
+                    unidades,
+                    estado,
+                    id_categoria,
+                    id_tipo,
+                    id_marca
+                from producto
+            `
+        );
+
+        const productoList :ProductoModel[] = respuesta.rows; 
+        logger.info(`_getAllProducto: se encontraron ${productoList.length} productos`);
+
+        return productoList;
+
+    } catch (error) {
+
+        logger.error(`Error en _getAllProducto:  ${error}`);
+        throw `Error inesperado, por favor reportar al administrador. #M01`
+    } finally {
+
+        consulta.end();
+    }
+}
+
 export {
     _insertProducto,
     _getProductoById,
     _updateProducto,
-    _updateEstadoProducto
+    _updateEstadoProducto,
+    _getAllProductos
 };

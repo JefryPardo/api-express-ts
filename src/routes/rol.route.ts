@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
-import { getAllRol, insertRol } from "../controller/rol.controller";
 import { succes, error } from "../network/response";
+import { getAllRol, insertRol } from "../controller/rol.controller";
 
 const routerRol = Router();
 

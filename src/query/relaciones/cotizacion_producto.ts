@@ -1,8 +1,10 @@
+import { NewExcepcion } from "../../excepcion/excepcion";
 import { logger } from "../../logs/logger";
 import { CotizacionProductoModel } from "../../models/model/cotizacion-producto.model";
+import { ResponseModel } from "../../models/model/response.model";
 import { conexion } from "../conexion";
 
-const insertCotizacionProducto = async ( { id_cotizacion, id_producto }:CotizacionProductoModel ) => {
+const _insertCotizacionProducto = async ( id_cotizacion:string, id_producto:string ) => {
 
     const consulta = await conexion();
 
@@ -14,8 +16,14 @@ const insertCotizacionProducto = async ( { id_cotizacion, id_producto }:Cotizaci
                 VALUES ($1,$2)`, 
             [id_cotizacion, id_producto]
         );
+
+        if(respuesta.rowCount === 1) {
         
-        console.log(respuesta);
+            logger.info(`insert cotizacion_producto success`);
+            return new ResponseModel('#','Se guardo correctamente cotizacion_producto.');
+        }
+
+        throw  NewExcepcion('INSERTROLEXCEPCION');
         
     } catch (error) {
         
@@ -27,7 +35,7 @@ const insertCotizacionProducto = async ( { id_cotizacion, id_producto }:Cotizaci
     }
 }
 
-const getCotizacionProductoById = async ( id: string  ) => {
+const _getCotizacionProductoById = async ( id: string  ) => {
 
     const consulta = await conexion();
     try {
@@ -57,7 +65,7 @@ const getCotizacionProductoById = async ( id: string  ) => {
     }
 }
 
-const getCotizacionProductoByIdCotizacion = async ( id_rol: string  ) => {
+const _getCotizacionProductoByIdCotizacion = async ( id_rol: string  ) => {
 
     const consulta = await conexion();
     try {
@@ -87,7 +95,7 @@ const getCotizacionProductoByIdCotizacion = async ( id_rol: string  ) => {
     }
 }
 
-const deleteCotizacionProductoById = async ( id: string  ) => {
+const _deleteCotizacionProductoById = async ( id: string  ) => {
 
     const consulta = await conexion();
     try {
@@ -111,8 +119,8 @@ const deleteCotizacionProductoById = async ( id: string  ) => {
 }
 
 export { 
-    insertCotizacionProducto, 
-    getCotizacionProductoById,
-    getCotizacionProductoByIdCotizacion,
-    deleteCotizacionProductoById
+    _insertCotizacionProducto, 
+    _getCotizacionProductoById,
+    _getCotizacionProductoByIdCotizacion,
+    _deleteCotizacionProductoById
 };

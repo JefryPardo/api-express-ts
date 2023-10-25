@@ -25,18 +25,18 @@ const getToken = async (id: string): Promise<string> => {
 const validarToken = async (req: Request): Promise<void> => {
     try {
 
+        if(!req.headers) throw NewExcepcion('TOKENEXCEPCION');
+
         const secretKey: Secret | undefined = process.env.SECRET;
         if (!secretKey) throw NewExcepcion('SECRETEXCEPCION');
 
         const bearerHeader = req.headers['authorization'];
-        if(typeof bearerHeader == undefined || bearerHeader == undefined)  throw 'authorization no presente';
+        if(typeof bearerHeader == undefined || bearerHeader == undefined)  throw NewExcepcion('TOKENEXCEPCION');
 
         const token = bearerHeader.split(" ")[1];
         console.log(token);
 
         const payload:any = jwt.verify(token, secretKey);
-
-        console.log(payload);
 
         if (Date.now() > payload.exp) throw NewExcepcion('SECRETEXCEPCION')
         

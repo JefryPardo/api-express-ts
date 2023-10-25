@@ -1,6 +1,7 @@
 export class CotizacionModel {
     
     id                  : string;
+    nombre              : string;
     fecha_creacion      : string;
     fecha_vencimiento   : string;
     nombre_cliente      : string;

@@ -2,7 +2,7 @@ import { Request } from "express";
 import { ResponseModel } from "../models/model/response.model";
 import { buildProducto, validarCamposProducto } from "../utils/validador.producto";
 import { ProductoModel } from "../models/model/producto.model";
-import { _getProductoById, _insertProducto, _updateEstadoProducto, _updateProducto } from "../query/producto.query";
+import { _getAllProductos, _getProductoById, _insertProducto, _updateEstadoProducto, _updateProducto } from "../query/producto.query";
 import { esFormatoValido } from "../utils/validador";
 import { NewExcepcion } from "../excepcion/excepcion";
 
@@ -53,4 +53,12 @@ const updateEstadoProductoById = async ( req: Request ) => {
     return _updateEstadoProducto(req.body.id,req.body.estado);
 };
 
-export { insertProducto, getProductoById, updateProductoById, updateEstadoProductoById };
+const getAllProductos = async () => {return _getAllProductos()};
+
+export { 
+    insertProducto, 
+    getProductoById, 
+    updateProductoById, 
+    updateEstadoProductoById,
+    getAllProductos
+};

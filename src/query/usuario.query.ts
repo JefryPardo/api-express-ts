@@ -59,7 +59,15 @@ const _getUsuarioById = async (id: string) => {
         const query = 'SELECT * FROM usuario WHERE id = $1';
         const result = await consulta.query(query, [id]);
         
-        return result.rows[0];
+        let response:UsuarioModel = new UsuarioModel(); 
+
+        if(result.rows[0]){
+            
+            response = result.rows[0]; 
+            return response;
+        }
+
+        return response; 
 
     } catch (error) {
 

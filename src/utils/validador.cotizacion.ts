@@ -10,6 +10,7 @@ const buildCotizacion = ( data: any ): CotizacionModel => {
         let cotizacion = new CotizacionModel();
 
         cotizacion.id                   = data.id;   
+        cotizacion.nombre               = data.nombre;
         cotizacion.nombre_cliente       = data.id_categoria;
         cotizacion.cedula_cliente       = data.id_categoria;
         cotizacion.correo_cliente       = data.id_categoria;
@@ -32,6 +33,7 @@ const validarCamposCotizacion = ( cotizacionBody: any ) => {
 
         if(
             index != "id"                   && 
+            index != "nombre"       &&
             index != "nombre_cliente"       &&
             index != "cedula_cliente"       &&
             index != "correo_cliente"       &&

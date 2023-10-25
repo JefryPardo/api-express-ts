@@ -44,8 +44,6 @@ const _insertCategoria = async ( categoria:string ) => {
             [categoria]
         );
         
-        console.log(respuesta);
-        
     } catch (error) {
         
         logger.error(`Error en insertCategoria:  ${error}`);

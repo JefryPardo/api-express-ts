@@ -2,11 +2,15 @@ import { Request } from "express";
 import { ResponseModel } from "../models/model/response.model";
 import { buildCotizacion, validarCamposCotizacion } from "../utils/validador.cotizacion";
 import { CotizacionModel } from "../models/model/cotizacion.model";
-import { _getCotizacionByIdUsuario, _insertCotizacion, _updateCotizacion } from "../query/cotizacion.query";
+import { _getCotizacionByIdUsuario, _getCotizacionByNombreAndUsuario, _insertCotizacion, _updateCotizacion } from "../query/cotizacion.query";
 import { esFormatoValido } from "../utils/validador";
 import { NewExcepcion } from "../excepcion/excepcion";
+import { validarToken } from "./jwt.controlle";
+import { _getUsuarioById } from "../query/usuario.query";
 
 const insertCotizacion = async ( req: Request ) => {
+
+    await validarToken(req);
 
     if(!req.body) {
 
@@ -15,21 +19,40 @@ const insertCotizacion = async ( req: Request ) => {
 
     validarCamposCotizacion(req.body);
 
-    const ganancia: CotizacionModel = buildCotizacion(req.body);
+    const cotizacion: CotizacionModel = buildCotizacion(req.body);
 
-    return _insertCotizacion(ganancia);
+    if(esFormatoValido(cotizacion.id_usuario)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+
+    const usuario = await _getUsuarioById(cotizacion.id_usuario);
+
+    if(!usuario || usuario.estado == 'inactivo')  throw NewExcepcion('GENERICO');
+
+    const invalido = await getCotizacionByNombreAndUsuario(
+        usuario.id,
+        cotizacion.nombre
+    );
+
+    if(invalido) throw NewExcepcion('GENERICO');
+
+    return _insertCotizacion(cotizacion);
 };
 
-const getCotizacionByIdUsuario = async ( req: Request ) => {
+const getCotizacionesByIdUsuario = async ( req: Request ) => {
 
-    const idUsuario:string = req.params.id;
+    await validarToken(req);
 
-    if(esFormatoValido(idUsuario)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+    if(!req.params.id) throw NewExcepcion('GENERICO');
 
-    return _getCotizacionByIdUsuario(idUsuario);
+    const id_usuario:string = req.params.id;
+
+    if(esFormatoValido(id_usuario)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+
+    return _getCotizacionByIdUsuario(id_usuario);
 };
 
 const updateCotizacion = async ( req: Request ) => {
+
+    await validarToken(req);
 
     if(!req.body) {
 
@@ -43,4 +66,21 @@ const updateCotizacion = async ( req: Request ) => {
     return _updateCotizacion(cotizacion.id, cotizacion);
 };
 
-export { insertCotizacion, getCotizacionByIdUsuario, updateCotizacion };
+
+
+
+
+const getCotizacionByNombreAndUsuario = async ( nombre: string, id_usuario:string ) => {
+
+    return _getCotizacionByNombreAndUsuario(nombre,id_usuario);
+};
+
+
+
+
+export { 
+    insertCotizacion, 
+    getCotizacionesByIdUsuario, 
+    updateCotizacion,
+    getCotizacionByNombreAndUsuario
+};

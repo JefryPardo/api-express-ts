@@ -1,4 +1,6 @@
+import { NewExcepcion } from "../excepcion/excepcion";
 import { CotizacionModel } from "../models/model/cotizacion.model";
+import { ResponseModel } from "../models/model/response.model";
 import { conexion } from "./conexion";
 
 const _insertCotizacion = async (cotizacion: CotizacionModel) => {
@@ -14,9 +16,10 @@ const _insertCotizacion = async (cotizacion: CotizacionModel) => {
                 nombre_cliente, 
                 cedula_cliente, 
                 correo_cliente, 
-                id_usuario
+                id_usuario,
+                nombre
             ) VALUES (
-                $1, $2, $3, $4, $5, $6
+                $1, $2, $3, $4, $5, $6, $7
             )
         `;
         
@@ -26,7 +29,8 @@ const _insertCotizacion = async (cotizacion: CotizacionModel) => {
             cotizacion.nombre_cliente,
             cotizacion.cedula_cliente,
             cotizacion.correo_cliente,
-            cotizacion.id_usuario
+            cotizacion.id_usuario,
+            cotizacion.nombre
         ];
 
         const result = await consulta.query(query, values);
@@ -43,7 +47,7 @@ const _insertCotizacion = async (cotizacion: CotizacionModel) => {
     }
 };
 
-const _getCotizacionByIdUsuario = async (id_usuario: string) => {
+const _getCotizacionByIdUsuario = async (id_usuario: string):Promise<CotizacionModel[]> => {
     
     const consulta = await conexion();
     
@@ -52,12 +56,62 @@ const _getCotizacionByIdUsuario = async (id_usuario: string) => {
         const query = 'SELECT * FROM cotizacion WHERE id_usuario = $1';
         const result = await consulta.query(query, [id_usuario]);
         
-        return result.rows[0];
+        if(result.rowCount !== 1) throw NewExcepcion('GENERICO');
+
+        const cotizacion_list :CotizacionModel[] = result.rows; 
+
+        return cotizacion_list;
 
     } catch (error) {
 
         console.error('Error en getCotizacionByIdUsuario:', error);
         throw 'Error inesperado al obtener cotizacion por ID.';
+    } finally {
+        
+        consulta.end();
+    }
+};
+
+const _getCotizacionById = async (id: string):Promise<CotizacionModel> => {
+    
+    const consulta = await conexion();
+    
+    try {
+        
+        const query = 'SELECT * FROM cotizacion WHERE id = $1';
+        const result = await consulta.query(query, [id]);
+        
+        if(result.rowCount !== 1) throw NewExcepcion('GENERICO');
+
+        const cotizacion :CotizacionModel = result.rows[0]; 
+
+        return cotizacion;
+
+    } catch (error) {
+
+        console.error('Error en _getCotizacionById:', error);
+        throw 'Error inesperado al obtener cotizacion por ID.';
+    } finally {
+        
+        consulta.end();
+    }
+};
+
+const _getCotizacionByNombreAndUsuario = async (nombre: string, id_usuario:string):Promise<boolean> => {
+    
+    const consulta = await conexion();
+    
+    try {
+        
+        const query = 'SELECT * FROM cotizacion WHERE nombre = $1 and id_usuario = $2';
+        const result = await consulta.query(query, [nombre,id_usuario]);
+        
+        return result.rows[0]? true:false;
+
+    } catch (error) {
+
+        console.error('Error en _getCotizacionByNombre:', error);
+        throw 'Error inesperado al obtener cotizacion por usuario.';
     } finally {
         
         consulta.end();
@@ -79,8 +133,9 @@ const _updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
                 cedula_cliente = $4,
                 correo_cliente = $5, 
                 id_usuario = $6,
+                nombre = $7
             WHERE 
-                id = $12
+                id = $8
         `;
         
         const values = [
@@ -90,6 +145,7 @@ const _updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
             cotizacion.cedula_cliente,
             cotizacion.correo_cliente,
             cotizacion.id_usuario,
+            cotizacion.nombre,
             id,
         ];
         
@@ -110,5 +166,7 @@ const _updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
 export {
     _insertCotizacion,
     _getCotizacionByIdUsuario,
-    _updateCotizacion
+    _updateCotizacion,
+    _getCotizacionByNombreAndUsuario,
+    _getCotizacionById
 };

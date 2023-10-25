@@ -28,7 +28,7 @@ const validarCamposCotizacionProducto = ( cotizacionProductoBody: any ) => {
 
         if(
             index != "id"                   && 
-            index != "id_cotizacion"       &&
+            index != "id_cotizacion"        &&
             index != "id_producto"            
         ) {
 
