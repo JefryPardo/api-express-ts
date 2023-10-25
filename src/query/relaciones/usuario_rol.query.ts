@@ -1,5 +1,4 @@
 import { NewExcepcion } from "../../excepcion/excepcion";
-import { logger } from "../../logs/logger";
 import { ResponseModel } from "../../models/model/response.model";
 import { RolModel } from "../../models/model/rol.model";
 import { UsuarioRolModel } from "../../models/model/usuario-rol.model";
@@ -20,12 +19,11 @@ const _insertUsuarioRol = async ( id_usuario:string, id_rol:string ):Promise<boo
 
         if (respuesta.rowCount === 1) return true;
         
-        throw NewExcepcion('INSERTUSUARIOROLEXCEPCION');
+        throw 'respuesta no esperada.'
         
     } catch (error) {
         
-        logger.error(`Error en insertUsuarioRol:  ${error}`);
-        throw NewExcepcion('USUARIOROLCONSULTAEXCEPCION');
+        throw NewExcepcion('FATALERROR','_insertUsuarioRol',error);
     } finally {
 
         consulta.end();
@@ -54,14 +52,11 @@ const _getUsuarioRolById = async ( id: string  ) => {
         }
 
         const rolList :RolModel[] = respuesta.rows; 
-        logger.info(`getUsuarioRolById: se encontraron ${rolList.length} RolById`);
-
         return rolList;
 
     } catch (error) {
         
-        logger.error(`Error en getUsuarioRolById:  ${error}`);
-        throw NewExcepcion('USUARIOROLCONSULTAEXCEPCION');
+        throw NewExcepcion('FATALERROR', '_getUsuarioRolById',error);
     }finally {
         
         consulta.end();
@@ -85,14 +80,12 @@ const _getUsuarioRolByIdUsuario = async ( id_usuario: string  ):Promise<UsuarioR
         );
 
         const id_rol_list:UsuarioRolModel[] = respuesta.rows; 
-        logger.info(`id_rol_list: se encontraron ${id_rol_list.length} id_rol_list`);
 
         return id_rol_list;
 
     } catch (error) {
         
-        logger.error(`Error en getUsuarioRolByIdUsuario:  ${error}`);
-        throw NewExcepcion('USUARIOROLCONSULTAEXCEPCION');
+        throw NewExcepcion('FATALERROR','_getUsuarioRolByIdUsuario',error);
     }finally {
         
         consulta.end();
@@ -114,8 +107,7 @@ const _deleteUsuarioRolById = async ( id: string  ) => {
         
     } catch (error) {
         
-        logger.error(`Error en deleteUsuarioRolById:  ${error}`);
-        throw NewExcepcion('USUARIOROLCONSULTAEXCEPCION');
+        throw NewExcepcion('FATALERROR','_deleteUsuarioRolById',error);
     }finally {
         
         consulta.end();

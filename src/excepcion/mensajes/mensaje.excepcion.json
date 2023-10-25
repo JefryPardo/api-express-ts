@@ -54,32 +54,38 @@
     },
 
     "CAMPOUSUARIOEXCEPCION": {
+        "code": "EXC06",
+        "log": "Formato del correo no valido.",
+        "mensaje": "Campo nombre no es valido."
+    },
+
+    "CAMPONOMBREEXCEPCION": {
         "code": "EXC01",
-        "log": "Error el campo nombre no es valido: ",
+        "log": "Error el campo nombre no es valido.",
         "mensaje": "Campo nombre no es valido."
     },
 
     "CAMPOAPELLIDOEXCEPCION": {
         "code": "EXC02",
-        "log": "Error el campo apellido no es valido: ",
+        "log": "Error el campo apellido no es valido.",
         "mensaje": "Campo apellido no es valido."
     }, 
     
     "CAMPOCELULAREXCEPCION": {
         "code": "EXC03",
-        "log": "Error el campo celular no es valido: ",
+        "log": "Error el campo celular no es valido.",
         "mensaje": "Campo celular no es valido."
     },
 
     "CAMPOTIPODOCUMENTOEXCEPCION": {
         "code": "EXC04",
-        "log": "Error el campo tipo documento no es valido: ",
+        "log": "Error el campo tipo documento no es valido.",
         "mensaje": "Campo tipo documento no es valido."
     },
 
     "CAMPODOCUMENTOEXCEPCION": {
         "code": "EXC05",
-        "log": "Error el campo documento no es valido: ",
+        "log": "Error el campo documento no es valido.",
         "mensaje": "Campo documento no es valido."
     },
     
@@ -92,12 +98,6 @@
     "INSERTEXCEPCION": {
         "code": "INS01",
         "log": "Error al general el insert, respuesta no esperada.",
-        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
-    },
-
-    "LOGINEXCEPCION": {
-        "code": "LOG01",
-        "log": "Error al generar el login.",
         "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
     },
 
@@ -145,7 +145,31 @@
 
     "GENERICO": {
         "code": "g",
-        "log": "Error ",
+        "log": "Error en ",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "LOGINEXCEPCION": {
+        "code": "#LCE01",
+        "log": "",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "CREDENCIALESXCEPCION": {
+        "code": "AUTH",
+        "log": "Credenciales no validas",
+        "mensaje": "Credenciales no validas"
+    },
+
+    "LOGINGENERICO": {
+        "code": "AUTHERROR",
+        "log": "",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "FATALERROR": {
+        "code": "#feq",
+        "log": "",
         "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
     }
 }

@@ -5,7 +5,6 @@ import { _getDisponibilidadUsuarioByUsuario, _getUsuarioById, _getUsuarioByUsuar
 import { validarCamposUsuario } from "../utils/validador.usuario";
 import { esFormatoValido } from "../utils/validador";
 import { NewExcepcion } from "../excepcion/excepcion";
-import { logger } from "../logs/logger";
 import { validarToken } from "./jwt.controlle";
 
 const insertUsuario = async ( usuario: UsuarioModel ) => {
@@ -46,8 +45,7 @@ const validarDisponibilidadUsuario = async ( usuario: string ) => {
     
     } catch (error) {
 
-        logger.error('Error al validar disponibilidad del usuario:', error);
-        throw NewExcepcion('USUARIOEXCEPCION','validarDisponibilidadUsuario');
+        throw NewExcepcion('FATALERROR','validarDisponibilidadUsuario',error);
     }
 };
 

@@ -2,24 +2,30 @@ import jwt, { Secret } from 'jsonwebtoken';
 import { NewExcepcion } from '../excepcion/excepcion';
 import { logger } from '../logs/logger';
 import { Request } from "express";
-import { ResponseModel } from '../models/model/response.model';
 
 
 const getToken = async (id: string): Promise<string> => {
     
-    const secretKey: Secret | undefined = process.env.SECRET;
+    try {
+        
+        const secretKey: Secret | undefined = process.env.SECRET;
 
-    if (!secretKey) throw NewExcepcion('SECRETEXCEPCION');
+        if (!secretKey) throw NewExcepcion('FATALERROR','getToken');
 
-    const token = jwt.sign(
-        {
-            sub: id,
-            exp: Date.now() + 60 * 1000
-        },
-        secretKey
-    );
+        const token = jwt.sign(
+            {
+                sub: id,
+                exp: Date.now() + 60 * 1000
+            },
+            secretKey
+        );
 
-    return token;
+        return token;
+
+    } catch (error) {
+        
+        throw NewExcepcion('FATALERROR','login:getToken',error);
+    }
 };
 
 const validarToken = async (req: Request): Promise<void> => {
@@ -42,8 +48,7 @@ const validarToken = async (req: Request): Promise<void> => {
         
     } catch (error) {
 
-        logger.error('Error al validar token: ',error);
-        throw NewExcepcion('TOKENEXCEPCION');
+        throw NewExcepcion('TOKENEXCEPCION','validarToken',error);
     }
 };
 

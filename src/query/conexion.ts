@@ -29,13 +29,10 @@ const conexion = async () => {
 };
 
 const succes = () => {
-
     logger.info(`Se hace la conexión con exito.`);
 }
 
 const error = ( res: void) => {
-
-    logger.error(`Error en la conexion: ${res}`);
     throw NewExcepcion('CONEXIONEXCEPCION');
 }
 

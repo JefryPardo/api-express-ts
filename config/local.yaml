@@ -5,6 +5,10 @@ server:
 
 ambiente: local
 
+config:
+  origin: 'http://localhost:4200'
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+
 credenciales:
   host: 'localhost'
   user: 'postgres'

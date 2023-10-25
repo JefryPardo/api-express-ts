@@ -51,8 +51,6 @@ const _getCotizacionProductoById = async ( id: string  ) => {
                 id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {
@@ -81,8 +79,6 @@ const _getCotizacionProductoByIdCotizacion = async ( id_rol: string  ) => {
                 id_cotizacion = ${id_rol}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {
@@ -104,9 +100,7 @@ const _deleteCotizacionProductoById = async ( id: string  ) => {
             `DELETE FROM cotizacion_producto WHERE id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
-        return respuesta.rows;
+        return respuesta.rows[0]? true:false;
 
     } catch (error) {
         
@@ -118,9 +112,32 @@ const _deleteCotizacionProductoById = async ( id: string  ) => {
     }
 }
 
+const _getCotizacionProductoByidCotizacionAndIdProducto = async (id_producto: string, id_cotizacion:string):Promise<boolean> => {
+    
+    const consulta = await conexion();
+    
+    try {
+
+        const query = `SELECT * FROM cotizacion_producto WHERE id_producto = '${id_producto}' and id_cotizacion = ${id_cotizacion}`;
+        
+        const result = await consulta.query(query);
+
+        return result.rows[0]? true:false;
+
+    } catch (error) {
+
+        logger.error('Error en _getCotizacionProductoByidCotizacionAndIdProducto:', error);
+        throw NewExcepcion('GENERICO');
+    } finally {
+        
+        consulta.end();
+    }
+};
+
 export { 
     _insertCotizacionProducto, 
     _getCotizacionProductoById,
     _getCotizacionProductoByIdCotizacion,
-    _deleteCotizacionProductoById
+    _deleteCotizacionProductoById,
+    _getCotizacionProductoByidCotizacionAndIdProducto
 };

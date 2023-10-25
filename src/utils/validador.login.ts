@@ -1,13 +1,12 @@
 import { NewExcepcion } from "../excepcion/excepcion";
 import { logger } from "../logs/logger";
-import { AuthModel } from "../models/auth/login.model";
-import { ResponseModel } from "../models/model/response.model";
+import { LoginModel } from "../models/auth/login.model";
 
-const buildAuth = ( data: any ): AuthModel => {
+const buildLogin = ( data: any ): LoginModel => {
 
     try {
         
-        let auth = new AuthModel();
+        let auth = new LoginModel();
 
         auth.usuario        = data.usuario;   
         auth.clave          = data.clave;
@@ -16,12 +15,11 @@ const buildAuth = ( data: any ): AuthModel => {
 
     } catch (error) {
         
-        logger.error(`Error en buildAuth: ${error}`);
         throw NewExcepcion('BUILDEXCEPCION');
     }
 }
 
-const validarCamposAuth = ( authBody: any ) => {
+const validarCamposLogin = ( authBody: any ) => {
 
     for (let index in authBody) {
 
@@ -30,9 +28,12 @@ const validarCamposAuth = ( authBody: any ) => {
             index != "clave"           
         ) {
 
-            return new ResponseModel('#',`Campo: ${index} no valido.`);
+            throw NewExcepcion('GENERICO',`Campo: '${index}' no valido.`);
         }
     }
 }
 
-export {buildAuth, validarCamposAuth};
+export {
+    buildLogin, 
+    validarCamposLogin
+};

@@ -1,5 +1,5 @@
 export class LoginResponseModel {
     
     token: string;
-    permisos: string[];
+    roles: string[];
 }

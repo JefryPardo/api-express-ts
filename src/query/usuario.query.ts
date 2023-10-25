@@ -1,8 +1,8 @@
-import { logger } from "../logs/logger";
+import { NewExcepcion } from "../excepcion/excepcion";
 import { UsuarioModel } from "../models/model/usuario.model";
 import { conexion } from "./conexion"
 
-const _insertUsuario = async (usuario: UsuarioModel) => {
+const _insertUsuario = async (usuario: UsuarioModel):Promise<UsuarioModel> => {
     
     const consulta = await conexion();
     
@@ -38,12 +38,20 @@ const _insertUsuario = async (usuario: UsuarioModel) => {
 
         const result = await consulta.query(query, values);
 
-        return (result.rowCount === 1);
+        if (result.rowCount === 1) {
+            
+            const usuarioResp: UsuarioModel | null = await _getUsuarioByUsuario(usuario.usuario);
+            
+            if(usuarioResp == null) throw 'valor no esperado.';
+            
+            return usuarioResp;
+        }
+        
+        throw 'respuesta no esperada.';
 
     } catch (error) {
         
-        logger.error('Error en insertUsuario:', error);
-        throw 'Error inesperado al insertar usuario.';
+        throw NewExcepcion('FATALERROR', '_insertUsuario', error);
     }finally {
         
         consulta.end();
@@ -71,8 +79,7 @@ const _getUsuarioById = async (id: string) => {
 
     } catch (error) {
 
-        logger.error('Error en getUsuarioById:', error);
-        throw 'Error inesperado al obtener usuario por ID.';
+        throw NewExcepcion('FATALERROR', '_getUsuarioById', error);
     } finally {
         
         consulta.end();
@@ -85,51 +92,41 @@ const _getDisponibilidadUsuarioByUsuario = async (usuario: string) => {
     
     try {
 
-        console.log(usuario);
-        
         const query = `SELECT * FROM usuario WHERE usuario = '${usuario}'`;
         
         const result = await consulta.query(query);
 
-        console.log(result);
-        
         return result.rows[0]? true:false;
 
     } catch (error) {
 
-        logger.error('usuario:', usuario);
-        logger.error('Error en _getDisponibilidadUsuarioByUsuario:', error);
-        throw 'Error inesperado al obtener usuario por ID.';
+        throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     } finally {
         
         consulta.end();
     }
 };
 
-const _getUsuarioByUsuario = async (usuario: string):Promise<UsuarioModel> => {
+const _getUsuarioByUsuario = async (usuario: string):Promise<UsuarioModel | null> => {
     
     const consulta = await conexion();
     
     try {
-
         
         const query = `SELECT * FROM usuario WHERE usuario = '${usuario}'`;
         const result = await consulta.query(query);
         
-        let response:UsuarioModel = new UsuarioModel(); 
-
         if(result.rows[0]){
             
-            response = result.rows[0]; 
+            const response:UsuarioModel = result.rows[0]; 
             return response;
         }
-
-        return response;        
-
+        
+        return null;
+        
     } catch (error) {
-
-        logger.error('Error en getUsuarioById:', error);
-        throw 'Error inesperado al obtener usuario por ID.';
+        
+        throw NewExcepcion('FATALERROR', '_getUsuarioByUsuario', error);
     } finally {
         
         consulta.end();
@@ -177,8 +174,7 @@ const _updateUsuario = async (id: string, usuario: UsuarioModel) => {
 
     } catch (error) {
 
-        logger.error('Error en updateUsuario:', error);
-        throw 'Error inesperado al actualizar usuario.';
+        throw NewExcepcion('FATALERROR', '_updateUsuario', error);
     } finally {
         
         consulta.end();
@@ -210,8 +206,7 @@ const _updateEstadoUsuario = async (id: string, estado: 'activo' | 'inactivo') =
 
     } catch (error) {
 
-        logger.error('Error en updateEstadoUsuario:', error);
-        throw 'Error inesperado al actualizar el estado del usuario.';
+        throw NewExcepcion('FATALERROR', '_updateEstadoUsuario', error);
     } finally {
         
         consulta.end();

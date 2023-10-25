@@ -1,30 +1,25 @@
 import { Request } from "express";
-import { NewExcepcion } from "../../excepcion/excepcion";
 import { RegisterModel } from "../../models/auth/register.model";
 import { ResponseModel } from "../../models/model/response.model";
 import { UsuarioModel } from "../../models/model/usuario.model";
-import { encriptadoDeClave, fechaActual, validarEmailFormato, validarEstandaresPassword } from "../../utils/validador";
+import { encriptadoDeClave, fechaActual, validarEstandaresPassword } from "../../utils/validador";
 import { validarBodyRegister, validarCamposRegister } from "../../utils/validador.register";
 import { insertUsuario, validarDisponibilidadUsuario } from "../usuario.controller";
 import { _insertUsuarioRol } from "../../query/relaciones/usuario_rol.query";
 
 const register = async ( req: Request ) => {
 
-    if(!req.body) {
-
-        return new ResponseModel('#','Data ingresada no validad.');
-    }
+    if(Object.keys(req.body).length === 0) return new ResponseModel('#R01','Data ingresada no validad.');
 
     validarBodyRegister(req.body);
-    if(!validarEmailFormato(req.body)) return new ResponseModel('#','Formato del correo no valido.');
-    
-    const disponibilidad = await validarDisponibilidadUsuario(req.body.usuario.trim());
-    if (disponibilidad) return new ResponseModel('#', 'Usuario no disponible.');
-
-
-    validarEstandaresPassword(req.body);
-
     const registro: RegisterModel =  validarCamposRegister(req.body);
+
+    const disponibilidad = await validarDisponibilidadUsuario(registro.usuario.trim());
+    if (disponibilidad) return new ResponseModel('#R', 'Usuario no disponible.');
+
+    const sugerencias:string[] = validarEstandaresPassword(req.body);
+
+    if(sugerencias.length > 0) return new ResponseModel('#R', sugerencias);
 
     const claveHash:string = await encriptadoDeClave(registro.clave);
 
@@ -42,15 +37,11 @@ const register = async ( req: Request ) => {
     usuario.usuario             = registro.usuario;
     usuario.estado              = 'activo';
 
-    const response = await insertUsuario(usuario);
+    const response:UsuarioModel = await insertUsuario(usuario);
 
-    if(!response) throw NewExcepcion('INSERTEXCEPCION');
+    await _insertUsuarioRol(response.id,'b19517e2-b383-4656-8099-67d49ca3a8c7');
 
-    const estado:boolean = await _insertUsuarioRol(usuario.id,'b19517e2-b383-4656-8099-67d49ca3a8c7');
-
-    if(!estado) throw NewExcepcion('INSERTEXCEPCION');
-
-    return new ResponseModel('#', 'Se registro correctamente.');
+    return new ResponseModel('#RS', 'Se registro correctamente.');
 };
 
 export {register};

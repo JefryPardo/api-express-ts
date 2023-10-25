@@ -1,8 +1,7 @@
 import { NewExcepcion } from "../excepcion/excepcion";
 import { logger } from "../logs/logger";
 import { RegisterModel } from "../models/auth/register.model";
-import { ResponseModel } from "../models/model/response.model";
-import { limpiarEspaciosExtremos, validarSoloLetras, validarStringLetrasNumeros, validarStringNumerico } from "./validador";
+import { limpiarEspaciosExtremos, validarEmailFormato, validarSoloLetras, validarStringLetrasNumeros, validarStringNumerico } from "./validador";
 
 const validarBodyRegister = ( registerBody: any ) => {
 
@@ -19,7 +18,7 @@ const validarBodyRegister = ( registerBody: any ) => {
             index != "usuario"
         ) {
 
-            return new ResponseModel('#',`Campo: ${index} no valido.`);
+            throw NewExcepcion('GENERICO',`Campo: '${index}' no valido.`);
         }
     }
 }
@@ -28,7 +27,8 @@ const validarCamposRegister = ( campos: any ): RegisterModel => {
 
     const registro: RegisterModel = limpiarCamposRegister(campos);
     
-    if(validarSoloLetras(registro.nombre))              throw NewExcepcion('CAMPOUSUARIOEXCEPCION');
+    if(!validarEmailFormato(registro.usuario))          throw NewExcepcion('CAMPOUSUARIOEXCEPCION');
+    if(validarSoloLetras(registro.nombre))              throw NewExcepcion('CAMPONOMBREEXCEPCION');
     if(validarSoloLetras(registro.apellido))            throw NewExcepcion('CAMPOAPELLIDOEXCEPCION');
     if(validarStringNumerico(registro.celular))         throw NewExcepcion('CAMPOCELULAREXCEPCION');
     if(validarStringNumerico(registro.tipo_documento))  throw NewExcepcion('CAMPOTIPODOCUMENTOEXCEPCION');

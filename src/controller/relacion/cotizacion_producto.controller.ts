@@ -9,7 +9,7 @@ import { _getProductoById } from "../../query/producto.query";
 import { ProductoModel } from "../../models/model/producto.model";
 import { CotizacionModel } from "../../models/model/cotizacion.model";
 import { _getCotizacionById } from "../../query/cotizacion.query";
-import { _insertCotizacionProducto } from "../../query/relaciones/cotizacion_producto";
+import { _deleteCotizacionProductoById, _getCotizacionProductoByidCotizacionAndIdProducto, _insertCotizacionProducto } from "../../query/relaciones/cotizacion_producto";
 
 const insertCotizacionProducto = async ( req: Request ) => {
 
@@ -32,6 +32,13 @@ const insertCotizacionProducto = async ( req: Request ) => {
     
     const cotizacion:CotizacionModel = await _getCotizacionById(cotizacion_producto.id_cotizacion);
     if(!cotizacion)  throw NewExcepcion('GENERICO');
+    
+    const invalid:boolean = await _getCotizacionProductoByidCotizacionAndIdProducto(
+        cotizacion_producto.id_cotizacion,
+        cotizacion_producto.id_producto
+    );
+        
+    if(!invalid)  throw NewExcepcion('GENERICO');
 
     return _insertCotizacionProducto(
         cotizacion_producto.id_cotizacion,
@@ -40,18 +47,24 @@ const insertCotizacionProducto = async ( req: Request ) => {
 };
 
 
-const deleteCotizacion = async ( req: Request ) => {
+const deleteCotizacionProductoById = async ( req: Request ) => {
 
     await validarToken(req);
 
-    if(!req.body) {
+    if(!req.params.id) throw NewExcepcion('GENERICO');
 
-        return new ResponseModel('#','Data ingresada no validad.');
-    }
+    const id:string = req.params.id;
 
-    validarCamposCotizacion(req.body);
+    if(esFormatoValido(id)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
 
-    const cotizacion: CotizacionModel = buildCotizacion(req.body);
+    const response:boolean = await _deleteCotizacionProductoById(id);
 
-    return _updateCotizacion(cotizacion.id, cotizacion);
+    if(!response) throw NewExcepcion('GENERICO');
+
+    
+
 };
+
+export {
+    insertCotizacionProducto
+}

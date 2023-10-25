@@ -1,6 +1,5 @@
 import { NewExcepcion } from "../excepcion/excepcion";
 import { CotizacionModel } from "../models/model/cotizacion.model";
-import { ResponseModel } from "../models/model/response.model";
 import { conexion } from "./conexion";
 
 const _insertCotizacion = async (cotizacion: CotizacionModel) => {

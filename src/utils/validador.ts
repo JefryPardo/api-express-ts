@@ -53,8 +53,6 @@ const validarNumero = ( numero: any ): validarNumeroModel  => {
  */
 const validarAlfaNumerico = ( cadena: string ): validarAlfanumericoModel  => {
     
-    console.log(cadena);
-
     const regxp = "/([a-zA-Z0-9])/";
     
     const regexp = new RegExp(regxp);
@@ -112,23 +110,26 @@ const validarEstandaresPassword = ( body: any )  => {
 
     const resultado = zxcvbn(body.clave);
 
+    let sugerencias:string[] = [];
+
     if (resultado.score < 3) {
      
-        const sugerencias:string[] = resultado.feedback.suggestions;
-
-        return new ResponseModel('', sugerencias);
+        sugerencias = resultado.feedback.suggestions;
     }
+    
+    return sugerencias;
 }
 
 const encriptadoDeClave = async (password: string): Promise<string> => {
+    
     const saltRounds = 10;
-  
     return new Promise<string>((resolve, reject) => {
       bcrypt.hash(password, saltRounds, (err, hash) => {
         if (err) {
-          console.error('Error en encriptadoDeClave: ', err);
-          reject(new Error('ENCRIPTADOEXCEPCION'));
+
+            reject(new Error('ENCRIPTADOEXCEPCION'));
         } else {
+
           resolve(hash);
         }
       });
@@ -141,13 +142,9 @@ const validarPassword = async (password: string, clave:string): Promise<boolean>
 
         bcrypt.compare(password, clave, (err, result) => {
             
-            console.log(password);
-            console.log(clave);
-
             if (err) {
               
-                logger.error('Error en validarPassword: ', err);
-                throw NewExcepcion('LOGINPASSWORDEXCEPCION');
+                throw NewExcepcion('FATALERROR','validarPassword',err);
             }
             
             resolve(result);
@@ -160,8 +157,6 @@ const fechaActual = () :string  => {
 
     return moment().format('YYYY-MM-DD HH:mm'); 
 }
-
-
 
 export { 
     validarSplitDeNumeros, 

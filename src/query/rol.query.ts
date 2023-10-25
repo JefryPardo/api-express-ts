@@ -100,7 +100,6 @@ const _getRolById = async ( id: string  ) => {
 
     } catch (error) {
         
-        logger.error(`Error en getRolByIds:  ${error}`);
         throw NewExcepcion('ROLEXCEPCION');
     }finally {
         
