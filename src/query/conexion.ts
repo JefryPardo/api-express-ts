@@ -28,9 +28,7 @@ const conexion = async () => {
     return client;
 };
 
-const succes = () => {
-    logger.info(`Se hace la conexión con exito.`);
-}
+const succes = () => {}
 
 const error = ( res: void) => {
     throw NewExcepcion('CONEXIONEXCEPCION');

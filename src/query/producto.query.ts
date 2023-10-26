@@ -1,6 +1,7 @@
 import { conexion } from "./conexion"
 import { logger } from "../logs/logger";
 import { ProductoModel } from "../models/model/producto.model";
+import { NewExcepcion } from "../excepcion/excepcion";
 
 const _insertProducto = async (producto: ProductoModel) => {
     
@@ -47,8 +48,7 @@ const _insertProducto = async (producto: ProductoModel) => {
 
     } catch (error) {
         
-        console.error('Error en insertProducto:', error);
-        throw 'Error inesperado al insertar producto.';
+        throw NewExcepcion('FATALERROR','_insertProducto',error);
     }finally {
         
         consulta.end();
@@ -64,12 +64,15 @@ const _getProductoById = async (id: string) => {
         const query = 'SELECT * FROM producto WHERE id = $1';
         const result = await consulta.query(query, [id]);
         
-        return result.rows[0];
+        if(result.rowCount !== 1) throw NewExcepcion('GENERICO');
+
+        const producto :ProductoModel = result.rows[0]; 
+
+        return producto;
 
     } catch (error) {
 
-        console.error('Error en getProductoById:', error);
-        throw 'Error inesperado al obtener producto por ID.';
+        throw NewExcepcion('FATALERROR','_getProductoById',error);
     } finally {
         
         consulta.end();
@@ -123,8 +126,7 @@ const _updateProducto = async (id: string, producto: ProductoModel) => {
 
     } catch (error) {
 
-        console.error('Error en updateUsuario:', error);
-        throw 'Error inesperado al actualizar usuario.';
+        throw NewExcepcion('FATALERROR','_updateProducto',error);
     } finally {
         
         consulta.end();
@@ -156,8 +158,7 @@ const _updateEstadoProducto = async (id: string, estado: 'activo' | 'inactivo') 
 
     } catch (error) {
 
-        console.error('Error en updateEstadoProducto:', error);
-        throw 'Error inesperado al actualizar el estado del producto.';
+        throw NewExcepcion('FATALERROR','_updateEstadoProducto',error);
     } finally {
         
         consulta.end();
@@ -190,14 +191,12 @@ const _getAllProductos = async ():Promise<ProductoModel[]> => {
         );
 
         const productoList :ProductoModel[] = respuesta.rows; 
-        logger.info(`_getAllProducto: se encontraron ${productoList.length} productos`);
 
         return productoList;
 
     } catch (error) {
 
-        logger.error(`Error en _getAllProducto:  ${error}`);
-        throw `Error inesperado, por favor reportar al administrador. #M01`
+        throw NewExcepcion('FATALERROR','_getAllProductos',error);
     } finally {
 
         consulta.end();

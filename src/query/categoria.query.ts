@@ -69,8 +69,6 @@ const _getCategoriaById = async ( id: string  ) => {
                 id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {
@@ -94,8 +92,6 @@ const _updateCategoria = async ( {id, categoria}: CategoriaModel ) => {
             WHERE id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {

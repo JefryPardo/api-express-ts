@@ -5,6 +5,7 @@ import { ProductoModel } from "../models/model/producto.model";
 import { _getAllProductos, _getProductoById, _insertProducto, _updateEstadoProducto, _updateProducto } from "../query/producto.query";
 import { esFormatoValido } from "../utils/validador";
 import { NewExcepcion } from "../excepcion/excepcion";
+import { validarToken } from "./jwt.controlle";
 
 const insertProducto = async ( req: Request ) => {
 
@@ -24,14 +25,14 @@ const getProductoById = async ( req: Request ) => {
 
     const idProducto:string = req.params.id;
 
-    if(esFormatoValido(idProducto)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+    // if(esFormatoValido(idProducto)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
 
     return _getProductoById(idProducto);
 };
 
 const updateProductoById = async ( req: Request ) => {
 
-    if(!req.body) return new ResponseModel('#','Data ingresada no validad.');
+    if(Object.keys(req.body).length === 0) return new ResponseModel('#','Data ingresada no validad.');
 
     validarCamposProducto(req.body);
 
@@ -53,12 +54,33 @@ const updateEstadoProductoById = async ( req: Request ) => {
     return _updateEstadoProducto(req.body.id,req.body.estado);
 };
 
-const getAllProductos = async () => {return _getAllProductos()};
+const getAllPublicProductos = async () => {
+
+    const productos: ProductoModel[] = await _getAllProductos();
+
+    return new ResponseModel(
+        '#SP', 
+        productos
+    );
+};
+
+const getAllProductos = async ( req: Request ) => {
+
+    await validarToken(req);
+
+    const productos: ProductoModel[] = await _getAllProductos();
+
+    return new ResponseModel(
+        '#SP', 
+        productos
+    );
+};
 
 export { 
     insertProducto, 
     getProductoById, 
     updateProductoById, 
     updateEstadoProductoById,
-    getAllProductos
+    getAllProductos,
+    getAllPublicProductos
 };

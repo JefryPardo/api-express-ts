@@ -43,16 +43,16 @@ const login = async ( req: Request ) => {
     const rolesActivos: string[] = rols.filter(rol => rol.estado === 'activo').map(rol => rol.rol);
     if(rolesActivos.length < 1) throw NewExcepcion('FATALERROR','login:rolesActivos');
     
-    const token = await getToken(usuario.id);
+    const token = await getToken(usuario.id, rolesActivos);
     
-    const response: LoginResponseModel = {
-        "token": token,
-        "roles": rolesActivos
-    }
+    // const response: LoginResponseModel = {
+    //     "token": token,
+    //     "roles": rolesActivos
+    // }
 
     return new ResponseModel(
         '#SL', 
-        response
+        token
     );
 };
 

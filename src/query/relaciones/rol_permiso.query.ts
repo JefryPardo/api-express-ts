@@ -15,8 +15,6 @@ const insertRolPermiso = async ( {id_rol, id_permiso}:RolPermisoModel ) => {
             [id_rol, id_permiso]
         );
         
-        console.log(respuesta);
-        
     } catch (error) {
         
         logger.error(`Error en insertRolPermiso:  ${error}`);
@@ -43,8 +41,6 @@ const getRolPermisoById = async ( id: string  ) => {
                 id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {
@@ -73,8 +69,6 @@ const getRolPermisoByIdRol = async ( id_rol: string  ) => {
                 id_rol = ${id_rol}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {
@@ -96,8 +90,6 @@ const deleteRolPermisoById = async ( id: string  ) => {
             `DELETE FROM rol_permiso WHERE id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {

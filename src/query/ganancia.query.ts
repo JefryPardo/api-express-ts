@@ -15,8 +15,6 @@ const _insertGanancia = async ( {id_usuario, id_producto, porcentaje_ganancia}:G
             [id_usuario, id_producto, porcentaje_ganancia]
         );
         
-        console.log(respuesta);
-        
     } catch (error) {
         
         logger.error(`Error en insertGanancia:  ${error}`);
@@ -44,8 +42,6 @@ const _getGananciaById = async ( id: string  ) => {
                 id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {
@@ -125,8 +121,6 @@ const _getGananciaByIdUsuario = async ( idUsuario: string  ) => {
             id_usuario = ${idUsuario}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {
@@ -164,7 +158,6 @@ const _updateGananciaById = async (id: string, porcentaje_ganancia: string) => {
 
     } catch (error) {
 
-        console.error('Error en updateUsuario:', error);
         throw 'Error inesperado al actualizar usuario.';
     } finally {
         
