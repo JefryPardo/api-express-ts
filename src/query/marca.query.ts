@@ -44,7 +44,6 @@ const _insertMarca = async ( marca:string ) => {
             [marca]
         );
         
-        console.log(respuesta);
         
     } catch (error) {
         
@@ -71,8 +70,6 @@ const _getMarcaById = async ( id: string  ) => {
                 id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {
@@ -96,8 +93,6 @@ const _updateMarca = async ( id:string, marca: string ) => {
             WHERE id = ${id}`
         );
         
-        console.log(respuesta.rows);
-
         return respuesta.rows;
 
     } catch (error) {

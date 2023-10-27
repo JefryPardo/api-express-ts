@@ -57,8 +57,6 @@ const validarAlfaNumerico = ( cadena: string ): validarAlfanumericoModel  => {
     
     const regexp = new RegExp(regxp);
     const res = regexp.test(cadena);
-    console.log(res);
-
     let estado = false;
 
     const respuesta = {

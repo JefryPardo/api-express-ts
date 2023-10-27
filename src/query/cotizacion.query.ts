@@ -38,7 +38,6 @@ const _insertCotizacion = async (cotizacion: CotizacionModel) => {
 
     } catch (error) {
         
-        console.error('Error en insertCotizacion:', error);
         throw 'Error inesperado al insertar cotizacion.';
     }finally {
         
@@ -63,7 +62,6 @@ const _getCotizacionByIdUsuario = async (id_usuario: string):Promise<CotizacionM
 
     } catch (error) {
 
-        console.error('Error en getCotizacionByIdUsuario:', error);
         throw 'Error inesperado al obtener cotizacion por ID.';
     } finally {
         
@@ -88,7 +86,6 @@ const _getCotizacionById = async (id: string):Promise<CotizacionModel> => {
 
     } catch (error) {
 
-        console.error('Error en _getCotizacionById:', error);
         throw 'Error inesperado al obtener cotizacion por ID.';
     } finally {
         
@@ -109,7 +106,6 @@ const _getCotizacionByNombreAndUsuario = async (nombre: string, id_usuario:strin
 
     } catch (error) {
 
-        console.error('Error en _getCotizacionByNombre:', error);
         throw 'Error inesperado al obtener cotizacion por usuario.';
     } finally {
         
@@ -154,7 +150,6 @@ const _updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
 
     } catch (error) {
 
-        console.error('Error en updateCotizacion:', error);
         throw 'Error inesperado al actualizar cotizacion.';
     } finally {
         

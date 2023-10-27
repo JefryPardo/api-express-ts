@@ -4,7 +4,7 @@ import { logger } from '../logs/logger';
 import { Request } from "express";
 
 
-const getToken = async (id: string): Promise<string> => {
+const getToken = async (id: string, roles: string[]): Promise<string> => {
     
     try {
         
@@ -15,7 +15,8 @@ const getToken = async (id: string): Promise<string> => {
         const token = jwt.sign(
             {
                 sub: id,
-                exp: Date.now() + 60 * 1000
+                roles:roles,
+                exp: Date.now() + 60 * 60 * 1000
             },
             secretKey
         );
@@ -40,11 +41,9 @@ const validarToken = async (req: Request): Promise<void> => {
         if(typeof bearerHeader == undefined || bearerHeader == undefined)  throw NewExcepcion('TOKENEXCEPCION');
 
         const token = bearerHeader.split(" ")[1];
-        console.log(token);
-
         const payload:any = jwt.verify(token, secretKey);
 
-        if (Date.now() > payload.exp) throw NewExcepcion('SECRETEXCEPCION')
+        if (Date.now() > payload.exp) throw NewExcepcion('TOKENEXPIRADOEXCEPCION');
         
     } catch (error) {
 
