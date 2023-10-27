@@ -7,6 +7,7 @@ import config from 'config';
 import { routerRol } from "./routes/rol.route";
 import { routerAuth } from "./routes/auth/auth.route";
 import { usuarioRouter } from "./routes/usuario.route";
+import { routerMail } from "./routes/mail/mail.route";
 
 const _origin:      string = config.get('config.origin');
 const _methods:      string = config.get('config.methods');
@@ -25,5 +26,6 @@ app.use(express.json());
 app.use(`${_contextPath}/rol`,      routerRol);
 app.use(`${_contextPath}/usuario`,  usuarioRouter);
 app.use(`${_contextPath}/auth`,     routerAuth);
+app.use(`${_contextPath}/mail`,     routerMail);
 
 app.listen(_puerto, () => logger.info(`Servidor listo, puerto: ${_puerto} - Ambiente: ${_ambiente}`) );
