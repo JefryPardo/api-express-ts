@@ -40,3 +40,9 @@ npm install @types/zxcvbn --save-dev
 
 #Nos ayuda con el tema de fechas y su formato
 npm install moment
+
+
+#Para el envio de correos
+npm install nodemailer --save
+npm install --save-dev @types/nodemailer
+

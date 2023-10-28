@@ -15,11 +15,11 @@ const register = async ( req: Request ) => {
     const registro: RegisterModel =  validarCamposRegister(req.body);
 
     const disponibilidad = await validarDisponibilidadUsuario(registro.usuario.trim());
-    if (disponibilidad) return new ResponseModel('#R', 'Usuario no disponible.');
+    if (disponibilidad) return new ResponseModel('#R02', 'Usuario no disponible.');
 
     const sugerencias:string[] = validarEstandaresPassword(req.body);
 
-    if(sugerencias.length > 0) return new ResponseModel('#R', sugerencias);
+    if(sugerencias.length > 0) return new ResponseModel('#R03', sugerencias);
 
     const claveHash:string = await encriptadoDeClave(registro.clave);
 
