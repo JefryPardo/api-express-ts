@@ -145,7 +145,7 @@
 
     "GENERICO": {
         "code": "g",
-        "log": "Error en ",
+        "log": "",
         "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
     },
 

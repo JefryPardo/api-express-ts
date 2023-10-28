@@ -18,6 +18,7 @@ const validarBodyRegister = ( registerBody: any ) => {
             index != "usuario"
         ) {
 
+            console.log('entro: ', index);
             throw NewExcepcion('GENERICO',`Campo: '${index}' no valido.`);
         }
     }
@@ -26,13 +27,13 @@ const validarBodyRegister = ( registerBody: any ) => {
 const validarCamposRegister = ( campos: any ): RegisterModel => {
 
     const registro: RegisterModel = limpiarCamposRegister(campos);
-    
-    if(!validarEmailFormato(registro.usuario))          throw NewExcepcion('CAMPOUSUARIOEXCEPCION');
-    if(validarSoloLetras(registro.nombre))              throw NewExcepcion('CAMPONOMBREEXCEPCION');
-    if(validarSoloLetras(registro.apellido))            throw NewExcepcion('CAMPOAPELLIDOEXCEPCION');
-    if(validarStringNumerico(registro.celular))         throw NewExcepcion('CAMPOCELULAREXCEPCION');
-    if(validarStringNumerico(registro.tipo_documento))  throw NewExcepcion('CAMPOTIPODOCUMENTOEXCEPCION');
-    if(validarStringLetrasNumeros(registro.documento))  throw NewExcepcion('CAMPODOCUMENTOEXCEPCION');
+
+    // if(!validarEmailFormato(registro.usuario))          throw NewExcepcion('CAMPOUSUARIOEXCEPCION');
+    // if(validarSoloLetras(registro.nombre))              throw NewExcepcion('CAMPONOMBREEXCEPCION');
+    // if(validarSoloLetras(registro.apellido))            throw NewExcepcion('CAMPOAPELLIDOEXCEPCION');
+    // if(validarStringNumerico(registro.celular))         throw NewExcepcion('CAMPOCELULAREXCEPCION');
+    // if(validarStringNumerico(registro.tipo_documento))  throw NewExcepcion('CAMPOTIPODOCUMENTOEXCEPCION');
+    // if(validarStringLetrasNumeros(registro.documento))  throw NewExcepcion('CAMPODOCUMENTOEXCEPCION');
     
     return registro;
 }
