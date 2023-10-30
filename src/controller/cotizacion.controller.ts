@@ -2,39 +2,39 @@ import { Request } from "express";
 import { ResponseModel } from "../models/model/response.model";
 import { buildCotizacion, validarCamposCotizacion } from "../utils/validador.cotizacion";
 import { CotizacionModel } from "../models/model/cotizacion.model";
-import { _getCotizacionByIdUsuario, _getCotizacionByNombreAndUsuario, _insertCotizacion, _updateCotizacion } from "../query/cotizacion.query";
-import { esFormatoValido } from "../utils/validador";
+import { _getCotizacionById, _getCotizacionByIdUsuario, _getCotizacionByNombreAndUsuario, _insertCotizacion, _updateCotizacion } from "../query/cotizacion.query";
 import { NewExcepcion } from "../excepcion/excepcion";
 import { validarToken } from "./jwt.controlle";
-import { _getUsuarioById } from "../query/usuario.query";
+import { _getUsuarioById, _getUsuarioByUsuario } from "../query/usuario.query";
 
 const insertCotizacion = async ( req: Request ) => {
 
     await validarToken(req);
 
-    if(!req.body) {
-
-        return new ResponseModel('#','Data ingresada no validad.');
-    }
+    if(Object.keys(req.body).length === 0) return new ResponseModel('#','Data ingresada no validad.');
 
     validarCamposCotizacion(req.body);
 
-    const cotizacion: CotizacionModel = buildCotizacion(req.body);
+    let cotizacion: CotizacionModel = buildCotizacion(req.body);
 
-    if(esFormatoValido(cotizacion.id_usuario)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+    cotizacion.fecha_creacion = obtenerFechaConFormato();
 
     const usuario = await _getUsuarioById(cotizacion.id_usuario);
 
     if(!usuario || usuario.estado == 'inactivo')  throw NewExcepcion('GENERICO');
 
     const invalido = await getCotizacionByNombreAndUsuario(
-        usuario.id,
-        cotizacion.nombre
+        cotizacion.nombre,
+        usuario.id
     );
 
-    if(invalido) throw NewExcepcion('GENERICO');
+    if(invalido) throw NewExcepcion('NOMBRECOTIZACIONEXCEPCION');
 
-    return _insertCotizacion(cotizacion);
+    const response = await _insertCotizacion(cotizacion);
+
+    if(!response) throw NewExcepcion('GENERICO');
+
+    return new ResponseModel('#CS', 'Se inserto correctamente.');
 };
 
 const getCotizacionesByIdUsuario = async ( req: Request ) => {
@@ -45,29 +45,43 @@ const getCotizacionesByIdUsuario = async ( req: Request ) => {
 
     const id_usuario:string = req.params.id;
 
-    if(esFormatoValido(id_usuario)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+    let response = await _getUsuarioById(id_usuario);
+    if(response == null) throw NewExcepcion('GENERICO');
 
-    return _getCotizacionByIdUsuario(id_usuario);
+    const cotizaciones: CotizacionModel[] = await _getCotizacionByIdUsuario(id_usuario);
+
+    return new ResponseModel(
+        '#SC', 
+        cotizaciones
+    );
 };
 
 const updateCotizacion = async ( req: Request ) => {
 
-    await validarToken(req);
+    // await validarToken(req);
 
-    if(!req.body) {
+    // if(!req.body) {
 
-        return new ResponseModel('#','Data ingresada no validad.');
-    }
+    //     return new ResponseModel('#','Data ingresada no validad.');
+    // }
 
-    validarCamposCotizacion(req.body);
+    // validarCamposCotizacion(req.body);
 
-    const cotizacion: CotizacionModel = buildCotizacion(req.body);
+    // const cotizacion: CotizacionModel = buildCotizacion(req.body);
 
-    return _updateCotizacion(cotizacion.id, cotizacion);
+    // return _updateCotizacion(cotizacion.id, cotizacion);
 };
 
 
-
+const obtenerFechaConFormato = () => {
+    
+    const fechaActual = new Date();
+    const dia = fechaActual.getDate().toString().padStart(2, '0');
+    const mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0');
+    const año = fechaActual.getFullYear();
+  
+    return `${dia}/${mes}/${año}`;
+}
 
 
 const getCotizacionByNombreAndUsuario = async ( nombre: string, id_usuario:string ) => {
@@ -75,12 +89,27 @@ const getCotizacionByNombreAndUsuario = async ( nombre: string, id_usuario:strin
     return _getCotizacionByNombreAndUsuario(nombre,id_usuario);
 };
 
+const getCotizacionesById = async ( req: Request ) => {
 
+    await validarToken(req);
+
+    if(!req.params.id) throw NewExcepcion('GENERICO');
+
+    const id:string = req.params.id;
+
+    const cotizaciones: CotizacionModel = await _getCotizacionById(id);
+
+    return new ResponseModel(
+        '#GCS', 
+        cotizaciones
+    );
+};
 
 
 export { 
     insertCotizacion, 
     getCotizacionesByIdUsuario, 
     updateCotizacion,
-    getCotizacionByNombreAndUsuario
+    getCotizacionByNombreAndUsuario,
+    getCotizacionesById
 };

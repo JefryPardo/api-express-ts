@@ -9,7 +9,7 @@ import { _getProductoById } from "../../query/producto.query";
 import { ProductoModel } from "../../models/model/producto.model";
 import { CotizacionModel } from "../../models/model/cotizacion.model";
 import { _getCotizacionById } from "../../query/cotizacion.query";
-import { _deleteCotizacionProductoById, _getCotizacionProductoByidCotizacionAndIdProducto, _insertCotizacionProducto } from "../../query/relaciones/cotizacion_producto";
+import { _deleteCotizacionProductoById, _getCotizacionProductoByIdCotizacion, _getCotizacionProductoByidCotizacionAndIdProducto, _insertCotizacionProducto } from "../../query/relaciones/cotizacion_producto";
 
 const insertCotizacionProducto = async ( req: Request ) => {
 
@@ -65,6 +65,20 @@ const deleteCotizacionProductoById = async ( req: Request ) => {
 
 };
 
+const getCategoriaProductoAll = async ( req: Request ) => {
+
+    const id_cotizacion:string = req.params.id;
+    await validarToken(req);
+
+    const cotizacion_producto: CotizacionProductoModel[] = await _getCotizacionProductoByIdCotizacion(id_cotizacion);
+
+    return new ResponseModel(
+        '#GCPS', 
+        cotizacion_producto
+    );
+};
+
 export {
-    insertCotizacionProducto
+    insertCotizacionProducto,
+    getCategoriaProductoAll
 }

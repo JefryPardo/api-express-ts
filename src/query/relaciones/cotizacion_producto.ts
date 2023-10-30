@@ -76,15 +76,15 @@ const _getCotizacionProductoByIdCotizacion = async ( id_rol: string  ) => {
             FROM 
                 cotizacion_producto
             WHERE 
-                id_cotizacion = ${id_rol}`
+                id_cotizacion = '${id_rol}'`
         );
         
-        return respuesta.rows;
+        const cotizacion_list :CotizacionProductoModel[] = respuesta.rows; 
+        return cotizacion_list;
 
     } catch (error) {
         
-        logger.error(`Error en getCotizacionProductoByIdCotizacion:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #CP05";
+        throw NewExcepcion('FATALERROR','_getCotizacionById',error);
     }finally {
         
         consulta.end();

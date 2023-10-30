@@ -25,9 +25,12 @@ const getProductoById = async ( req: Request ) => {
 
     const idProducto:string = req.params.id;
 
-    // if(esFormatoValido(idProducto)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
+    const producto: ProductoModel = await _getProductoById(idProducto);
 
-    return _getProductoById(idProducto);
+    return new ResponseModel(
+        '#SP', 
+        producto
+    );
 };
 
 const updateProductoById = async ( req: Request ) => {

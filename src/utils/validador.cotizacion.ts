@@ -9,14 +9,12 @@ const buildCotizacion = ( data: any ): CotizacionModel => {
         
         let cotizacion = new CotizacionModel();
 
-        cotizacion.id                   = data.id;   
         cotizacion.nombre               = data.nombre;
-        cotizacion.nombre_cliente       = data.id_categoria;
-        cotizacion.cedula_cliente       = data.id_categoria;
-        cotizacion.correo_cliente       = data.id_categoria;
-        cotizacion.fecha_creacion       = data.id_categoria;
-        cotizacion.fecha_vencimiento    = data.id_categoria;
-        cotizacion.id_usuario           = data.id_categoria;
+        cotizacion.nombre_cliente       = data.nombre_cliente;
+        cotizacion.cedula_cliente       = data.cedula_cliente;
+        cotizacion.correo_cliente       = data.correo_cliente;
+        cotizacion.fecha_vencimiento    = data.fecha_vencimiento;
+        cotizacion.id_usuario           = data.id_usuario;
 
         return cotizacion;
 
@@ -32,12 +30,10 @@ const validarCamposCotizacion = ( cotizacionBody: any ) => {
     for (let index in cotizacionBody) {
 
         if(
-            index != "id"                   && 
-            index != "nombre"       &&
+            index != "nombre"               &&
             index != "nombre_cliente"       &&
             index != "cedula_cliente"       &&
             index != "correo_cliente"       &&
-            index != "fecha_creacion"       &&
             index != "fecha_vencimiento"    &&
             index != "id_usuario"           
         ) {

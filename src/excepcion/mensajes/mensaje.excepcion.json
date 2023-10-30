@@ -171,5 +171,17 @@
         "code": "#feq",
         "log": "",
         "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+
+    "NOMBRECOTIZACIONEXCEPCION": {
+        "code": "#NCE",
+        "log": "Nombre de la cotizacion no disponible.",
+        "mensaje": "Nombre no disponible."
+    },
+    
+    "FINDCOTIZACIONEXCEPCION": {
+        "code": "#FCNF",
+        "log": "No se encontro ninguna cotización con el id ingresado.",
+        "mensaje": "Cotizacion no encontrada."
     }
 }

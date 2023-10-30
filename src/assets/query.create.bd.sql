@@ -59,8 +59,8 @@ CREATE TABLE Ganancia (
 
 CREATE TABLE Cotizacion_Producto (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    id_usuario VARCHAR(255),
-    id_categoria VARCHAR(255)
+    id_producto VARCHAR(255),
+    id_cotizacion VARCHAR(255)
 );
 
 CREATE TABLE Producto (
@@ -81,8 +81,13 @@ CREATE TABLE Producto (
 
 CREATE TABLE Cotizacion (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    id_producto VARCHAR(255),
-    id_cotizacion VARCHAR(255)
+    nombre VARCHAR(255),
+    fecha_creacion VARCHAR(255),
+    fecha_vencimiento VARCHAR(255),
+    nombre_cliente VARCHAR(255),
+    cedula_cliente VARCHAR(255),
+    correo_cliente VARCHAR(255),
+    id_usuario VARCHAR(255)
 );
 
 CREATE TABLE Marca (

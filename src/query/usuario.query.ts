@@ -64,8 +64,8 @@ const _getUsuarioById = async (id: string) => {
     
     try {
         
-        const query = 'SELECT * FROM usuario WHERE id = $1';
-        const result = await consulta.query(query, [id]);
+        const query = `SELECT * FROM usuario WHERE id = '${id}'`;
+        const result = await consulta.query(query);
         
         let response:UsuarioModel = new UsuarioModel(); 
 
@@ -114,6 +114,7 @@ const _getUsuarioByUsuario = async (usuario: string):Promise<UsuarioModel | null
     try {
         
         const query = `SELECT * FROM usuario WHERE usuario = '${usuario}'`;
+
         const result = await consulta.query(query);
         
         if(result.rows[0]){
