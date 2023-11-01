@@ -15,17 +15,11 @@ const insertCotizacionProducto = async ( req: Request ) => {
 
     await validarToken(req);
 
-    if(!req.body) {
-
-        return new ResponseModel('#','Data ingresada no validad.');
-    }
+    if(Object.keys(req.body).length === 0) return new ResponseModel('#','Data ingresada no validad.');
 
     validarCamposCotizacionProducto(req.body);
 
     const cotizacion_producto: CotizacionProductoModel = buildCotizacionProducto(req.body);
-
-    if(esFormatoValido(cotizacion_producto.id_cotizacion)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
-    if(esFormatoValido(cotizacion_producto.id_producto)) throw NewExcepcion('IDNOVALIDOEXCEPCION');
 
     const producto:ProductoModel = await _getProductoById(cotizacion_producto.id_producto);
     if(!producto)  throw NewExcepcion('GENERICO');
@@ -34,15 +28,20 @@ const insertCotizacionProducto = async ( req: Request ) => {
     if(!cotizacion)  throw NewExcepcion('GENERICO');
     
     const invalid:boolean = await _getCotizacionProductoByidCotizacionAndIdProducto(
+        cotizacion_producto.id_producto,
+        cotizacion_producto.id_cotizacion
+    );
+        
+    if(invalid)  throw NewExcepcion('GENERICO');
+
+    const estado_insert:boolean = await _insertCotizacionProducto(
         cotizacion_producto.id_cotizacion,
         cotizacion_producto.id_producto
     );
-        
-    if(!invalid)  throw NewExcepcion('GENERICO');
 
-    return _insertCotizacionProducto(
-        cotizacion_producto.id_cotizacion,
-        cotizacion_producto.id_producto
+    return new ResponseModel(
+        '#ICPS', 
+        estado_insert
     );
 };
 
@@ -60,9 +59,6 @@ const deleteCotizacionProductoById = async ( req: Request ) => {
     const response:boolean = await _deleteCotizacionProductoById(id);
 
     if(!response) throw NewExcepcion('GENERICO');
-
-    
-
 };
 
 const getCategoriaProductoAll = async ( req: Request ) => {

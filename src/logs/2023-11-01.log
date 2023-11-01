@@ -1,0 +1,40 @@
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-01 16:04:13 | Token ingresado expirado.
+error:  time: 2023-11-01 16:04:13 metodo: validarToken | Error: time: Wed Nov 01 2023 16:04:13 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-01 16:04:18 | Token ingresado expirado.
+error:  time: 2023-11-01 16:04:18 metodo: validarToken | Error: time: Wed Nov 01 2023 16:04:18 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-01 16:43:32 | Id ingresado no cumple con el formato requerido.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error: Error en _getCotizacionProductoByidCotizacionAndIdProducto: error de sintaxis en o cerca de «d0» {"code":"42601","file":"scan.l","length":102,"line":"1180","name":"error","position":"125","routine":"scanner_yyerror","severity":"ERROR","stack":"error: error de sintaxis en o cerca de «d0»\n    at C:\\Users\\jeffr\\Documents\\universidad\\Tesis\\tesis-back\\api-express-ts\\node_modules\\pg\\lib\\client.js:526:17\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"}
+error:  time: 2023-11-01 16:45:53 | 
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-01 16:46:50 | 
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-01 16:48:34 | 
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-01 16:50:56 | 
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-01 16:52:11 | 
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-01 16:52:39 | 
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: insert cotizacion_producto success
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-01 17:05:54 | Token ingresado expirado.
+error:  time: 2023-11-01 17:05:54 metodo: validarToken | Error: time: Wed Nov 01 2023 17:05:54 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-01 17:05:56 | Token ingresado expirado.
+error:  time: 2023-11-01 17:05:56 metodo: validarToken | Error: time: Wed Nov 01 2023 17:05:56 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+info: Servidor listo, puerto: 8083 - Ambiente: local

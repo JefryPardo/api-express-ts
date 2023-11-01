@@ -11,24 +11,14 @@ const _insertCotizacionProducto = async ( id_cotizacion:string, id_producto:stri
     try {
         
         const respuesta = await consulta.query(
-            `INSERT INTO 
-                cotizacion_producto (id_cotizacion, id_producto) 
-                VALUES ($1,$2)`, 
-            [id_cotizacion, id_producto]
+            `INSERT INTO cotizacion_producto (id_cotizacion, id_producto) VALUES ('${id_cotizacion}','${id_producto}')`
         );
 
-        if(respuesta.rowCount === 1) {
-        
-            logger.info(`insert cotizacion_producto success`);
-            return new ResponseModel('#','Se guardo correctamente cotizacion_producto.');
-        }
-
-        throw  NewExcepcion('INSERTROLEXCEPCION');
+        return (respuesta.rowCount === 1)
         
     } catch (error) {
         
-        logger.error(`Error en insertCotizacionProducto:  ${error}`);
-        throw `Error inesperado, por favor reportar al administrador. #CP02`;
+        throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     } finally {
 
         consulta.end();
@@ -118,16 +108,14 @@ const _getCotizacionProductoByidCotizacionAndIdProducto = async (id_producto: st
     
     try {
 
-        const query = `SELECT * FROM cotizacion_producto WHERE id_producto = '${id_producto}' and id_cotizacion = ${id_cotizacion}`;
+        const query = `SELECT * FROM cotizacion_producto WHERE id_producto = '${id_producto}' and id_cotizacion = '${id_cotizacion}'`;
         
         const result = await consulta.query(query);
-
         return result.rows[0]? true:false;
 
     } catch (error) {
 
-        logger.error('Error en _getCotizacionProductoByidCotizacionAndIdProducto:', error);
-        throw NewExcepcion('GENERICO');
+        throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     } finally {
         
         consulta.end();

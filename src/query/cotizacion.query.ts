@@ -101,13 +101,9 @@ const _getCotizacionByNombreAndUsuario = async (nombre: string, id_usuario:strin
     
     try {
         
-        console.log('nombre: ',nombre);
-        console.log('id_usuario: ',id_usuario);
         const query = `SELECT * FROM cotizacion WHERE nombre = '${nombre}' and id_usuario = '${id_usuario}'`;
         const result = await consulta.query(query);
         
-        console.log('response1: ',result.rows[0]);
-
         return result.rows[0]? true:false;
 
     } catch (error) {

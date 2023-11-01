@@ -9,7 +9,6 @@ const buildCotizacionProducto = ( data: any ): CotizacionProductoModel => {
         
         let cotizacion_producto = new CotizacionProductoModel();
 
-        cotizacion_producto.id              = data.id;   
         cotizacion_producto.id_cotizacion   = data.id_cotizacion;
         cotizacion_producto.id_producto     = data.id_producto;
 
@@ -27,7 +26,6 @@ const validarCamposCotizacionProducto = ( cotizacionProductoBody: any ) => {
     for (let index in cotizacionProductoBody) {
 
         if(
-            index != "id"                   && 
             index != "id_cotizacion"        &&
             index != "id_producto"            
         ) {
