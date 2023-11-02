@@ -59,6 +59,7 @@ CREATE TABLE Ganancia (
 
 CREATE TABLE Cotizacion_Producto (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    cantidad VARCHAR(255),
     id_producto VARCHAR(255),
     id_cotizacion VARCHAR(255)
 );

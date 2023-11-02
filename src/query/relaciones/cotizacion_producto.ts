@@ -1,17 +1,15 @@
 import { NewExcepcion } from "../../excepcion/excepcion";
-import { logger } from "../../logs/logger";
 import { CotizacionProductoModel } from "../../models/model/cotizacion-producto.model";
-import { ResponseModel } from "../../models/model/response.model";
 import { conexion } from "../conexion";
 
-const _insertCotizacionProducto = async ( id_cotizacion:string, id_producto:string ) => {
+const _insertCotizacionProducto = async ( cantidad:string, id_cotizacion:string, id_producto:string ) => {
 
     const consulta = await conexion();
 
     try {
         
         const respuesta = await consulta.query(
-            `INSERT INTO cotizacion_producto (id_cotizacion, id_producto) VALUES ('${id_cotizacion}','${id_producto}')`
+            `INSERT INTO cotizacion_producto (cantidad,id_cotizacion, id_producto) VALUES ('${cantidad}','${id_cotizacion}','${id_producto}')`
         );
 
         return (respuesta.rowCount === 1)
@@ -33,6 +31,7 @@ const _getCotizacionProductoById = async ( id: string  ) => {
         const respuesta = await consulta.query(
             `SELECT 
                 id, 
+                cantidad,
                 id_producto,
                 id_cotizacion
             FROM 
@@ -45,8 +44,7 @@ const _getCotizacionProductoById = async ( id: string  ) => {
 
     } catch (error) {
         
-        logger.error(`Error en getRolPermisoById:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #RP04";
+        throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     }finally {
         
         consulta.end();
@@ -87,15 +85,18 @@ const _deleteCotizacionProductoById = async ( id: string  ) => {
     try {
         
         const respuesta = await consulta.query(
-            `DELETE FROM cotizacion_producto WHERE id = ${id}`
+            `DELETE FROM cotizacion_producto WHERE id = '${id}'`
         );
         
-        return respuesta.rows[0]? true:false;
+        if (respuesta.rowCount > 0) {
+            return true;
+        } else {
+            return false;
+        }
 
     } catch (error) {
         
-        logger.error(`Error en deleteCotizacionProductoById:  ${error}`);
-        throw "Error inesperado, por favor reportar al administrador. #CP05";
+        throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     }finally {
         
         consulta.end();
@@ -122,10 +123,37 @@ const _getCotizacionProductoByidCotizacionAndIdProducto = async (id_producto: st
     }
 };
 
+const _updateCotizacionProducto = async ( id:string, cantidad:string ) => {
+
+    const consulta = await conexion();
+    try {
+        
+        const respuesta = await consulta.query(
+            `UPDATE cotizacion_producto
+            SET cantidad = '${cantidad}'
+            WHERE id = ${id}`
+        );
+        
+        if (respuesta.rowCount === 1) {
+            return true;
+        } else {
+            return false;
+        }
+
+    } catch (error) {
+        
+        throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
+    }finally {
+        
+        consulta.end();
+    }
+}
+
 export { 
     _insertCotizacionProducto, 
     _getCotizacionProductoById,
     _getCotizacionProductoByIdCotizacion,
     _deleteCotizacionProductoById,
-    _getCotizacionProductoByidCotizacionAndIdProducto
+    _getCotizacionProductoByidCotizacionAndIdProducto,
+    _updateCotizacionProducto
 };

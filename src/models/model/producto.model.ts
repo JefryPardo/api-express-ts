@@ -6,7 +6,7 @@ export class ProductoModel {
     url_imagen          : string[];
     referencia          : string;
     referencia_local    : string;
-    precio              : string;
+    precio              : number;
     ficha_tecnica       : string;
     unidades            : string;
     estado              : string;

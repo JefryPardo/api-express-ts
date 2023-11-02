@@ -10,17 +10,18 @@ const buildProducto = ( data: any ):ProductoModel => {
         let producto = new ProductoModel();
 
         producto.id                = data.id;   
-        producto.nombre            = data.permiso;
-        producto.precio            = data.estado;
-        producto.referencia        = data.estado;
-        producto.referencia_local  = data.estado;
-        producto.unidades          = data.estado;
-        producto.url_imagen        = data.estado;
-        producto.descripcion       = data.estado;
-        producto.ficha_tecnica     = data.estado;
-        producto.id_categoria      = data.estado;
-        producto.id_marca          = data.estado;
-        producto.id_tipo           = data.estado;
+        producto.nombre            = data.nombre;
+        producto.descripcion       = data.descripcion;
+        producto.url_imagen        = data.url_imagen;
+        producto.referencia        = data.referencia;
+        producto.referencia_local  = data.referencia_local;
+        producto.precio            = data.precio;
+        producto.ficha_tecnica     = data.ficha_tecnica;
+        producto.unidades          = data.unidades;
+        producto.estado            = data.estado;
+        producto.id_categoria      = data.id_categoria;
+        producto.id_tipo           = data.id_tipo;
+        producto.id_marca          = data.id_marca;
 
         return producto;
     } catch (error) {
