@@ -59,6 +59,7 @@ const _getCotizacionProductoByIdCotizacion = async ( id_rol: string  ) => {
         const respuesta = await consulta.query(
             `SELECT 
                 id, 
+                cantidad,
                 id_producto,
                 id_cotizacion
             FROM 
