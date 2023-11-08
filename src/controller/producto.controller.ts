@@ -1,11 +1,9 @@
 import { Request } from "express";
+import { validarToken } from "./jwt.controlle";
 import { ResponseModel } from "../models/model/response.model";
 import { buildProducto, validarCamposProducto } from "../utils/validador.producto";
 import { ProductoModel } from "../models/model/producto.model";
 import { _getAllProductos, _getProductoById, _insertProducto, _updateEstadoProducto, _updateProducto } from "../query/producto.query";
-import { esFormatoValido } from "../utils/validador";
-import { NewExcepcion } from "../excepcion/excepcion";
-import { validarToken } from "./jwt.controlle";
 
 const insertProducto = async ( req: Request ) => {
 

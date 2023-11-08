@@ -80,13 +80,13 @@ const _getCotizacionProductoByIdCotizacion = async ( id_rol: string  ) => {
     }
 }
 
-const _deleteCotizacionProductoById = async ( id: string  ) => {
+const _deleteCotizacionProductoByIds = async ( id_cotizacion: string, id_producto: string  ) => {
 
     const consulta = await conexion();
     try {
         
         const respuesta = await consulta.query(
-            `DELETE FROM cotizacion_producto WHERE id = '${id}'`
+            `DELETE FROM cotizacion_producto WHERE id_cotizacion = '${id_cotizacion}' and id_producto = '${id_producto}'`
         );
         
         if (respuesta.rowCount > 0) {
@@ -154,7 +154,7 @@ export {
     _insertCotizacionProducto, 
     _getCotizacionProductoById,
     _getCotizacionProductoByIdCotizacion,
-    _deleteCotizacionProductoById,
+    _deleteCotizacionProductoByIds,
     _getCotizacionProductoByidCotizacionAndIdProducto,
     _updateCotizacionProducto
 };
