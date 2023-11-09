@@ -10,7 +10,7 @@ export class ProductoModel {
     ficha_tecnica       : string;
     unidades            : string;
     estado              : string;
-    id_categoria        : string;
-    id_tipo             : string;
-    id_marca            : string;
+    categoria        : string;
+    tipo             : string;
+    marca            : string;
 }

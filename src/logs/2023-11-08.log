@@ -1,3 +1,28 @@
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-08 18:01:37 | Token ingresado expirado.
+error:  time: 2023-11-08 18:01:37 metodo: validarToken | Error: time: Wed Nov 08 2023 18:01:37 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 19:01:55 | Token ingresado expirado.
+error:  time: 2023-11-08 19:01:55 metodo: validarToken | Error: time: Wed Nov 08 2023 19:01:55 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 19:01:57 | Token ingresado expirado.
+error:  time: 2023-11-08 19:01:57 metodo: validarToken | Error: time: Wed Nov 08 2023 19:01:57 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 19:02:00 | Token ingresado expirado.
+error:  time: 2023-11-08 19:02:00 metodo: validarToken | Error: time: Wed Nov 08 2023 19:02:00 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-08 20:05:17 | Token ingresado expirado.
+error:  time: 2023-11-08 20:05:17 metodo: validarToken | Error: time: Wed Nov 08 2023 20:05:17 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 20:05:27 | Token ingresado expirado.
+error:  time: 2023-11-08 20:05:27 metodo: validarToken | Error: time: Wed Nov 08 2023 20:05:27 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 20:05:44 | Token ingresado expirado.
+error:  time: 2023-11-08 20:05:44 metodo: validarToken | Error: time: Wed Nov 08 2023 20:05:44 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 21:06:47 | Token ingresado expirado.
+error:  time: 2023-11-08 21:06:47 metodo: validarToken | Error: time: Wed Nov 08 2023 21:06:47 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 21:06:50 | Token ingresado expirado.
+error:  time: 2023-11-08 21:06:50 metodo: validarToken | Error: time: Wed Nov 08 2023 21:06:50 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 22:07:16 | Token ingresado expirado.
+error:  time: 2023-11-08 22:07:16 metodo: validarToken | Error: time: Wed Nov 08 2023 22:07:16 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-08 22:07:18 | Token ingresado expirado.
+error:  time: 2023-11-08 22:07:18 metodo: validarToken | Error: time: Wed Nov 08 2023 22:07:18 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.

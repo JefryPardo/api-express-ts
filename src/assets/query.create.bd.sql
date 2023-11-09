@@ -75,9 +75,9 @@ CREATE TABLE Producto (
     ficha_tecnica VARCHAR(255),
     unidades VARCHAR(255),
     estado VARCHAR(255),
-    id_categoria VARCHAR(255),
-    id_tipo VARCHAR(255),
-    id_marca VARCHAR(255)
+    categoria VARCHAR(255),
+    tipo VARCHAR(255),
+    marca VARCHAR(255)
 );
 
 CREATE TABLE Cotizacion (
@@ -102,18 +102,13 @@ CREATE TABLE Tipo (
 );
 
 
-INSERT INTO usuario (id, nombre,apellido, direccion, celular,fecha_creacion, intentos_fallidos, clave, usuario, estado) VALUES ('a2fbca23-dbdb-42f5-beeb-448cf0a19e00','jeff','pardo','call 1','3022318153','2023-10-23 13:32:00','0','$2b$10$lB.eLeFr0xz2Xl7hQ32THu9k/rYW2P0WXKMWxCOrL.8fIQ34NyhDW','jeffryjhoan1996@gmail.con','activo');
+INSERT INTO usuario (id, nombre,apellido, direccion, celular,fecha_creacion, intentos_fallidos, clave, usuario, estado) VALUES ('a2fbca23-dbdb-42f5-beeb-448cf0a19e00','jeff','pardo','call 1','3022318153','2023-10-23 13:32:00','0','$2b$10$lB.eLeFr0xz2Xl7hQ32THu9k/rYW2P0WXKMWxCOrL.8fIQ34NyhDW','jeffryjhoan1996@gmail.com','activo');
 INSERT INTO rol (id,rol, estado) VALUES ('b19517e2-b383-4656-8099-67d49ca3a8c7','usuario','activo');
 INSERT INTO usuario_rol (id_usuario, id_rol) VALUES ('a2fbca23-dbdb-42f5-beeb-448cf0a19e00','b19517e2-b383-4656-8099-67d49ca3a8c7');
 
-INSERT INTO categoria (nombre) values('camara'),('televisor'),('celular'),('portatil');
-INSERT INTO tipo (tipo) values('led'),('smart'),('slim'),('digital');
-INSERT INTO marca (marca) values('lg'),('samsung'),('sony'),('acer');
-
-
-INSERT INTO producto (nombre, descripcion, url_imagen, referencia, referencia_local, precio, ficha_tecnica, unidades, estado, id_categoria, id_tipo, id_marca)
+INSERT INTO producto (nombre, descripcion, url_imagen, referencia, referencia_local, precio, ficha_tecnica, unidades, estado, categoria, tipo, marca)
 VALUES
-    ('Laptop Acer', 'Una poderosa laptop Acer', ARRAY['https://olimpica.vtexassets.com/arquivos/ids/1065780-1200-auto?v=638161519133700000&width=1200&height=auto&aspect=true'], '12345', 'ACER-001', 1230400.99, 'Especificaciones de la laptop', '10 unidades', 'activo', '503ed8e6-bd0d-4260-a498-00e513884fb9', '1', '1'),
-    ('Teléfono Samsung Galaxy S21', 'Un teléfono inteligente de alta gama', ARRAY['https://www.alkosto.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-8806092837812-001.jpg?context=bWFzdGVyfGltYWdlc3wyMDYzODZ8aW1hZ2UvanBlZ3xhRGsxTDJnNVlTOHhNemc1T1RNMU1EVXdOelUxTUM4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2T0Rnd05qQTVNamd6TnpneE1sOHdNREV1YW5CbnwyN2FkNjJmN2RjZTA1MDkxMmQ0NWM5NDM1YjdiZGFkNjVjOGI4ZGRhMjhiZDkyMWY2ZjU4ODhhMjg0MmEzNWVi'], '67890', 'SAMSUNG-001', 799.00, 'Especificaciones del teléfono', '5 unidades', 'activo', 'b0e55f2c-4f20-47a5-bd01-569b867215b6', '2', '2'),
-    ('TV LED LG 55 pulgadas', 'Televisor LG con resolución 4K', ARRAY['https://www.alkosto.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-8806091856739-002.jpg?context=bWFzdGVyfGltYWdlc3wxNjg0Mjh8aW1hZ2UvanBlZ3xhRFV6TDJobFlTOHhNemd4TkRrek5UQTJNRFV4TUM4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2T0Rnd05qQTVNVGcxTmpjek9WOHdNREl1YW5CbnwzOWEwMTdlZmZkYWE3MjI3MjczOGNlNDIxNmNlODlkNWY4NzllOWQ3MDUwZmVjMjI1ZDlkNThmNDI1ZjRiNTMy'], '54321', 'LG-001', 599.99, 'Especificaciones del televisor', '8 unidades', 'activo', '742fb857-5b36-4b7d-9554-593fcd8ffb8b', '3', '3'),
-    ('Cámara Canon EOS Rebel', 'Una cámara réflex digital', ARRAY['https://m.media-amazon.com/images/I/71EWRyqzw0L.jpg','https://m.media-amazon.com/images/I/717xSjyDRzL.jpg','https://m.media-amazon.com/images/I/71YqHRYSluL.jpg'], '98765', 'CANON-001', 699.95, 'Especificaciones de la cámara', '12 unidades', 'activo', '25e06dd6-48a8-4d9e-89d8-6c04e1528407', '4', '4');
+    ('Laptop Acer', 'Una poderosa laptop Acer', ARRAY['https://olimpica.vtexassets.com/arquivos/ids/1065780-1200-auto?v=638161519133700000&width=1200&height=auto&aspect=true'], '12345', 'ACER-001', 1230400.99, 'Especificaciones de la laptop', '10 unidades', 'activo', '', 'equipo', ''),
+    ('Teléfono Samsung Galaxy S21', 'Un teléfono inteligente de alta gama', ARRAY['https://www.alkosto.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-8806092837812-001.jpg?context=bWFzdGVyfGltYWdlc3wyMDYzODZ8aW1hZ2UvanBlZ3xhRGsxTDJnNVlTOHhNemc1T1RNMU1EVXdOelUxTUM4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2T0Rnd05qQTVNamd6TnpneE1sOHdNREV1YW5CbnwyN2FkNjJmN2RjZTA1MDkxMmQ0NWM5NDM1YjdiZGFkNjVjOGI4ZGRhMjhiZDkyMWY2ZjU4ODhhMjg0MmEzNWVi'], '67890', 'SAMSUNG-001', 850799.00, 'Especificaciones del teléfono', '5 unidades', 'activo', '', 'equipo', ''),
+    ('TV LED LG 55 pulgadas', 'Televisor LG con resolución 4K', ARRAY['https://www.alkosto.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-8806091856739-002.jpg?context=bWFzdGVyfGltYWdlc3wxNjg0Mjh8aW1hZ2UvanBlZ3xhRFV6TDJobFlTOHhNemd4TkRrek5UQTJNRFV4TUM4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2T0Rnd05qQTVNVGcxTmpjek9WOHdNREl1YW5CbnwzOWEwMTdlZmZkYWE3MjI3MjczOGNlNDIxNmNlODlkNWY4NzllOWQ3MDUwZmVjMjI1ZDlkNThmNDI1ZjRiNTMy'], '54321', 'LG-001', 958599.99, 'Especificaciones del televisor', '8 unidades', 'activo', '', 'material', ''),
+    ('Cámara Canon EOS Rebel', 'Una cámara réflex digital', ARRAY['https://m.media-amazon.com/images/I/71EWRyqzw0L.jpg','https://m.media-amazon.com/images/I/717xSjyDRzL.jpg','https://m.media-amazon.com/images/I/71YqHRYSluL.jpg'], '98765', 'CANON-001', 120699.95, 'Especificaciones de la cámara', '12 unidades', 'activo', '', 'material', '');

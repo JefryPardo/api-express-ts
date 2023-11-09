@@ -19,9 +19,9 @@ const buildProducto = ( data: any ):ProductoModel => {
         producto.ficha_tecnica     = data.ficha_tecnica;
         producto.unidades          = data.unidades;
         producto.estado            = data.estado;
-        producto.id_categoria      = data.id_categoria;
-        producto.id_tipo           = data.id_tipo;
-        producto.id_marca          = data.id_marca;
+        producto.categoria         = data.categoria;
+        producto.tipo              = data.tipo;
+        producto.marca             = data.marca;
 
         return producto;
     } catch (error) {
@@ -46,9 +46,9 @@ const validarCamposProducto = ( productoBody: any ) => {
             index != "descripcion"      &&
             index != "ficha_tecnica"    &&
             index != "estado"           &&
-            index != "id_categoria"     &&
-            index != "id_marca"         &&
-            index != "id_tipo"
+            index != "categoria"     &&
+            index != "marca"         &&
+            index != "tipo"
         ) {
 
             return new ResponseModel('#',`Campo: ${index} no valido.`);

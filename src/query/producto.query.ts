@@ -20,9 +20,9 @@ const _insertProducto = async (producto: ProductoModel) => {
                 ficha_tecnica,
                 unidades,
                 estado,
-                id_categoria,
-                id_tipo,
-                id_marca
+                categoria,
+                tipo,
+                marca
             ) VALUES (
                 $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12
             )
@@ -37,9 +37,9 @@ const _insertProducto = async (producto: ProductoModel) => {
             producto.precio,
             producto.ficha_tecnica,
             producto.unidades,
-            producto.id_categoria,
-            producto.id_tipo,
-            producto.id_marca,
+            producto.categoria,
+            producto.tipo,
+            producto.marca,
         ];
 
         const result = await consulta.query(query, values);
@@ -97,9 +97,9 @@ const _updateProducto = async (id: string, producto: ProductoModel) => {
                 ficha_tecnica = $7,
                 unidades = $8, 
                 estados = $9, 
-                id_categoria = $10, 
-                id_tipo = $11, 
-                id_marca = $12
+                categoria = $10, 
+                tipo = $11, 
+                marca = $12
             WHERE 
                 id = $13
         `;
@@ -114,9 +114,9 @@ const _updateProducto = async (id: string, producto: ProductoModel) => {
             producto.ficha_tecnica,
             producto.unidades,
             producto.estado,
-            producto.id_categoria,
-            producto.id_tipo,
-            producto.id_marca,
+            producto.categoria,
+            producto.tipo,
+            producto.marca,
             id,
         ];
         
@@ -183,9 +183,9 @@ const _getAllProductos = async ():Promise<ProductoModel[]> => {
                     ficha_tecnica,
                     unidades,
                     estado,
-                    id_categoria,
-                    id_tipo,
-                    id_marca
+                    categoria,
+                    tipo,
+                    marca
                 from producto
             `
         );
