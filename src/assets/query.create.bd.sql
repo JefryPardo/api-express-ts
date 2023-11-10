@@ -8,6 +8,21 @@
 --     TABLESPACE = pg_default
 --     CONNECTION LIMIT = -1;
 
+-- CREATE TABLE Marca (
+--     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+--     marca VARCHAR(255)
+-- );
+
+-- CREATE TABLE Tipo (
+--     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+--     tipo VARCHAR(255)
+-- );
+
+-- CREATE TABLE Categoria (
+--     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+--     nombre VARCHAR(255)
+-- );
+
 CREATE TABLE Usuario (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     nombre VARCHAR(255),
@@ -43,11 +58,6 @@ CREATE TABLE Permiso (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     permiso VARCHAR(255),
     estado VARCHAR(255)
-);
-
-CREATE TABLE Categoria (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    nombre VARCHAR(255)
 );
 
 CREATE TABLE Ganancia (
@@ -90,17 +100,6 @@ CREATE TABLE Cotizacion (
     correo_cliente VARCHAR(255),
     id_usuario VARCHAR(255)
 );
-
-CREATE TABLE Marca (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    marca VARCHAR(255)
-);
-
-CREATE TABLE Tipo (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    tipo VARCHAR(255)
-);
-
 
 INSERT INTO usuario (id, nombre,apellido, direccion, celular,fecha_creacion, intentos_fallidos, clave, usuario, estado) VALUES ('a2fbca23-dbdb-42f5-beeb-448cf0a19e00','jeff','pardo','call 1','3022318153','2023-10-23 13:32:00','0','$2b$10$lB.eLeFr0xz2Xl7hQ32THu9k/rYW2P0WXKMWxCOrL.8fIQ34NyhDW','jeffryjhoan1996@gmail.com','activo');
 INSERT INTO rol (id,rol, estado) VALUES ('b19517e2-b383-4656-8099-67d49ca3a8c7','usuario','activo');
