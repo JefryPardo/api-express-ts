@@ -1,2 +1,11 @@
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2023-11-10 15:59:42 | Token ingresado expirado.
+error:  time: 2023-11-10 15:59:42 metodo: validarToken | Error: time: Fri Nov 10 2023 15:59:42 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-10 18:53:37 | Token ingresado expirado.
+error:  time: 2023-11-10 18:53:37 metodo: validarToken | Error: time: Fri Nov 10 2023 18:53:37 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2023-11-10 18:54:23 | 
+error:  time: 2023-11-10 18:54:23 metodo: _getProductoById | Error: time: Fri Nov 10 2023 18:54:23 GMT-0500 (hora estándar de Colombia): 
+error:  time: 2023-11-10 20:02:35 | Token ingresado expirado.
+error:  time: 2023-11-10 20:02:35 metodo: validarToken | Error: time: Fri Nov 10 2023 20:02:35 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.

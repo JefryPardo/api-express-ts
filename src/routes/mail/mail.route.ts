@@ -1,32 +1,15 @@
 import { Router } from "express";
-import { transporter } from "../../service/sendmail.service";
-import { getPlantilla } from "./plantilla";
-
+import { enviarCorreo } from "../../controller/email.controller";
+import { succes,error } from "../../network/response";
 const routerMail = Router();
 
 
-
-
-
-routerMail.get('/enviar-correo', (req, res) => {
+routerMail.post('/enviar-correo', (req: any, res) => {
     
-    const mailOptions = {
-      from: 'pardo0alzate@gmail.com',
-      to: 'jeffry.pardo01@unicatolica.edu.co',
-      subject: 'Cotización',
-      html: getPlantilla(),
-    };
-  
-    transporter.sendMail(mailOptions, (error:any, info:any) => {
-      
-        if (error) {
-        console.error('Error al enviar el correo: ' + error);
-        res.send('Error al enviar el correo');
-      } else {
-        console.log('Correo enviado: ' + info.response);
-        res.send('Correo enviado con éxito');
-      }
-    });
+  enviarCorreo( req )
+  .then(  _res    => succes(  req, res, _res))
+  .catch( _error  => error(   req, res, _error));
 });
+
 
 export {routerMail}
