@@ -1,1 +1,19 @@
+server:
+  port: 8083
+  servlet:
+    contextPath: "/app"
+
 ambiente: produccion
+
+config:
+  origin: 'http://localhost:4200'
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+
+credenciales:
+  host: 'c9pbiquf6p6pfn.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com'
+  user: 'uaanq59dnolmqi'
+  password: 'p5c91b3e820e78381c6a842c61a70c93e2637c1a3c3aeb4943afe15c7a042b2c9'
+  database: 'dcp0tj1o1832v8'
+  port: 5432
+  ssl:
+    rejectUnauthorized: true

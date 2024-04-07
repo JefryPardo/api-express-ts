@@ -16,7 +16,7 @@ import { routerResumen } from "./routes/resumen.route";
 const _origin:      string = config.get('config.origin');
 const _methods:     string = config.get('config.methods');
 const _ambiente:    string = config.get('ambiente');
-const _puerto:      number = config.get('server.port');
+const _puerto:      any    = process.env.PORT || config.get('server.port');
 const _contextPath: string = config.get('server.servlet.contextPath');
 
 const app = express();
