@@ -1,6 +1,6 @@
 import { NewExcepcion } from "../../excepcion/excepcion";
 import { CotizacionProductoModel } from "../../models/model/cotizacion-producto.model";
-import { conexion } from "../conexion";
+import { closeConnection, conexion } from "../conexion";
 
 const _insertCotizacionProducto = async ( cantidad:string, id_cotizacion:string, id_producto:string ) => {
 
@@ -18,8 +18,7 @@ const _insertCotizacionProducto = async ( cantidad:string, id_cotizacion:string,
         
         throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -46,8 +45,7 @@ const _getCotizacionProductoById = async ( id: string  ) => {
         
         throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -75,8 +73,7 @@ const _getCotizacionProductoByIdCotizacion = async ( id_rol: string  ) => {
         
         throw NewExcepcion('FATALERROR','_getCotizacionById',error);
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -99,8 +96,7 @@ const _deleteCotizacionProductoByIds = async ( id_cotizacion: string, id_product
         
         throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -119,8 +115,7 @@ const _getCotizacionProductoByidCotizacionAndIdProducto = async (id_producto: st
 
         throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -145,8 +140,7 @@ const _updateCotizacionProducto = async ( id:string, cantidad:string ) => {
         
         throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 

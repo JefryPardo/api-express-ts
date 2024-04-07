@@ -1,4 +1,6 @@
 info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-07 16:11:22 | Token ingresado expirado.
+error:  time: 2024-04-07 16:11:22 metodo: validarToken | Error: time: Sun Apr 07 2024 16:11:22 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
@@ -13,6 +15,18 @@ info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-07 17:38:20 | Token ingresado expirado.
+error:  time: 2024-04-07 17:38:20 metodo: validarToken | Error: time: Sun Apr 07 2024 17:38:20 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+error:  time: 2024-04-07 17:38:24 | Token ingresado expirado.
+error:  time: 2024-04-07 17:38:24 metodo: validarToken | Error: time: Sun Apr 07 2024 17:38:24 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-07 17:38:52 | Token ingresado expirado.
+error:  time: 2024-04-07 17:38:52 metodo: validarToken | Error: time: Sun Apr 07 2024 17:38:52 GMT-0500 (hora estándar de Colombia): Token ingresado expirado.
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local
 info: Servidor listo, puerto: 8083 - Ambiente: local

@@ -4,6 +4,7 @@ import { ResponseModel } from "../models/model/response.model";
 import { buildProducto, validarCamposProducto } from "../utils/validador.producto";
 import { ProductoModel } from "../models/model/producto.model";
 import { _getAllProductos, _getProductoById, _insertProducto, _updateEstadoProducto, _updateProducto } from "../query/producto.query";
+import { AllProductosModel } from "../models/model/all-productos.model";
 
 const insertProducto = async ( req: Request ) => {
 
@@ -58,10 +59,18 @@ const updateEstadoProductoById = async ( req: Request ) => {
 const getAllPublicProductos = async () => {
 
     const productos: ProductoModel[] = await _getAllProductos();
+    
+    const productosPares    : ProductoModel[]   = productos.filter((_, index) => index % 2 === 0);
+    const productosImpares  : ProductoModel[]   = productos.filter((_, index) => index % 2 !== 0);
+
+    const all_productos: AllProductosModel = {
+        productos_impares:  productosImpares,
+        productos_pares:    productosPares
+    };
 
     return new ResponseModel(
         '#SP', 
-        productos
+        all_productos
     );
 };
 
@@ -70,10 +79,18 @@ const getAllProductos = async ( req: Request ) => {
     await validarToken(req);
 
     const productos: ProductoModel[] = await _getAllProductos();
+    
+    const productosPares    : ProductoModel[]   = productos.filter((_, index) => index % 2 === 0);
+    const productosImpares  : ProductoModel[]   = productos.filter((_, index) => index % 2 !== 0);
+
+    const all_productos: AllProductosModel = {
+        productos_impares:  productosImpares,
+        productos_pares:    productosPares
+    };
 
     return new ResponseModel(
         '#SP', 
-        productos
+        all_productos
     );
 };
 

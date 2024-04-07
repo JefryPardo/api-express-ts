@@ -1,6 +1,6 @@
 import { logger } from "../logs/logger";
 import { MarcaModel } from "../models/model/marca.model";
-import { conexion } from "./conexion";
+import { closeConnection, conexion } from "./conexion";
 
 
 const _getAllMarca = async ():Promise<MarcaModel[]> => {
@@ -26,8 +26,7 @@ const _getAllMarca = async ():Promise<MarcaModel[]> => {
         logger.error(`Error en getAllMarca:  ${error}`);
         throw `Error inesperado, por favor reportar al administrador. #M01`
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -50,8 +49,7 @@ const _insertMarca = async ( marca:string ) => {
         logger.error(`Error en insertMarca:  ${error}`);
         throw `Error inesperado, por favor reportar al administrador. #M02`;
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -77,8 +75,7 @@ const _getMarcaById = async ( id: string  ) => {
         logger.error(`Error en getMarcaById:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #M03";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -100,8 +97,7 @@ const _updateMarca = async ( id:string, marca: string ) => {
         logger.error(`Error en updateMarca:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #M05";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 

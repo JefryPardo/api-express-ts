@@ -2,7 +2,7 @@ import { NewExcepcion } from "../excepcion/excepcion";
 import { logger } from "../logs/logger";
 import { ResponseModel } from "../models/model/response.model";
 import { TipoModel } from "../models/model/tipo.model";
-import { conexion } from "./conexion";
+import { closeConnection, conexion } from "./conexion";
 
 const _getAllTipo = async ():Promise<ResponseModel> => {
 
@@ -33,8 +33,7 @@ const _getAllTipo = async ():Promise<ResponseModel> => {
         logger.error(`Error en _getAllTipo:  ${error}`);
         throw NewExcepcion('CONSULTAEXCEPCION');
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -64,8 +63,7 @@ const _insertTipo = async ( tipo:string ) => {
         throw NewExcepcion('CONSULTAEXCEPCION');
 
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -98,8 +96,7 @@ const _getTipoById = async ( id: string  ) => {
         logger.error(`Error en getTipoById:  ${error}`);
         throw NewExcepcion('CONSULTAEXCEPCION');
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -122,8 +119,7 @@ const _updateTipoById = async ( {id, tipo}: TipoModel ) => {
         logger.error(`Error en updateTipo:  ${error}`);
         throw NewExcepcion('CONSULTAEXCEPCION');
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 

@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+const fs = require('fs');
+const pdf = require('html-pdf');
 
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
@@ -8,4 +10,16 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export {transporter}
+const generarpdf = async (html:string, callback:any) => {
+  
+  pdf.create(html).toBuffer((err:any, buffer:any) => {
+    if (err) {
+      callback(err, null);
+      return;
+    }
+    
+    callback(null, buffer);
+  });
+};
+
+export {transporter, generarpdf}

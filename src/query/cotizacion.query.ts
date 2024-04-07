@@ -1,6 +1,6 @@
 import { NewExcepcion } from "../excepcion/excepcion";
 import { CotizacionModel } from "../models/model/cotizacion.model";
-import { conexion } from "./conexion";
+import { closeConnection, conexion } from "./conexion";
 
 const _insertCotizacion = async (cotizacion: CotizacionModel) => {
     
@@ -42,11 +42,11 @@ const _insertCotizacion = async (cotizacion: CotizacionModel) => {
         throw 'respuesta no esperada.';
 
     } catch (error) {
-        
+        console.log(error);        
         throw NewExcepcion('FATALERROR','_insertCotizacion',error);
     }finally {
         
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -66,8 +66,7 @@ const _getCotizacionByIdUsuario = async (id_usuario: string):Promise<CotizacionM
 
         throw 'Error inesperado al obtener cotizacion por ID.';
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -90,8 +89,7 @@ const _getCotizacionById = async (id: string):Promise<CotizacionModel> => {
 
         throw NewExcepcion('FATALERROR','_getCotizacionById',error);
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -110,8 +108,7 @@ const _getCotizacionByNombreAndUsuario = async (nombre: string, id_usuario:strin
 
         throw NewExcepcion('FATALERROR','_getCotizacionByNombreAndUsuario',error);
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
   
@@ -154,8 +151,7 @@ const _updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
 
         throw 'Error inesperado al actualizar cotizacion.';
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 

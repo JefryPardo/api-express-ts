@@ -1,6 +1,6 @@
 import { logger } from "../logs/logger";
 import { GananciaModel } from "../models/model/ganancia.model";
-import { conexion } from "./conexion";
+import { closeConnection, conexion } from "./conexion";
 
 const _insertGanancia = async ( {id_usuario, id_producto, porcentaje_ganancia}:GananciaModel ) => {
 
@@ -20,8 +20,7 @@ const _insertGanancia = async ( {id_usuario, id_producto, porcentaje_ganancia}:G
         logger.error(`Error en insertGanancia:  ${error}`);
         throw `Error inesperado, por favor reportar al administrador. #G02`;
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -49,8 +48,7 @@ const _getGananciaById = async ( id: string  ) => {
         logger.error(`Error en getGananciaById:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #G03";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -78,8 +76,7 @@ const _getGananciaByIdProducto = async ( id_producto: string  ) => {
         logger.error(`Error en getGananciaByIdProducto:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #G03";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -99,8 +96,7 @@ const _deleteGananciaById = async ( id: string  ) => {
         logger.error(`Error en deleteGananciaById:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #G05";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -128,8 +124,7 @@ const _getGananciaByIdUsuario = async ( idUsuario: string  ) => {
         logger.error(`Error en getGananciaByIdUsuario:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #G04";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -160,8 +155,7 @@ const _updateGananciaById = async (id: string, porcentaje_ganancia: string) => {
 
         throw 'Error inesperado al actualizar usuario.';
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 

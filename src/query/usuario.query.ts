@@ -1,6 +1,6 @@
 import { NewExcepcion } from "../excepcion/excepcion";
 import { UsuarioModel } from "../models/model/usuario.model";
-import { conexion } from "./conexion"
+import { closeConnection, conexion } from "./conexion"
 
 const _insertUsuario = async (usuario: UsuarioModel):Promise<UsuarioModel> => {
     
@@ -53,8 +53,7 @@ const _insertUsuario = async (usuario: UsuarioModel):Promise<UsuarioModel> => {
         
         throw NewExcepcion('FATALERROR', '_insertUsuario', error);
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -81,8 +80,7 @@ const _getUsuarioById = async (id: string) => {
 
         throw NewExcepcion('FATALERROR', '_getUsuarioById', error);
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -102,8 +100,7 @@ const _getDisponibilidadUsuarioByUsuario = async (usuario: string) => {
 
         throw NewExcepcion('FATALERROR', '_getDisponibilidadUsuarioByUsuario', error);
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -129,8 +126,7 @@ const _getUsuarioByUsuario = async (usuario: string):Promise<UsuarioModel | null
         
         throw NewExcepcion('FATALERROR', '_getUsuarioByUsuario', error);
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
   
@@ -177,8 +173,7 @@ const _updateUsuario = async (id: string, usuario: UsuarioModel) => {
 
         throw NewExcepcion('FATALERROR', '_updateUsuario', error);
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -209,8 +204,7 @@ const _updateEstadoUsuario = async (id: string, estado: 'activo' | 'inactivo') =
 
         throw NewExcepcion('FATALERROR', '_updateEstadoUsuario', error);
     } finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 };
   

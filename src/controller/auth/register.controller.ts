@@ -19,7 +19,7 @@ const register = async ( req: Request ) => {
 
     const sugerencias:string[] = validarEstandaresPassword(req.body);
 
-    if(sugerencias.length > 0) return new ResponseModel('#R03', sugerencias);
+    // if(sugerencias.length > 0) return new ResponseModel('#R03', sugerencias);
 
     const claveHash:string = await encriptadoDeClave(registro.clave);
 

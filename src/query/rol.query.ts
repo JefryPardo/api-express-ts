@@ -1,4 +1,4 @@
-import { conexion } from "./conexion"
+import { closeConnection, conexion } from "./conexion"
 import { logger } from "../logs/logger";
 import { RolModel } from "../models/model/rol.model";
 import { NewExcepcion } from "../excepcion/excepcion";
@@ -35,8 +35,7 @@ const _getAllRols = async ():Promise<ResponseModel> => {
         logger.error(`Error en getAllRols:  ${error}`);
         throw NewExcepcion('ROLEXCEPCION');
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -73,8 +72,7 @@ const _insertRol = async ( {rol, estado}:RolModel ) => {
         throw NewExcepcion('ROLEXCEPCION');
 
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -102,8 +100,7 @@ const _getRolById = async ( id: string  ) => {
         
         throw NewExcepcion('ROLEXCEPCION');
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -126,8 +123,7 @@ const _updateEstadoRolById = async ( id:string, estado: string ) => {
         logger.error(`Error en updateEstadoRol:  ${error}`);
         throw NewExcepcion('ROLEXCEPCION');
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -150,8 +146,7 @@ const _updateRolById = async ( id:string, rol: string ) => {
         logger.error(`Error en updateRol:  ${error}`);
         throw NewExcepcion('ROLEXCEPCION');
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 

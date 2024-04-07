@@ -1,37 +1,31 @@
-import pg from "pg";
-import config from 'config';
-import { logger } from "../logs/logger";
+import { Client, Pool } from "pg";
 import { NewExcepcion } from "../excepcion/excepcion";
 
-const _host:                    string  = config.get('credenciales.host');
-const _user:                    string  = config.get('credenciales.user');
-const _password:                string  = config.get('credenciales.password');
-const _database:                string  = config.get('credenciales.database');
-const _port:                    number  = config.get('credenciales.port');
 
 const conexion = async () => {
-        
-    const client = new pg.Client({
     
-        host    : _host,
-        user    : _user,
-        password: _password,
-        database: _database,
-        port    : _port,
-        ssl     : false
+    const pool = new Pool({
+        connectionString: 'postgres://uaanq59dnolmqi:p5c91b3e820e78381c6a842c61a70c93e2637c1a3c3aeb4943afe15c7a042b2c9@c9pbiquf6p6pfn.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dcp0tj1o1832v8',
+        ssl: {
+          rejectUnauthorized: false // Esto permite conexiones a servidores con certificados autofirmados.
+        }
     });
-
-    await client.connect()
-    .then((_res:any) => succes())
-    .catch((_error:any) =>  error(_error));
     
-    return client;
+    try {
+        const client = await pool.connect();
+        console.log('Conexión exitosa a la base de datos.');
+        return client; // Retorna el cliente para usar en otras consultas.
+    } catch (error) {
+        console.error(error);
+        throw NewExcepcion('CONEXIONEXCEPCION');
+    }
 };
 
-const succes = () => {}
+const closeConnection = (client:any) => {
+    if (client) {
+        client.release();
+        console.log('Conexión cerrada.');
+    }
+};
 
-const error = ( res: void) => {
-    throw NewExcepcion('CONEXIONEXCEPCION');
-}
-
-export { conexion };
+export { conexion, closeConnection };

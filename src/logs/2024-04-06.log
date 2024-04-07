@@ -1,0 +1,84 @@
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 14:58:20 | Token ingresado no valido.
+error:  time: 2024-04-06 14:58:20 metodo: validarToken | Error: time: Sat Apr 06 2024 14:58:20 GMT-0500 (hora estándar de Colombia): Token ingresado no valido.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 14:58:42 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 14:59:38 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 15:00:44 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 15:04:02 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 15:04:52 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 15:10:29 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 15:16:24 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 15:19:26 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 15:21:25 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 15:49:33 | Algo salio mal.
+error:  time: 2024-04-06 15:49:51 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 16:18:11 | Algo salio mal.
+error:  time: 2024-04-06 16:18:11 | Algo salio mal.
+error:  time: 2024-04-06 16:18:13 | Algo salio mal.
+error:  time: 2024-04-06 16:18:22 | Algo salio mal.
+error:  time: 2024-04-06 16:18:22 | Algo salio mal.
+error:  time: 2024-04-06 16:18:59 | Algo salio mal.
+error:  time: 2024-04-06 16:19:21 | Algo salio mal.
+error:  time: 2024-04-06 16:19:24 | Algo salio mal.
+error:  time: 2024-04-06 16:19:27 | Algo salio mal.
+error:  time: 2024-04-06 16:19:43 | Algo salio mal.
+error:  time: 2024-04-06 16:20:31 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 16:29:15 | Algo salio mal.
+error:  time: 2024-04-06 16:29:15 metodo: _insertCotizacion | Error: time: Sat Apr 06 2024 16:29:15 GMT-0500 (hora estándar de Colombia): Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+error:  time: 2024-04-06 16:30:47 | Nombre de la cotizacion no disponible.
+error:  time: 2024-04-06 16:31:12 | Nombre de la cotizacion no disponible.
+error:  time: 2024-04-06 16:33:15 | Algo salio mal.
+error:  time: 2024-04-06 16:33:35 | Algo salio mal.
+error:  time: 2024-04-06 16:33:35 | Algo salio mal.
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: Servidor listo, puerto: 8083 - Ambiente: local
+info: req.body.html: <app-banner _ngcontent-ng-c3698747088="" _nghost-ng-c3310114489=""><div _ngcontent-ng-c3310114489="" class="banner"><img _ngcontent-ng-c3310114489="" src="https://raw.githubusercontent.com/JefryPardo/tesis-img/master/logo.png" alt=""></div></app-banner><div _ngcontent-ng-c3698747088="" class="mx-3"><div _ngcontent-ng-c3698747088="" class="grid grid-nogutter mt-3 mb-0 border-bottom-2 border-black-alpha-90 surface-overlay"><div _ngcontent-ng-c3698747088="" class="col-12 flex flex-wrap align-items-center justify-content-end">referencia: <span _ngcontent-ng-c3698747088="" class="numero pl-2 negrilla">8f6ea8fa</span></div></div><div _ngcontent-ng-c3698747088="" class="grid grid-nogutter mt-1"><div _ngcontent-ng-c3698747088="" class="col-12 flex flex-wrap align-items-center justify-content-end tamanio">Generado: <span _ngcontent-ng-c3698747088="" class="negrilla">6 de abril de 2024</span></div></div><br _ngcontent-ng-c3698747088=""><div _ngcontent-ng-c3698747088="" class="grid grid-nogutter mt-1"><div _ngcontent-ng-c3698747088="" class="col-12 flex flex-wrap align-items-center justify-content-start tamanio"><span _ngcontent-ng-c3698747088="" class="negrilla tamanioTitulo">nombre cotizacion</span></div></div><br _ngcontent-ng-c3698747088=""><div _ngcontent-ng-c3698747088="" class="grid grid-nogutter mt-1"><div _ngcontent-ng-c3698747088="" class="col-12 flex flex-wrap align-items-center justify-content-start tamanio"><span _ngcontent-ng-c3698747088="">Esta cotización es para el cambio de camaras en el area de juegos infantiles en el local cristaleria la 40.</span></div></div><br _ngcontent-ng-c3698747088=""><div _ngcontent-ng-c3698747088="" class="grid grid-nogutter my-1 ng-star-inserted"><div _ngcontent-ng-c3698747088="" class="col-12 flex flex-wrap align-items-center justify-content-start tamanio"><span _ngcontent-ng-c3698747088="" class="negrilla tituloTabla">cable</span></div></div><table _ngcontent-ng-c3698747088="" class="globalBorde ng-star-inserted"><tr _ngcontent-ng-c3698747088=""><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioHeader" style="width: 2%;">Cant.</th><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioH" style="width: 23%;">Nombre.</th><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioH" style="width: 25%;">Ref.</th><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioH" style="width: 25%;">Vl. Unit.</th><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioH" style="width: 25%;">Vl. Tot.</th></tr><tr _ngcontent-ng-c3698747088="" class="ng-star-inserted"><td _ngcontent-ng-c3698747088="" class="borde ng-star-inserted" style="text-align: center;">4</td><td _ngcontent-ng-c3698747088="" class="borde p-1 ng-star-inserted">Cable para señal UTP Gris</td><td _ngcontent-ng-c3698747088="" class="borde p-1 ng-star-inserted" style="text-align: center;">CSIUTP5ECAW-CCTV</td><td _ngcontent-ng-c3698747088="" class="borde p-1 ng-star-inserted" style="text-align: center;">1,800 </td><td _ngcontent-ng-c3698747088="" class="borde p-1 ng-star-inserted" style="text-align: center;">7,200</td><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></tr><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}--><tr _ngcontent-ng-c3698747088=""><td _ngcontent-ng-c3698747088=""></td><td _ngcontent-ng-c3698747088=""></td><td _ngcontent-ng-c3698747088=""></td><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: end;">subtotal: </td><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: center;">7,200</td></tr></table><!--ng-container--><!--bindings={
+  "ng-reflect-ng-for-of": "cable"
+}--><br _ngcontent-ng-c3698747088=""><div _ngcontent-ng-c3698747088="" class="grid grid-nogutter my-1"><div _ngcontent-ng-c3698747088="" class="col-12 flex flex-wrap align-items-center justify-content-start tamanio"><span _ngcontent-ng-c3698747088="" class="negrilla tituloTabla">Mano de obra</span></div></div><table _ngcontent-ng-c3698747088="" class="globalBorde"><tr _ngcontent-ng-c3698747088=""><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioH" style="width: 50%;">Detalle.</th><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioH" style="width: 50%;">Vl. Tot.</th></tr><tr _ngcontent-ng-c3698747088=""><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: center;">Sin detalles</td><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: center;">0 </td></tr></table><br _ngcontent-ng-c3698747088=""><div _ngcontent-ng-c3698747088="" class="grid grid-nogutter my-1"><div _ngcontent-ng-c3698747088="" class="col-12 flex flex-wrap align-items-center justify-content-start tamanio"><span _ngcontent-ng-c3698747088="" class="negrilla tituloTabla">Resumen</span></div></div><table _ngcontent-ng-c3698747088="" class="globalBorde"><tr _ngcontent-ng-c3698747088=""><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioH" style="width: 50%;">Detalle.</th><th _ngcontent-ng-c3698747088="" class="p-1 borde tamanioH" style="width: 50%;">Vl. Tot.</th></tr><tr _ngcontent-ng-c3698747088="" class="ng-star-inserted"><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: center;">cable</td><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: center;">7,200</td></tr><!--bindings={
+  "ng-reflect-ng-for-of": "cable"
+}--><tr _ngcontent-ng-c3698747088=""><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: center;">obra de mano</td><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: center;">0 </td></tr><tr _ngcontent-ng-c3698747088=""><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: end;">Total: </td><td _ngcontent-ng-c3698747088="" class="borde p-1" style="text-align: center;">7,200</td></tr></table></div>
+info: Servidor listo, puerto: 8083 - Ambiente: local

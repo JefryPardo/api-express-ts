@@ -1,5 +1,5 @@
 import { CategoriaModel } from "../models/model/categoria.model";
-import { conexion } from "./conexion";
+import { closeConnection, conexion } from "./conexion";
 import { logger } from "../logs/logger";
 
 
@@ -27,7 +27,7 @@ const _getAllCategoria = async ():Promise<CategoriaModel[]> => {
         throw `Error inesperado, por favor reportar al administrador. #C01`
     } finally {
 
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -50,7 +50,7 @@ const _insertCategoria = async ( categoria:string ) => {
         throw `Error inesperado, por favor reportar al administrador. #C02`;
     } finally {
 
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -77,7 +77,7 @@ const _getCategoriaById = async ( id: string  ) => {
         throw "Error inesperado, por favor reportar al administrador. #C03";
     }finally {
         
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -100,7 +100,7 @@ const _updateCategoria = async ( {id, categoria}: CategoriaModel ) => {
         throw "Error inesperado, por favor reportar al administrador. #C05";
     }finally {
         
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 

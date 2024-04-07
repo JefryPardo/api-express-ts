@@ -1,4 +1,4 @@
-import { conexion } from "./conexion"
+import { closeConnection, conexion } from "./conexion"
 import { logger } from "../logs/logger";
 import { ProductoModel } from "../models/model/producto.model";
 import { NewExcepcion } from "../excepcion/excepcion";
@@ -51,7 +51,7 @@ const _insertProducto = async (producto: ProductoModel) => {
         throw NewExcepcion('FATALERROR','_insertProducto',error);
     }finally {
         
-        consulta.end();
+        closeConnection(consulta);    
     }
 };
 
@@ -75,7 +75,7 @@ const _getProductoById = async (id: string) => {
         throw NewExcepcion('FATALERROR','_getProductoById',error);
     } finally {
         
-        consulta.end();
+        closeConnection(consulta);
     }
 };
   
@@ -129,7 +129,7 @@ const _updateProducto = async (id: string, producto: ProductoModel) => {
         throw NewExcepcion('FATALERROR','_updateProducto',error);
     } finally {
         
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -161,7 +161,7 @@ const _updateEstadoProducto = async (id: string, estado: 'activo' | 'inactivo') 
         throw NewExcepcion('FATALERROR','_updateEstadoProducto',error);
     } finally {
         
-        consulta.end();
+        closeConnection(consulta);
     }
 };
 
@@ -199,7 +199,7 @@ const _getAllProductos = async ():Promise<ProductoModel[]> => {
         throw NewExcepcion('FATALERROR','_getAllProductos',error);
     } finally {
 
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 

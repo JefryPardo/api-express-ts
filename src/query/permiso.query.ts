@@ -1,4 +1,4 @@
-import { conexion } from "./conexion"
+import { closeConnection, conexion } from "./conexion"
 import { logger } from "../logs/logger";
 import { PermisoModel } from "../models/model/permiso.model";
 
@@ -20,8 +20,7 @@ const _insertPermiso = async ( {permiso, estado}:PermisoModel ) => {
         logger.error(`Error en insertPermiso:  ${error}`);
         throw `Error inesperado, por favor reportar al administrador. #P02`;
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -48,8 +47,7 @@ const _getPermisoById = async ( id: string ) => {
         logger.error(`Error en getPermisoById:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #P03";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -71,8 +69,7 @@ const _updateEstadoPermiso = async ( id:string, estado: string ) => {
         logger.error(`Error en updateEstadoPermiso:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #P04";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 

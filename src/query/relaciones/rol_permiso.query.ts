@@ -1,6 +1,6 @@
 import { logger } from "../../logs/logger";
 import { RolPermisoModel } from "../../models/model/rol-permiso.model";
-import { conexion } from "../conexion";
+import { closeConnection, conexion } from "../conexion";
 
 const insertRolPermiso = async ( {id_rol, id_permiso}:RolPermisoModel ) => {
 
@@ -20,8 +20,7 @@ const insertRolPermiso = async ( {id_rol, id_permiso}:RolPermisoModel ) => {
         logger.error(`Error en insertRolPermiso:  ${error}`);
         throw `Error inesperado, por favor reportar al administrador. #RP02`;
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -48,8 +47,7 @@ const getRolPermisoById = async ( id: string  ) => {
         logger.error(`Error en getRolPermisoById:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #RP04";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -76,8 +74,7 @@ const getRolPermisoByIdRol = async ( id_rol: string  ) => {
         logger.error(`Error en getRolPermisoByIdRol:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #RP05";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -97,8 +94,7 @@ const deleteRolPermisoById = async ( id: string  ) => {
         logger.error(`Error en deleteRolPermisoById:  ${error}`);
         throw "Error inesperado, por favor reportar al administrador. #RP05";
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 

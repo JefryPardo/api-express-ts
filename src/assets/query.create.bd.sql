@@ -1,28 +1,27 @@
 
 -- CREATE DATABASE "tesis-bd"
---     WITH
---     OWNER = postgres
---     ENCODING = 'UTF8'
---     LC_COLLATE = 'Spanish_Latin America.1252'
---     LC_CTYPE = 'Spanish_Latin America.1252'
---     TABLESPACE = pg_default
---     CONNECTION LIMIT = -1;
 
--- CREATE TABLE Marca (
---     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
---     marca VARCHAR(255)
--- );
+-- 1
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE TABLE Producto (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    nombre VARCHAR(255),
+    descripcion VARCHAR(255),
+    url_imagen VARCHAR(1000)[],
+    referencia VARCHAR(255),
+    referencia_local VARCHAR(255),
+    precio DECIMAL(10, 2),
+    ficha_tecnica VARCHAR(255),
+    unidades VARCHAR(255),
+    estado VARCHAR(255),
+    categoria VARCHAR(255),
+    tipo VARCHAR(255),
+    marca VARCHAR(255)
+);
+-- 1
 
--- CREATE TABLE Tipo (
---     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
---     tipo VARCHAR(255)
--- );
 
--- CREATE TABLE Categoria (
---     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
---     nombre VARCHAR(255)
--- );
-
+-- 2
 CREATE TABLE Usuario (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     nombre VARCHAR(255),
@@ -59,37 +58,19 @@ CREATE TABLE Permiso (
     permiso VARCHAR(255),
     estado VARCHAR(255)
 );
+-- 2
 
+
+-- 3
 CREATE TABLE Ganancia (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     id_usuario VARCHAR(255),
     id_producto VARCHAR(255),
     porcentaje_ganancia DECIMAL(2, 2)
 );
+-- 3
 
-CREATE TABLE Cotizacion_Producto (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    cantidad VARCHAR(255),
-    id_producto VARCHAR(255),
-    id_cotizacion VARCHAR(255)
-);
-
-CREATE TABLE Producto (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    nombre VARCHAR(255),
-    descripcion VARCHAR(255),
-    url_imagen VARCHAR(1000)[],
-    referencia VARCHAR(255),
-    referencia_local VARCHAR(255),
-    precio DECIMAL(10, 2),
-    ficha_tecnica VARCHAR(255),
-    unidades VARCHAR(255),
-    estado VARCHAR(255),
-    categoria VARCHAR(255),
-    tipo VARCHAR(255),
-    marca VARCHAR(255)
-);
-
+-- 4
 CREATE TABLE Cotizacion (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     nombre VARCHAR(255),
@@ -100,6 +81,15 @@ CREATE TABLE Cotizacion (
     correo_cliente VARCHAR(255),
     id_usuario VARCHAR(255)
 );
+
+CREATE TABLE Cotizacion_Producto (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    cantidad VARCHAR(255),
+    id_producto VARCHAR(255),
+    id_cotizacion VARCHAR(255)
+);
+-- 4
+
 
 -- productos repositorio img
 -- https://github.com/JefryPardo/tesis-img/tree/master/producto

@@ -183,5 +183,11 @@
         "code": "#FCNF",
         "log": "No se encontro ninguna cotización con el id ingresado.",
         "mensaje": "Cotizacion no encontrada."
+    },
+
+    "EMAILEXCEPCION": {
+        "code": "EME01",
+        "log": "Error al armar el modelo del data email",
+        "mensaje": ""
     }
 }

@@ -2,7 +2,7 @@ import { NewExcepcion } from "../../excepcion/excepcion";
 import { ResponseModel } from "../../models/model/response.model";
 import { RolModel } from "../../models/model/rol.model";
 import { UsuarioRolModel } from "../../models/model/usuario-rol.model";
-import { conexion } from "../conexion";
+import { closeConnection, conexion } from "../conexion";
 
 const _insertUsuarioRol = async ( id_usuario:string, id_rol:string ):Promise<boolean> => {
 
@@ -25,8 +25,7 @@ const _insertUsuarioRol = async ( id_usuario:string, id_rol:string ):Promise<boo
         
         throw NewExcepcion('FATALERROR','_insertUsuarioRol',error);
     } finally {
-
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -58,8 +57,7 @@ const _getUsuarioRolById = async ( id: string  ) => {
         
         throw NewExcepcion('FATALERROR', '_getUsuarioRolById',error);
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -87,8 +85,7 @@ const _getUsuarioRolByIdUsuario = async ( id_usuario: string  ):Promise<UsuarioR
         
         throw NewExcepcion('FATALERROR','_getUsuarioRolByIdUsuario',error);
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
@@ -109,8 +106,7 @@ const _deleteUsuarioRolById = async ( id: string  ) => {
         
         throw NewExcepcion('FATALERROR','_deleteUsuarioRolById',error);
     }finally {
-        
-        consulta.end();
+        closeConnection(consulta);
     }
 }
 
