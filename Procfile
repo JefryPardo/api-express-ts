@@ -1,1 +1,1 @@
-web: npm run produccion
+web: node ./src/app.ts NODE_ENV=produccion

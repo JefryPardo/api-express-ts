@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/app.ts NODE_ENV=local",
-    "local": "nodemon ./src/app.ts NODE_ENV=local",
-    "produccion": "nodemon ./src/app.ts NODE_ENV=produccion"
+    "start": "node ./src/app.ts NODE_ENV=local",
+    "local": "node ./src/app.ts NODE_ENV=local",
+    "produccion": "node ./src/app.ts NODE_ENV=produccion"
   },
   "author": "",
   "license": "ISC",
