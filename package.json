@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.ts NODE_ENV=local",
-    "local": "node ./src/app.ts NODE_ENV=local",
-    "produccion": "node ./src/app.ts NODE_ENV=produccion"
+    "start": "node ./dist/app.js",
+    "local": "nodemon ./src/app.ts",
+    "build": "tsc",
+    "produccion": "nodemon ./src/app.ts NODE_ENV=produccion"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +24,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "html-pdf": "^3.0.1",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.0", 
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.29.4",
     "mongoose": "^6.6.6",

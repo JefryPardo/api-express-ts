@@ -1,0 +1,162 @@
+{
+    "ROLEXCEPCION": {
+        "code": "ER00",
+        "log": "Algo salio mal.",
+        "mensaje": "Por favor comunicarse con el administrador."
+    },
+    "INSERTROLEXCEPCION": {
+        "code": "ER01",
+        "log": "Algo salio mal.",
+        "mensaje": "Por favor comunicarse con el administrador."
+    },
+    "CONEXIONEXCEPCION": {
+        "code": "EC01",
+        "log": "Algo salio mal.",
+        "mensaje": "Por favor comunicarse con el administrador."
+    },
+    "IDNOVALIDOEXCEPCION": {
+        "code": "G01",
+        "log": "Id ingresado no cumple con el formato requerido.",
+        "mensaje": "Por favor ingresar un ID valido."
+    },
+    "BUILDEXCEPCION": {
+        "code": "EXB01",
+        "log": "Error al armar el modelo",
+        "mensaje": ""
+    },
+    "CONSULTAEXCEPCION": {
+        "code": "CON01",
+        "log": "Error al consultar la BD.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "CONSULTAEXCEPCIONLOGIN": {
+        "code": "LOG01",
+        "log": "Error al consultar la BD login.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "USUARIOEXCEPCION": {
+        "code": "CON01",
+        "log": "Error validando usuario: ",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "VALIDADOREXCEPCION": {
+        "code": "VAL01",
+        "log": "Error en validador: ",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "CAMPOUSUARIOEXCEPCION": {
+        "code": "EXC06",
+        "log": "Formato del correo no valido.",
+        "mensaje": "Campo nombre no es valido."
+    },
+    "CAMPONOMBREEXCEPCION": {
+        "code": "EXC01",
+        "log": "Error el campo nombre no es valido.",
+        "mensaje": "Campo nombre no es valido."
+    },
+    "CAMPOAPELLIDOEXCEPCION": {
+        "code": "EXC02",
+        "log": "Error el campo apellido no es valido.",
+        "mensaje": "Campo apellido no es valido."
+    },
+    "CAMPOCELULAREXCEPCION": {
+        "code": "EXC03",
+        "log": "Error el campo celular no es valido.",
+        "mensaje": "Campo celular no es valido."
+    },
+    "CAMPOTIPODOCUMENTOEXCEPCION": {
+        "code": "EXC04",
+        "log": "Error el campo tipo documento no es valido.",
+        "mensaje": "Campo tipo documento no es valido."
+    },
+    "CAMPODOCUMENTOEXCEPCION": {
+        "code": "EXC05",
+        "log": "Error el campo documento no es valido.",
+        "mensaje": "Campo documento no es valido."
+    },
+    "ENCRIPTADOEXCEPCION": {
+        "code": "ENC01",
+        "log": "Error al encriptar la clave del usuario.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "INSERTEXCEPCION": {
+        "code": "INS01",
+        "log": "Error al general el insert, respuesta no esperada.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "LOGINPASSWORDEXCEPCION": {
+        "code": "LOG02",
+        "log": "Error al intentar validar password.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "SECRETEXCEPCION": {
+        "code": "ERR02",
+        "log": "Error al evaluar la llave SECRET.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "TOKENEXPIRADOEXCEPCION": {
+        "code": "TOK01",
+        "log": "Token ingresado expirado.",
+        "mensaje": "Token expirado."
+    },
+    "TOKENEXCEPCION": {
+        "code": "TOK02",
+        "log": "Token ingresado no valido.",
+        "mensaje": "Token no valido."
+    },
+    "INSERTLOGINEXCEPCION": {
+        "code": "LOG12",
+        "log": "Error al generar insert login.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "INSERTUSUARIOROLEXCEPCION": {
+        "code": "LOG12",
+        "log": "Error al generar insert usuario_rol.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "USUARIOROLCONSULTAEXCEPCION": {
+        "code": "UR01",
+        "log": "Error al consultar la BD usuario_rol.",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "GENERICO": {
+        "code": "g",
+        "log": "",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "LOGINEXCEPCION": {
+        "code": "#LCE01",
+        "log": "",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "CREDENCIALESXCEPCION": {
+        "code": "AUTH",
+        "log": "Credenciales no validas",
+        "mensaje": "Credenciales no validas"
+    },
+    "LOGINGENERICO": {
+        "code": "AUTHERROR",
+        "log": "",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "FATALERROR": {
+        "code": "#feq",
+        "log": "",
+        "mensaje": "Algo salio mal, por favor reportarlo con el administrador."
+    },
+    "NOMBRECOTIZACIONEXCEPCION": {
+        "code": "#NCE",
+        "log": "Nombre de la cotizacion no disponible.",
+        "mensaje": "Nombre no disponible."
+    },
+    "FINDCOTIZACIONEXCEPCION": {
+        "code": "#FCNF",
+        "log": "No se encontro ninguna cotización con el id ingresado.",
+        "mensaje": "Cotizacion no encontrada."
+    },
+    "EMAILEXCEPCION": {
+        "code": "EME01",
+        "log": "Error al armar el modelo del data email",
+        "mensaje": ""
+    }
+}
