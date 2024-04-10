@@ -2,7 +2,7 @@ import { logger } from "../logs/logger";
 import { CotizacionHistorialModel } from "../models/model/cotizacion-historial.model";
 import { ProductoModel } from "../models/model/producto.model";
 import { ResumenProductoModel } from "../models/model/resumen-producto.model";
-import { generarpdf, transporter } from "../service/sendmail.service";
+import { transporter } from "../service/sendmail.service";
 import { buildDataEmail } from "../utils/validador.email";
 import { validarToken } from "./jwt.controlle";
 import { Request } from "express";
@@ -149,31 +149,14 @@ const enviarCorreo = async ( req: Request ) => {
         </html>
     `;
 
-  await generarpdf(html, (err:any, pdfBuffer:any) => {
-    if (err) {
-      console.error('Error al generar el PDF: ' + err);
-      return;
-    }
+  const mailOptions = {
+    from: 'cotizacion.generada@gmail.com',
+    to: email,
+    subject: 'Cotización',
+    html: html
+  };
 
-    const mailOptions = {
-      from: 'cotizacion.generada@gmail.com',
-      to: email,
-      subject: 'Cotización',
-      html: html,
-      attachments: [{
-        filename: 'cotizacion.pdf',
-        content: pdfBuffer,
-      }],
-    };
-
-    transporter.sendMail(mailOptions, (error:any, info:any) => {
-      if (error) {
-        console.error('Error al enviar el correo: ' + error);
-      } else {
-        console.log('Correo enviado: ' + info.response);
-      }
-    });
-  });
+  
   // const pdfBytes = await generarpdf(html);
 
   // const mailOptions = {
@@ -187,14 +170,14 @@ const enviarCorreo = async ( req: Request ) => {
   //   }],
   // };
 
-  // transporter.sendMail(mailOptions, (error:any, info:any) => {
+  transporter.sendMail(mailOptions, (error:any, info:any) => {
     
-  //   if (error) {
-  //     console.error('Error al enviar el correo: ' + error);
-  //   } else {
-  //     console.log('Correo enviado: ' + info.response);
-  //   }
-  // });
+    if (error) {
+      console.error('Error al enviar el correo: ' + error);
+    } else {
+      console.log('Correo enviado: ' + info.response);
+    }
+  });
 };
 
 const validarEmailFormato = ( email: any ): boolean => {

@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // import "dotenv/config";
 const logger_1 = require("./logs/logger");
-const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 // import config from 'config';
 const rol_route_1 = require("./routes/rol.route");
@@ -22,11 +21,11 @@ const _ambiente = 'local';
 const _puerto = process.env.PORT || 8083;
 const _contextPath = "/app";
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)({
-    origin: _origin,
-    methods: _methods,
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: _origin,
+//     methods: _methods,
+//     credentials: true,
+// }));
 app.use(express_1.default.json());
 app.use(`${_contextPath}/rol`, rol_route_1.routerRol);
 app.use(`${_contextPath}/usuario`, usuario_route_1.usuarioRouter);

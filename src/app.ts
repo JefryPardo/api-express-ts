@@ -20,11 +20,11 @@ const _puerto:      any    = process.env.PORT || 8083;
 const _contextPath: string = "/app";
 
 const app = express();
-app.use(cors({
-    origin: _origin,
-    methods: _methods,
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: _origin,
+//     methods: _methods,
+//     credentials: true,
+// }));
 
 app.use(express.json());
 app.use(`${_contextPath}/rol`,                  routerRol);
