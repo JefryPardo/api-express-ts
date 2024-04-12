@@ -13,7 +13,8 @@ import { routerCotizacion } from "./routes/cotizacion.route";
 import { routerCotizacionProducto } from "./routes/relaciones/cotizacion_producto.route";
 import { routerResumen } from "./routes/resumen.route";
 
-const _origin:      string = 'http://localhost:4200';
+// const _origin:      string = 'http://localhost:4200';
+const _origin:      string = 'https://github.com/JefryPardo/api-express-ts.git';
 const _methods:     string = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 const _ambiente:    string = 'local';
 const _puerto:      any    = process.env.PORT || 8083;
