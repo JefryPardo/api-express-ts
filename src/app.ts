@@ -13,8 +13,7 @@ import { routerCotizacion } from "./routes/cotizacion.route";
 import { routerCotizacionProducto } from "./routes/relaciones/cotizacion_producto.route";
 import { routerResumen } from "./routes/resumen.route";
 
-// const _origin:      string = 'http://localhost:4200';
-const _origin:      string = 'https://jefrypardo.github.io';
+const allowedOrigins = ['http://localhost:4200', 'https://jefrypardo.github.io'];
 const _methods:     string = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 const _ambiente:    string = 'local';
 const _puerto:      any    = process.env.PORT || 8083;
@@ -22,10 +21,16 @@ const _contextPath: string = "/app";
 
 const app = express();
 app.use(cors({
-    origin: _origin,
+    origin: function(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: _methods,
-    credentials: true,
-}));
+    credentials: true
+  }));
 
 app.use(express.json());
 app.use(`${_contextPath}/rol`,                  routerRol);
