@@ -1,8 +1,8 @@
 import { Request } from "express";
 import { ResponseModel } from "../models/model/response.model";
-import { buildCotizacion, validarCamposCotizacion } from "../utils/validador.cotizacion";
+import { buildCotizacion, buildCotizacionUpdate, validarCamposCotizacion } from "../utils/validador.cotizacion";
 import { CotizacionModel } from "../models/model/cotizacion.model";
-import { _getCotizacionById, _getCotizacionByIdUsuario, _getCotizacionByNombreAndUsuario, _insertCotizacion, _updateCotizacion } from "../query/cotizacion.query";
+import { _deleteCotizacion, _getCotizacionById, _getCotizacionByIdUsuario, _getCotizacionByNombreAndUsuario, _insertCotizacion, _updateCotizacion, _updateCotizacionUpdate } from "../query/cotizacion.query";
 import { NewExcepcion } from "../excepcion/excepcion";
 import { validarToken } from "./jwt.controlle";
 import { _getUsuarioById, _getUsuarioByUsuario } from "../query/usuario.query";
@@ -58,18 +58,43 @@ const getCotizacionesByIdUsuario = async ( req: Request ) => {
 
 const updateCotizacion = async ( req: Request ) => {
 
-    // await validarToken(req);
+    await validarToken(req);
 
-    // if(!req.body) {
+    if(!req.body) {
 
-    //     return new ResponseModel('#','Data ingresada no validad.');
-    // }
+        return new ResponseModel('#','Data ingresada no validad.');
+    }
 
-    // validarCamposCotizacion(req.body);
+    validarCamposCotizacion(req.body);
 
-    // const cotizacion: CotizacionModel = buildCotizacion(req.body);
+    const cotizacion: CotizacionModel = buildCotizacionUpdate(req.body);
 
-    // return _updateCotizacion(cotizacion.id, cotizacion);
+    if(cotizacion.id == null)  {
+
+        return new ResponseModel('#','Data ingresada no validad.');
+    }
+
+    return _updateCotizacionUpdate(cotizacion.id, cotizacion);
+};
+
+const deleteCotizacion = async ( req: Request ) => {
+
+    await validarToken(req);
+
+    if(!req.params.idcotizacion) throw NewExcepcion('GENERICO');
+    
+    const id_cotizacion :string = req.params.idcotizacion;
+
+    const response:boolean = await _deleteCotizacion(
+        id_cotizacion
+    );
+
+    if(!response) throw NewExcepcion('FATALERROR', 'deleteCotizacion', 'No se pudo borrar correctamente.');
+
+    return new ResponseModel(
+        '#DCPS', 
+        response
+    );
 };
 
 
@@ -111,5 +136,6 @@ export {
     getCotizacionesByIdUsuario, 
     updateCotizacion,
     getCotizacionByNombreAndUsuario,
-    getCotizacionesById
+    getCotizacionesById,
+    deleteCotizacion
 };

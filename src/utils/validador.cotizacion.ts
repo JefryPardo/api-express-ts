@@ -25,6 +25,27 @@ const buildCotizacion = ( data: any ): CotizacionModel => {
     }
 }
 
+const buildCotizacionUpdate = ( data: any ): CotizacionModel => {
+
+    try {
+        
+        let cotizacion = new CotizacionModel();
+
+        cotizacion.id                   = data.id;
+        cotizacion.nombre               = data.nombre;
+        cotizacion.nombre_cliente       = data.nombre_cliente;
+        cotizacion.cedula_cliente       = data.cedula_cliente;
+        cotizacion.correo_cliente       = data.correo_cliente;
+
+        return cotizacion;
+
+    } catch (error) {
+        
+        logger.error(`Error en buildCotizacionUpdate: ${error}`);
+        throw NewExcepcion('BUILDEXCEPCION');
+    }
+}
+
 const validarCamposCotizacion = ( cotizacionBody: any ) => {
 
     for (let index in cotizacionBody) {
@@ -43,4 +64,4 @@ const validarCamposCotizacion = ( cotizacionBody: any ) => {
     }
 }
 
-export {buildCotizacion, validarCamposCotizacion};
+export {buildCotizacion, validarCamposCotizacion, buildCotizacionUpdate};

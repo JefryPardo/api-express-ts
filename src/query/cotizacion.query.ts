@@ -155,10 +155,72 @@ const _updateCotizacion = async (id: string, cotizacion: CotizacionModel) => {
     }
 };
 
+const _updateCotizacionUpdate = async (id: string, cotizacion: CotizacionModel) => {
+    
+    const consulta = await conexion();
+    
+    try {
+        const query = `
+            UPDATE 
+                cotizacion
+            SET 
+                nombre_cliente = $1, 
+                cedula_cliente = $2,
+                correo_cliente = $3, 
+                nombre = $4
+            WHERE 
+                id = $5
+        `;
+        
+        const values = [
+            cotizacion.nombre_cliente,
+            cotizacion.cedula_cliente,
+            cotizacion.correo_cliente,
+            cotizacion.nombre,
+            id,
+        ];
+        
+        const result = await consulta.query(query, values);
+        
+        return result.rows;
+
+    } catch (error) {
+
+        throw 'Error inesperado al actualizar cotizacion.';
+    } finally {
+        closeConnection(consulta);
+    }
+};
+
+const _deleteCotizacion = async ( id_cotizacion: string ) => {
+
+    const consulta = await conexion();
+    try {
+        
+        const respuesta = await consulta.query(
+            `DELETE FROM cotizacion WHERE id = '${id_cotizacion}'`
+        );
+        
+        if (respuesta.rowCount > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    } catch (error) {
+        
+        throw NewExcepcion('FATALERROR', '_deleteCotizacion', error);
+    }finally {
+        closeConnection(consulta);
+    }
+}
+
 export {
     _insertCotizacion,
     _getCotizacionByIdUsuario,
     _updateCotizacion,
     _getCotizacionByNombreAndUsuario,
-    _getCotizacionById
+    _getCotizacionById,
+    _updateCotizacionUpdate,
+    _deleteCotizacion
 };
