@@ -26,7 +26,7 @@ const _contextPath: string = "/app";
 
 const app = express();
 app.use(cors({
-    origin: _origin,
+    origin: allowedOrigins,
     methods: _methods,
     credentials: true,
 }));
