@@ -3,7 +3,6 @@ import { logger } from "./logs/logger";
 
 import cors from 'cors';
 import express from "express";
-import config from 'config';
 import { routerRol } from "./routes/rol.route";
 import { routerAuth } from "./routes/auth/auth.route";
 import { usuarioRouter } from "./routes/usuario.route";
@@ -13,11 +12,17 @@ import { routerCotizacion } from "./routes/cotizacion.route";
 import { routerCotizacionProducto } from "./routes/relaciones/cotizacion_producto.route";
 import { routerResumen } from "./routes/resumen.route";
 
-const _origin:      string = config.get('config.origin');
-const _methods:     string = config.get('config.methods');
-const _ambiente:    string = config.get('ambiente');
-const _puerto:      number = config.get('server.port');
-const _contextPath: string = config.get('server.servlet.contextPath');
+// const _origin:      string = config.get('config.origin');
+// const _methods:     string = config.get('config.methods');
+// const _ambiente:    string = config.get('ambiente');
+// const _puerto:      number = config.get('server.port');
+// const _contextPath: string = config.get('server.servlet.contextPath');
+
+const allowedOrigins = ['http://localhost:4200', 'http://cristaleriala40.com'];
+const _methods:     string = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+const _ambiente:    string = 'local';
+const _puerto:      any    = process.env.PORT || 8083;
+const _contextPath: string = "/app";
 
 const app = express();
 app.use(cors({

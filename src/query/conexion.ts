@@ -1,13 +1,11 @@
 import pg from "pg";
-import config from 'config';
-import { logger } from "../logs/logger";
 import { NewExcepcion } from "../excepcion/excepcion";
 
-const _host:                    string  = config.get('credenciales.host');
-const _user:                    string  = config.get('credenciales.user');
-const _password:                string  = config.get('credenciales.password');
-const _database:                string  = config.get('credenciales.database');
-const _port:                    number  = config.get('credenciales.port');
+const _host:      string  = 'localhost';
+const _user:      string  = 'postgres';
+const _password:  string  = 'postgres';
+const _database:  string  = 'cristaleria';
+const _port:      number  = 5432;
 
 const conexion = async () => {
         
